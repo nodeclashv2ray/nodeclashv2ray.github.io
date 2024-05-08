@@ -762,6 +762,8 @@
 }
 .mobile-logo a {
     color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
 }
 .mean-container .mean-bar{
   padding: 0;
