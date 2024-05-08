@@ -1,0 +1,661 @@
+/*-----------------------------------------------------------------------------------
+
+  Template Name: Tasfiu Corporate HTML Template.
+  Template URI: #
+  Description: Tasfiu is a unique website template designed in HTML with a simple & beautiful look. There is an excellent solution for creating clean, wonderful and trending material design corporate, corporate any other purposes websites.
+  Author: HasTech
+  Author URI: https://themeforest.net/user/hastech/portfolio
+  Version: 1.0
+
+-----------------------------------------------------------------------------------*/
+
+
+
+/* Large screen desktop */
+@media (min-width: 1370px){
+.amz-work-contents {
+  padding: 50px 0 0;
+}
+.amz-work-container {
+  padding-left: 50px;
+}
+.single-work-details {
+  margin-bottom: 30px;
+}
+.amz-icon {
+  margin-right: 30px;
+}
+.amz-details p {
+  line-height: 23px;
+  padding-right: 20px;
+}
+.amz-work-container {
+    margin-top: 40px;
+}
+}
+/* Large screen desktop */
+@media (min-width: 1500px){
+.amz-work-contents {
+  padding: 100px 30px 0;
+}
+.single-work-details {
+  margin-bottom: 30px;
+}
+.amz-icon {
+  margin-right: 30px;
+  margin-top: 10px;
+}
+.amz-details p {
+  line-height: 23px;
+  padding-right: 20px;
+}
+.amz-work-container {
+    margin-top: 70px;
+}
+}
+
+
+/* Normal desktop :992px. */
+@media (min-width: 992px) and (max-width: 1169px) {
+.amz-work-container {
+  margin-top: 10px;
+  padding-bottom: 10px;
+}
+.amz-work-container {
+  padding-left: 0;
+}
+.amz-work-contents .section-title {
+  margin-bottom: 20px;
+}
+.amz-icon .icon::before {
+  font-size: 28px;
+}
+.amz-details h4 {
+  line-height: 16px;
+  margin-bottom: 9px;
+}
+.amz-icon {
+  margin-right: 10px;
+}
+.single-work-details {
+  padding-left: 12px;
+  padding-right: 4px;
+}
+.amz-work-contents .section-title h2 {
+  font-size: 21px;
+  line-height: 19px;
+}
+.about-detail {
+  padding-bottom: 80px;
+}
+.input-area input {
+  padding-right: 65px;
+  width: 100%;
+}
+button.tf-input-btn {
+  width: 50px;
+}
+.mdpb-60{
+  padding-bottom: 60px
+}
+.portfolio-owl-active .owl-controls .owl-buttons div {
+  margin: 4px;
+  opacity: 1;
+  padding: 1px 11px;
+}
+
+}
+
+ 
+/* Tablet desktop :768px. */
+@media (min-width: 768px) and (max-width: 991px) {
+.sm-center{
+  text-align: center;
+}
+.tab-pane img {
+  width: 100%;
+}
+.logo {
+  float: none;
+  margin-bottom: 0px;
+}
+.main-menu {
+  justify-content: center;
+}
+.main-menu > li > a {
+  height: 74px;
+  line-height: 75px;
+}
+.slider-content p {
+  padding: 0 190px 0 0;
+}
+.slider-content h1 {
+  font-size: 57px;
+}
+.slider-content h3 {
+  font-size: 42px;
+}
+.about-detail {
+  margin-bottom: 30px;
+}
+.tf-single-blog {
+  margin-bottom: 30px;
+}
+.our-contact-inner {
+  margin-bottom: 34px;
+}
+.our-contact-inner p.contact-pra {
+  margin-bottom: 3px;
+  padding-right: 20px;
+}
+.smpb-60{
+  padding-bottom: 60px;
+}
+.smpt-60{
+  padding-top: 60px;
+}
+.smmt-30{
+  margin-top: 30px;
+}
+
+.foo-single-widget .logo {
+  float: none;
+  margin-bottom: 15px;
+}
+.foo-single-widget p.ft-pra-1 {
+  margin-bottom: 20px;
+}
+.foo-single-widget {
+  padding-right: 53px;
+}
+.footer-title {
+  margin-bottom: 16px;
+}
+.foo-single-widget {
+  padding-right: 60px;
+}
+.col-md-2.col-md-offset-1.col-lg-2.col-lg-offset-1.col-sm-6.col-xs-6 {
+  border-left: none;
+  padding-left: 15px;
+  
+}
+.col-md-3.col-md-offset-1.col-lg-3.col-lg-offset-1.col-sm-6.col-xs-6 {
+  border-left: none;
+  padding-left: 15px;
+} 
+.amazing-work-inner {
+  display: inherit;
+}
+.width-half {
+  width: 100%;
+}
+.amz-icon .icon::before {
+  font-size: 33px;
+}
+.amz-icon {
+  margin-right: 17px;
+}
+.amz-work-contents {
+  padding: 44px 0 0;
+}
+.foo-single-widget.border-left::before {
+  display: none;
+}
+.height-100 {
+  height: 142px !important;
+}
+.tf-bradcaump-area {
+  padding-bottom: 40px;
+  padding-top: 50px;
+}
+.about-detail p.ad-second-pra {
+  margin-top: 10px;
+}
+.single-team {
+  margin-bottom: 30px;
+}
+.single-fact {
+  margin-bottom: 30px;
+}
+.our-testimonial-area .slick-next {
+  right: -100px;
+}
+.our-testimonial-area .slick-prev {
+  left: -100px;
+}
+.input-area input {
+  width: 100%;
+}
+button.tf-input-btn {
+  font-size: 25px;
+  width: 85px;
+}
+.category-menu li {
+  padding-top: 20px;
+}
+.single-post-details h2 {
+  font-size: 14px;
+}
+.header-bottom-area.height-100.scroll-header {
+  height: 126px !important;
+}
+.tf-contuct-us {
+    padding-left: 20px;
+}
+.contact-form-area {
+    padding-right: 20px;
+}
+.portfolio-owl-active .owl-controls .owl-buttons div {
+  font-size: 20px;
+  margin: 4px;
+  padding: 17px 12px;
+}
+
+
+
+
+
+
+}
+
+ 
+/* small mobile :320px. */
+@media (max-width: 767px) {
+.container {width:300px}
+
+.portfolio-owl-active .owl-controls .owl-buttons div {
+  font-size: 10px;
+  margin: 2px;
+  padding: 1px 10px;
+}
+.social-icon {
+  justify-content: center;
+  float: none;
+}
+.header-left li {
+  line-height: 24px;
+}
+.header-left li:last-child {
+  margin-left: 0px;
+}
+.header-left {
+  margin-top: 13px;
+}
+.slider-content h3 {
+  font-size: 28px;
+  line-height: 45px;
+}
+.slider-content h1 {
+  font-size: 31px;
+  line-height: 42px;
+}
+.slider-content p {
+  padding: 0;
+}
+.slider-content {
+  height: 500px;
+}
+.slider-area {
+  height: 500px;
+}
+.about-detail p.ad-second-pra {
+  margin-top: 12px;
+}
+.about-detail {
+  margin-bottom: 30px;
+}
+.tf-port-filter-nav {
+  flex-wrap: wrap;
+}
+
+.tf-port-filter-nav li:first-child {
+  margin-left: 0;
+}
+.tf-port-filter-nav li {
+  margin-bottom: 15px;
+}
+
+.xtb-30{
+  padding: 30px 0;
+}
+.xtb-50{
+  padding: 50px 0;
+}
+.xtb-0{
+  padding: 0px 0;
+}
+.xtb-60{
+  padding: 60px 0;
+}
+.xtb-70{
+  padding: 70px 0;
+}
+.xtb-80{
+  padding: 80px 0;
+}
+.xpt-60{
+  padding-top: 60px;
+}
+.xpt-30{
+  padding-top: 30px;
+}
+.xmb-30{
+  margin-bottom: 30px;
+}
+.xmb-20{
+  margin-bottom: 20px;
+}
+.xmt-20{
+  margin-top: 20px;
+}
+.xspb-60{
+  padding-bottom: 60px;
+}
+.tf-single-blog {
+  margin-bottom: 30px;
+}
+.tf-blog-body h2 {
+  font-size: 11px;
+  line-height: 17px;
+  margin-bottom: 6px;
+}
+.tf-blog-body h2 a {
+  font-size: 14px;
+}
+.tf-blog-body {
+  padding: 15px 42px 17px 15px;
+}
+.brand-wrap .single-brand {
+  border-right: 1px solid #cac8c8;
+  border-left: 1px solid #cac8c8;
+  border-bottom: 1px solid #cac8c8;
+  border-top: 0px solid #cac8c8;
+  float: none;
+  height: 70px;
+  line-height: 70px;
+  width: 100%;
+}
+.brand-wrap .single-brand:nth-child(n+5) {
+  border-bottom: 0px solid #cac8c8;
+}
+.brand-wrap .single-brand:nth-child(5) {
+  border-left: 1px solid #cac8c8;
+  border-bottom: 0px solid #cac8c8;
+}
+.brand-wrap .single-brand:nth-child(n+5) {
+  border-bottom: 1px solid #cac8c8;
+}
+.brand-wrap .single-brand:first-child {
+  border-left: 1px solid #cac8c8;
+  border-top: 1px solid #cac8c8;
+}
+.our-contact-inner {
+  margin-bottom: 34px;
+}
+.our-contact-inner p.contact-pra {
+  line-height: 22px;
+  margin-bottom: 5px;
+}
+.contact-us {
+  margin-bottom: 7px;
+}
+.foo-single-widget {
+  margin-bottom: 30px;
+}
+.footer-title {
+  margin-bottom: 11px;
+}
+.foo-single-widget p.ft-pra-1 {
+  margin-bottom: 16px;
+}
+.foo-single-widget .logo {
+  margin-bottom: 18px;
+}
+.footer-bottom-area ul.social-icon {
+  height: 40px;
+  line-height: 28px;
+}
+.copy-right-text {
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+}
+.amazing-work-inner {
+  display: inherit;
+}
+.width-half {
+  width: 100%;
+}
+.amz-work-container {
+  padding-left: 0;
+}
+.amz-work-container .single-work-details {
+  float: none;
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.amz-icon .icon::before {
+  color: #14b1bb;
+  font-size: 36px;
+  line-height: 50px;
+}
+.amz-details h4 {
+  line-height: 18px;
+  margin-bottom: 11px;
+}
+.header-left {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  line-height: 48px;
+}
+.header-left li:last-child {
+  margin-left: 0;
+  padding-left: 0;
+}
+.header-left li:last-child::before {
+  color: #fff;
+  content: "|";
+  display: none;
+  left: 0;
+  position: absolute;
+}
+.tf-port-thumb img {
+  width: 100%;
+}
+.tf-blog-front img {
+  width: 100%;
+}
+.foo-single-widget.border-left::before {
+  display: none;
+}
+.bradcaump-wrap h2.bradcaump-title {
+  font-size: 25px;
+  line-height: 31px;
+  margin-bottom: 5px;
+}
+.bradcaump-wrap nav.bradcaump-inner a ,
+.bradcaump-wrap nav.bradcaump-inner span{
+  font-size: 12px;
+}
+.tf-bradcaump-area {
+  padding-bottom: 40px;
+  padding-top: 35px;
+}
+.tf-port-info {
+  padding: 15px 16px 0;;
+}
+.tf-port-title a {
+  font-size: 15px;
+  line-height: 11px;
+}
+.tf-port-category {
+  font-size: 12px;
+  line-height: 7px;
+  margin-top: 4px;
+}
+.tf-port-action a {
+  height: 40px;
+  line-height: 40px;
+  margin: auto 2px;
+  width: 40px;
+}
+.tf-portfolio-container .pro-item {
+  margin-bottom: 30px;
+}
+.bolg-action a {
+  height: 40px;
+  line-height: 40px;
+  width: 40px;
+}
+.single-team {
+  padding-top: 20px;
+  margin-bottom: 30px;
+}
+.our-testimonial-area .slick-prev {
+  left: 40px;
+  top: 90px;
+}
+.our-testimonial-area .slick-next {
+  right: 40px;
+  top: 90px;
+}
+.gray-blog-details {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 12px;
+}
+.tf-blog-title {
+  margin-bottom: 7px;
+  margin-top: 18px;
+}
+.tf-blog-info blockquote {
+  background: #f1f1f1 none repeat scroll 0 0;
+  border-left: 2px solid #14b1bb;
+  color: #303030;
+  font-size: 14px;
+  line-height: 23px;
+  margin: 24px 0 15px 12px;
+  padding: 12px;
+}
+.postandshare {
+  display: inline;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  display: block;
+}
+.tf-blog-share {
+  margin-top: 8px;
+}
+.post .social-icon li {
+  margin: 0 10px;
+}
+.post .social-icon li a {
+  font-size: 14px;
+}
+.single-comnt-2 {
+  margin-bottom: 30px;
+  margin-left: 0;
+  margin-top: 30px;
+}
+.author-inf0 {
+  display: inline;
+  flex-wrap: wrap;
+}
+.comment-text p {
+  font-size: 11px;
+  line-height: 17px;
+}
+.comment-img {
+  float: none;
+  display: flex;
+}
+.single-comments {
+  display: flex;
+}
+.input-area input {
+  width: 100%;
+}
+.category-menu li {
+  padding-top: 18px;
+}
+.xpb-60{
+  padding-bottom: 60px;
+}
+.xpt-0{
+  padding-top: 0px;
+}
+.tag-area {
+  padding-bottom: 60px;
+}
+
+.tf-contuct-us {
+    padding: 0 20px;
+}
+.contact-form-area {
+    padding: 0 20px;
+}
+
+
+
+}
+
+
+
+/* Large Mobile :480px. */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+.container {width:450px}
+ .about-img img {
+  width: 100%;
+}
+.tf-port-info {
+  padding: 30px 30px 0;
+}
+.tf-port-title a {
+  font-size: 18px;
+  line-height: 20px;
+}
+.tf-port-category {
+  font-size: 14px;
+  line-height: 13px;
+  margin-top: 9px;
+}
+.tf-port-action a {
+  height: 45px;
+  line-height: 45px;
+  margin: auto 7px;
+  width: 45px;
+}
+.teamshape {
+  display: none;
+}
+.team-name-deg {
+  padding-top: 20px;
+}
+.team-name-deg h3 a {
+  font-size: 20px;
+  margin-bottom: 2px;
+  display: block;
+}
+.team-name-deg p {
+  font-size: 15px;
+}
+.single-team {
+  border: 1px solid #fff;
+  padding-top: 40px;
+}
+.our-testimonial-area .slick-next {
+  right: -50px;
+}
+.our-testimonial-area .slick-prev {
+  left: -50px;
+}
+.portfolio-owl-active .owl-controls .owl-buttons div {
+  font-size: 14px;
+  padding: 5px 14px;
+}
+
+}
+ 
