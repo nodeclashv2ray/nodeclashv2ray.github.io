@@ -760,6 +760,9 @@
   position: absolute;
   z-index: 2147483647;
 }
+.mobile-logo a {
+    color: #fff;
+}
 .mean-container .mean-bar{
   padding: 0;
 }
