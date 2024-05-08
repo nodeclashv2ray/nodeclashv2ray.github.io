@@ -45,7 +45,7 @@
   line-height: 68px;
   margin-bottom: 0;
 }
-.slider-content h1 {
+.slider-content h1, .slider-content h2 {
   font-family: Montserrat;
   font-size: 70px;
   font-weight: 700;
