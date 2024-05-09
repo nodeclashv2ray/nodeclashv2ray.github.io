@@ -1772,3 +1772,6 @@ button.tf-input-btn:hover ,
     font-weight: bold;
     font-size: 2.5rem;
 }
+#tf-about-container .item {
+    margin-bottom: 1.5rem;
+}
