@@ -41,7 +41,7 @@
      crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body data-page="detail">
     <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -195,18 +195,7 @@
     <script src="/assets/addons/xcblog/js/frontend/nodeclashv2ray/waypoints.min.js"></script>
     <!-- Main js file that contents all jQuery plugins activation. -->
     <script src="/assets/addons/xcblog/js/frontend/nodeclashv2ray/main.js"></script>
-    <script src="/assets/addons/xcblog/js/frontend/nodeclashv2ray/G.js"></script>
-    <script>
-    $(function() {
-        $('.js_to').click(function(){
-            var url = $(this).data('url');
-            var code = $(this).data('code');
-            url += code;
-
-            window.open(url);
-        })
-    });
-    </script>
+    <script src="/assets/addons/xcblog/js/frontend/G.js"></script>
 </body>
 
 </html>
