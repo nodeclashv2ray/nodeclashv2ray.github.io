@@ -1,0 +1,287 @@
+/*-----------------------------------------------------------------------------------
+  Template Name: Tasfiu Corporate HTML Template.
+  Template URI: #
+  Description: Tasfiu is a unique website template designed in HTML with a simple & beautiful look. There is an excellent solution for creating clean, wonderful and trending material design corporate, corporate any other purposes websites.
+  Author: HasTech
+  Author URI: https://themeforest.net/user/hastech/portfolio
+  Version: 1.0
+
+-------------------------------------------------------------------------------------*/
+
+  /*
+
+    font-family: 'Montserrat', sans-serif;
+
+    font-family: 'Poppins', sans-serif;
+
+*/
+
+/*---------------
+  header-area
+----------------*/
+/*header-left*/
+.header-left {
+    display: flex;
+    line-height: 48px;
+}
+.header-left li strong {
+    margin-right: 15px;
+}
+.header-left li:last-child {
+  margin-left: 15px;
+  padding-left: 15px;
+  position: relative;
+}
+.header-left li:last-child::before {
+  color: #fff;
+  content: "|";
+  left: 0;
+  position: absolute;
+}
+.header-area {
+    height: 48px;
+}
+.header-left li {
+    font-weight: 400;
+}
+/*header-right*/
+.social-icon {
+    display: flex;
+    float: right;
+    line-height: 48px;
+}
+.social-icon li + li {
+    margin-left: 14px;
+}
+.social-icon li {
+    margin-right: 14px;
+}
+.social-icon li:last-child {
+    margin-right: 0;
+}
+.social-icon li a {
+    font-size: 18px;
+}
+/*menu style */
+.main-menu {
+  display: flex;
+  justify-content: flex-end;
+}
+.main-menu > li{
+    margin-right: 19px;
+}
+.main-menu > li:last-child {
+    margin-right: 0;
+}
+.main-menu > li + li {
+    margin-left: 19px;
+}
+.main-menu > li > a {
+    display: block;
+    font-size: 14px;
+    height: 100px;
+    line-height: 105px;
+    text-transform: uppercase;
+    font-weight: 400;
+    transition: 0.3s;
+}
+.main-menu > li > a:hover {
+    color: #14b1bb;
+}
+.logo a {
+    display: block;
+    margin-top: 23px;
+}
+/*dropdown menu*/
+.main-menu li.drop{
+    position: relative;
+}
+.main-menu li.drop ul.dropdown {
+  background: #ffffff none repeat scroll 0 0;
+  box-shadow: 0 0 0px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
+  left: 0;
+  margin: 0;
+  opacity: 0;
+  padding: 0;
+  position: absolute;
+  top: 100%;
+  transition: all 0.2s ease-in-out 0s;
+  visibility: hidden;
+  width: 220px;
+  z-index: 999;
+}
+.main-menu li.drop:hover ul.dropdown {
+    opacity: 1;
+    visibility: visible;
+}
+.main-menu ul.dropdown li {
+    border-bottom: 1px solid #f4f4f4;
+    display: block;
+}
+
+.main-menu ul.dropdown li a {
+  background: #ffffff none repeat scroll 0 0;
+  color: #999999;
+  display: block;
+  font-size: 12px;
+  font-weight: 400;
+  text-align: left;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.2s ease-in-out 0s;
+  padding: 12px 20px 12px 25px;
+  transition: 0.3s;
+}
+
+.main-menu li.drop ul.dropdown li:hover > a {
+    background: #fafafa none repeat scroll 0 0;
+    color: #222222;
+}
+/*sub menu*/
+
+.main-menu li.drop ul.dropdown li.drop::after {
+  color: #999;
+  content: "";
+  font-family: "FontAwesome";
+  font-size: 13px;
+  position: absolute;
+  right: 20px;
+  top: 12px;
+  transition: all 0.2s ease-in-out 0s;
+}
+.main-menu li.drop ul.dropdown li.drop{
+  position: relative;
+}
+.main-menu li.drop ul.dropdown li.drop ul.dropdown.level2{
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  border-color: -moz-use-text-color -moz-use-text-color -moz-use-text-color #f4f4f4;
+  border-image: none;
+  border-style: none none none solid;
+  border-width: medium medium medium 1px;
+  left: 100%;
+  top: 0;
+  transition: 0.3s;
+}
+.main-menu li.drop ul.dropdown li.drop ul.dropdown.smright{
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  border-color: -moz-use-text-color -moz-use-text-color -moz-use-text-color #f4f4f4;
+  border-image: none;
+  border-style: none none none solid;
+  border-width: medium medium medium 1px;
+  right: 100%;
+  top: 0;
+  transition: 0.3s;
+}
+
+.main-menu li.drop ul.dropdown li.drop ul.dropdown.level2 {
+    opacity: 0;
+}
+.main-menu li.drop ul.dropdown li.drop:hover ul.dropdown.level2 {
+    opacity: 1;
+}
+.main-menu li.drop ul.dropdown li.drop ul.dropdown.smright {
+    opacity: 0;
+}
+.main-menu li.drop ul.dropdown li.drop ul.dropdown.smright {
+  background: #ffffff none repeat scroll 0 0;
+  left: -100%;
+  margin: 0;
+  opacity: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  transition: all 0.3s ease-in-out 0s;
+  visibility: hidden;
+  width: 220px;
+  z-index: 999;
+}
+.main-menu li.drop ul.dropdown li.drop:hover ul.dropdown.smright {
+  left: -100%;
+  opacity: 1;
+  visibility: visible;
+}
+.theme-color .cd-words-wrapper {
+  padding: 0px !important;
+}
+
+
+
+
+
+/*------------------
+  Headroom Css
+--------------------*/
+
+.headroom--pinned {
+  transform: translateY(0%);
+}
+
+.headroom--not-top.headroom--pinned.transparent-header {
+  background: green !important;
+  top: 0;
+  margin: auto;
+  position: fixed;
+  width: 100%;
+  z-index: 999999;
+}
+.headroom--not-top.headroom--pinned.transparent-header .main-menu > li > a {
+  height: 70px;
+  line-height: 70px;
+}
+.headroom--not-top.headroom--pinned.transparent-header.height-100 {
+  height: 70px !important;
+  transition: 0.3s;
+}
+.headroom--not-top.headroom--pinned.transparent-header .logo a {
+  margin-top: 12px;
+}
+
+.bg-white.headroom--top {
+  background: white none repeat scroll 0 0 !important;
+  z-index: 999999999;
+}
+.headroom--unpinned {
+  transform: translateY(-150%);
+}
+.headroom--not-top.headroom--pinned.transparent-header {
+  background: rgba(0, 0, 0, 0.95) none repeat scroll 0 0;
+}
+
+/*------------------
+  End  Headroom Css
+--------------------*/
+
+
+
+/*FadeDown animation sticky menu*/
+.header-bottom-area.scroll-header {
+  animation: 300ms ease-in-out 0s normal none 1 running fadeInDown;
+  background: rgba(255, 255, 255, 0.7) none repeat scroll 0 0;
+  box-shadow: 0 1px 3px rgba(50, 50, 50, 0.4);
+  left: 0;
+  margin: 0 auto;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 999;
+}
+.header-bottom-area.height-100.scroll-header {
+  height: 75px !important;
+}
+.scroll-header .main-menu > li > a {
+  height: 75px;
+  line-height: 80px;
+}
+.scroll-header .logo a {
+    margin-top: 21px;
+}
+.scroll-header .logo a img {
+    height: auto;
+    max-height: 30px;
+}

@@ -1,0 +1,138 @@
+/*
+
+Template Name: Tasfiu Corporate HTML Template.
+Template URI: #
+Description: Tasfiu is a unique website template designed in HTML with a simple & beautiful look. There is an excellent solution for creating clean, wonderful and trending material design corporate, corporate any other purposes websites.
+Author: HasTech
+Author URI: https://themeforest.net/user/hastech/portfolio
+Version: 1.0
+
+NOTE: This is color stylesheet of Color Scheme.
+
+*/
+
+
+/*************************
+    General
+*************************/
+
+
+/** selection **/
+
+*::-moz-selection {
+    background: #FF7F00;
+    color: #fff;
+    text-shadow: none;
+}
+
+::-moz-selection {
+    background: #FF7F00;
+    color: #fff;
+    text-shadow: none;
+}
+
+::selection {
+    background: #FF7F00;
+    color: #fff;
+    text-shadow: none;
+}
+
+
+
+/*=====================================*/
+
+
+
+/*Theme Default BG Color with important*/
+.bg-theme{
+  background: #FF7F00 !important;
+}
+/*Theme Default BG Color (background)*/
+.single-team:hover .team-name-deg, 
+.team-social-net ul,
+#back-top,
+.section-title::before,
+.tf-portfolio-hover-information::before,
+.tf-blog-hover-information::before,
+.style-customizer a.button.button-border,
+.section-title.text-left::before,
+.section-title.text-center::before,
+.section-title.text-right::before,
+.pot-small-img a::before,
+.tf-cat-title,
+button.tf-input-btn,
+.address-icon i,
+button.sub-btn {
+  background: #FF7F00;
+}
+
+/*Theme Default BG Color (background-color)*/
+.tf-button::before, 
+.single-skill .progress .progress-bar,
+.tf-port-filter-nav li:hover, 
+.tf-port-filter-nav li.is-checked,
+div.style-customizer ul.layoutstyle li:hover,
+.share-tags li:hover a {
+  background-color: #FF7F00;
+}
+/*Theme Default Color*/
+.theme-color,
+.sin-testiText.slick-slide p::after,
+.testimonial-image-slider .slick-prev::before, 
+.testimonial-image-slider .slick-next::before,
+.test-info .social-icon li a:hover i,
+.sin-testiText.slick-slide p::before, 
+a:hover, 
+a:focus, 
+a:active,
+.single-team:hover .team-social-net .social-icon li a,
+.main-menu > li:hover > a,
+div.style-customizer a.opener,
+.service-inner i.icon::before,
+.amz-icon .icon::before,
+.contact-us .icon::before,
+.style-customizer a.button:hover,
+.post .social-icon li a:hover i,
+.category-menu a:hover{
+    color: #FF7F00;
+}
+.theme-color,
+.comnt-time a span:hover{
+  color: #FF7F00 !important;
+}
+.tf-pagination > .active > a,
+.tf-pagination > .active > a:hover, 
+.tf-pagination > .active > a:focus,
+.tf-pagination > li > a:hover, 
+.tf-pagination > li > a:focus{
+  background-color: #FF7F00;
+  border-color: #FF7F00;
+}
+.tf-pagination > li > a i {
+  color: #FF7F00;
+}
+.tf-pagination > li > a{
+   border-color: #FF7F00; 
+}
+
+
+
+/*Theme Default Border Color*/
+.tf-button,
+.tf-port-filter-nav li:hover, 
+.tf-port-filter-nav li.is-checked,
+.tf-single-blog:hover,
+div.style-customizer ul.layoutstyle li:hover,
+.style-customizer a.button.button-border:hover,
+.tf-blog-info blockquote,
+.share-tags li:hover a{
+  border-color: #FF7F00;
+}
+
+
+
+
+
+
+
+

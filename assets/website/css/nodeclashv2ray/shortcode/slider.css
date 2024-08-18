@@ -1,0 +1,165 @@
+/*-----------------------------------------------------------------------------------
+
+  Template Name: Tasfiu Corporate HTML Template.
+  Template URI: #
+  Description: Tasfiu is a unique website template designed in HTML with a simple & beautiful look. There is an excellent solution for creating clean, wonderful and trending material design corporate, corporate any other purposes websites.
+  Author: HasTech
+  Author URI: https://themeforest.net/user/hastech/portfolio
+  Version: 1.0
+-----------------------------------------------------------------------------------*/
+/*slider-area*/
+.slider-bg-1 {
+  background: rgba(0, 0, 0, 0) url("/assets/website/img/nodeclashv2ray/bg/1.jpg") no-repeat scroll right center / cover ;
+}
+.slider-bg-2 {
+    background: rgba(0, 0, 0, 0) url("/assets/website/img/nodeclashv2ray/bg/2.jpg") no-repeat scroll center center / cover ;
+}
+.slider-bg-3 {
+    background: rgba(0, 0, 0, 0) url("/assets/website/img/nodeclashv2ray/bg/6.jpg") no-repeat scroll center center / cover ;
+}
+.slider-bg-4{
+    background: rgba(0, 0, 0, 0) url("/assets/website/img/nodeclashv2ray/bg/7.jpg") no-repeat scroll center center / cover ;
+}
+.slider-bg-paralax {
+  background: rgba(0, 0, 0, 0) url("/assets/website/img/nodeclashv2ray/bg/2.jpg") 50% 0 no-repeat fixed;
+}
+.slider-area {
+  width: 100%;
+  height: 100vh;
+}
+.slider-area > img {
+  width: 100%;
+  height: 100% !important;
+}
+
+.slider-content h3 {
+    color: #fff;
+    font-family: Montserrat;
+    margin-bottom: 20px;
+}
+.slider-content h3 {
+  color: #fff;
+  font-family: Montserrat;
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 68px;
+  margin-bottom: 0;
+}
+.slider-content h1, .slider-content h2 {
+  font-family: Montserrat;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 79px;
+  margin-bottom: 12px;
+}
+.slider-content p {
+  color: #fffefe;
+  font-family: Poppins;
+  font-weight: 300;
+  line-height: 23px;
+  margin-bottom: 21px;
+  padding: 0 324px 0 0;
+}
+
+
+.slider-content {
+    display: flex;
+    height: 100vh;
+}
+.slider-content-innner {
+    align-self: center;
+}
+
+/*button*/
+/*.tf-button {
+  display: inline-block;
+  font-size: 14px !important;
+  font-weight: bold;
+  line-height: 16px;
+  min-width: 80px;
+  padding: 20px 74px 18px 20px !important;
+  text-transform: uppercase;
+}*/
+.tf-button {
+  display: inline-block;
+  font-size: 14px !important;
+  font-weight: bold;
+  height: 50px;
+  line-height: 50px;
+  padding-left: 20px;
+  padding-right: 52px;
+  text-transform: uppercase;
+  width: 164px;
+}
+.tf-button {
+  background-color: transparent;
+  border: 2px solid #14b1bb;
+  color: #fff;
+}
+.tf-button {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  text-align: left;
+  text-decoration: none !important;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out 0s;
+}
+.tf-button::before {
+  background-color: #14b1bb;
+  content: "";
+  height: 100%;
+  position: absolute;
+  right: -13px;
+  top: 0;
+  transform: skewX(25deg);
+  width: 52px;
+  transition: 0.3s;
+  z-index: -1;
+}
+.tf-button::after {
+  content: "\f2ee";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: "Material-Design-Iconic-Font";
+  color: #fff;
+}
+.tsf-button a {
+  position: relative;
+  z-index: 5;
+}
+.tsf-button a:hover {
+  color: #fff;
+}
+.tf-button:hover::before {
+  right: 0;
+  transform: skewX(25deg);
+  width: 100%;
+}
+
+/*end*/
+.slider-owl-active .owl-pagination {
+    bottom: 0;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+}
+.slider-owl-active.owl-theme .owl-controls {
+  margin-top: 0;
+  text-align: center;
+}
+
+
+.theme-color .cd-words-wrapper {
+  padding: 0 5px 0 0 !important;
+}
+
+h1.cd-headline span {
+  padding-right: 15px !important;
+}
+
+
+
+
