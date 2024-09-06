@@ -1,4 +1,4 @@
-# 9月5日|最高速度20.2M/S，2024最新V2ray/Shadowrocket/Clash/SSR免费节点高速订阅链接  更新时间 2024-09-05 10:08:25
+# 9月6日|最高速度22.3M/S，2024最新V2ray/Shadowrocket/SSR/Clash免费节点高速订阅链接  更新时间 2024-09-06 10:29:36
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://nodeclashv2ray.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,19 +9,19 @@
 
 ### Clash订阅链接
 
-- https://nodeclashv2ray.github.io/uploads/2024/09/0-20240905.yaml
-- https://nodeclashv2ray.github.io/uploads/2024/09/1-20240905.yaml
-- https://nodeclashv2ray.github.io/uploads/2024/09/2-20240905.yaml
-- https://nodeclashv2ray.github.io/uploads/2024/09/3-20240905.yaml
-- https://nodeclashv2ray.github.io/uploads/2024/09/4-20240905.yml
+- https://nodeclashv2ray.github.io/uploads/2024/09/0-20240906.yaml
+- https://nodeclashv2ray.github.io/uploads/2024/09/1-20240906.yaml
+- https://nodeclashv2ray.github.io/uploads/2024/09/2-20240906.yaml
+- https://nodeclashv2ray.github.io/uploads/2024/09/3-20240906.yaml
+- https://nodeclashv2ray.github.io/uploads/2024/09/4-20240906.yml
 
 ### V2ray订阅链接
 
-- https://nodeclashv2ray.github.io/uploads/2024/09/0-20240905.txt
-- https://nodeclashv2ray.github.io/uploads/2024/09/1-20240905.txt
-- https://nodeclashv2ray.github.io/uploads/2024/09/2-20240905.txt
-- https://nodeclashv2ray.github.io/uploads/2024/09/3-20240905.txt
-- https://nodeclashv2ray.github.io/uploads/2024/09/4-20240905.txt
+- https://nodeclashv2ray.github.io/uploads/2024/09/0-20240906.txt
+- https://nodeclashv2ray.github.io/uploads/2024/09/1-20240906.txt
+- https://nodeclashv2ray.github.io/uploads/2024/09/2-20240906.txt
+- https://nodeclashv2ray.github.io/uploads/2024/09/3-20240906.txt
+- https://nodeclashv2ray.github.io/uploads/2024/09/4-20240906.txt
 
 ## 更多clash节点订阅 ：
 
