@@ -2,12 +2,11 @@
 <html lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://nodeclashv2ray.github.io" />
+        <link rel="canonical" href="https://nodeclashv2ray.github.io/news/article-19704.htm" />
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>2024-08归档 - NodeClashV2ray节点订阅站</title>
-        <meta name="keywords" content="2024-08归档" />
-        <meta name="description" content="2024-08归档" />
+    <title>大数据之hive Serde序列化/反序列化性能对比</title>
+        <meta name="description" content="java 中我们使用序列化和反序列化主要目的是将对象和字节序列进行相互转换。序列化的作用是什么呢？1，将对象转换成字节序列后进行落盘存储到文件 2，将对象序列化后进行网络传输。然而对于hive 的序列" />
         <link rel="icon" href="__ADDON__/img/nodeclashv2ray/favicon.ico" type="image/x-icon"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <!-- Place favicon.ico in the root directory -->
@@ -41,7 +40,7 @@
      crossorigin="anonymous"></script>
 </head>
 
-<body data-page="category">
+<body data-page="detail">
     <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -102,11 +101,13 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="bradcaump-wrap text-center">
-                            <h1 class="bradcaump-title">2024-08 归档</h1>
+                            <h1 class="bradcaump-title">大数据之hive Serde序列化/反序列化性能对比</h1>
                             <nav class="bradcaump-inner">
                                 <a class="breadcrumb-item" href="/">首页</a>
                                 <span class="brd-separetor">/</span>
-                                <span class="breadcrumb-item active">2024-08 归档</span>
+                                <a class="breadcrumb-item" href="/news/">新闻资讯</a>
+                                <span class="brd-separetor">/</span>
+                                <span class="breadcrumb-item active">正文</span>
                             </nav>
                         </div>
                     </div>
@@ -117,91 +118,24 @@
         <section id="tf-about-container" class="tf-about-area ptb-100 bg-gray xtb-60">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-9 xcblog-blog-list">
-                                                <div class="row item xcblog-blog-item" data-date="2024-08-01">
-                            <div class="col-md-3">
-                                <div class="about-img">
-                                    <a href="/free-nodes/2024-8-1-clash-node-daily-updates.htm" class="xcblog-blog-url">
-                                        <img src="/uploads/20240509/b6725acbce350d53cc6d3ba45e3b97b9.webp" alt="8月1日|最高速度22M/S，2024最新SSR/Clash/V2ray/Shadowrocket免费节点高速订阅链接">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="section-title text-left">
-                                            <a href="/free-nodes/2024-8-1-clash-node-daily-updates.htm" class="xcblog-blog-url">
-                                                <h3 class="title-line xcblog-blog-title">
-                                                    8月1日|最高速度22M/S，2024最新SSR/Clash/V2ray/Shadowrocket免费节点高速订阅链接                                                </h3>
-                                            </a>
-                                        </div>
+                    <div class="col-md-9">
+                                          				  				  				<div id="content_views" class="htmledit_views"> <p>java 中我们使用序列化和反序列化主要目的是将对象和字节序列进行相互转换。序列化的作用是什么呢？1，将对象转换成字节序列后进行落盘存储到文件 2，将对象序列化后进行网络传输。然而对于hive 的序列化和反序列化是将hive 表中每一列的值与字节码序列进行转换。hive Serde 包含Serialize和Deserialize 两个功能，比如查询select * from tb_example, Deserialize 是将存储在hdfs中的字节码解析出来成为可读；load 加载数据时，Serialize 是将数据序列化后存储到hdfs 系统中。</p> <p>针对量级比较大的数据，hive 官方支持几种数据压缩格式对数据进行压缩保存，然而不同的数据格式的压缩效率和查询效率等性能却有所差异。以下面的例子对比下(日志文件3.6G,约3700w数据)hive表以不同的数据格式存储的性能表现。</p> <p><img decoding="async" alt="大数据之hive Serde序列化/反序列化性能对比（一）" class="has" src="http://img.555519.xyz/uploads3/20220902/1100ebb78bc9c8e9d1437e1566e0eaa3.jpg"></p> <p>不同数据格式的压缩比（图片来自网络）</p> <ol> <li>创建普通的hive表 tb_iptv_data 作为基础数据表，将数据load 到表中</li> </ol> <pre class="has"><code>hive 默认是使用 org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe create table if not exists tb_iptv_data(expodate string,addcode string,sbtid string,rscode string,rsname string,scid string)row format DELIMITED FIELDS TERMINATED BY '|'LINES TERMINATED BY '\n';//再创建一张sequencefile 格式的表create table if not exists tb_iptv_data_sequence(expodate string,addcode string,sbtid string,rscode string,rsname string,scid string)row format DELIMITED FIELDS TERMINATED BY '|'LINES TERMINATED BY '\n' stored as sequencefile as select * from tb_iptv_data;//用时Stage-Stage-1: Map: 15   Cumulative CPU: 306.47 sec   HDFS Read: 3868909814 HDFS Write: 4310770586 SUCCESSTotal MapReduce CPU Time Spent: 5 minutes 6 seconds 470 msecOKTime taken:  seconds</code></pre> <ol> <li>依据基础数据表创建其他数据格式的表,分别是 orcfile/rcfile/avro/parquetfile，数据表建好后通过执行sql对比其执行效率（集群硬件基础是24c32G）</li> </ol> <pre class="has"><code>SELECT count(*) from (SELECT rscode,sbtid,count(*) FROM tb_iptv_data GROUP BY rscode,sbtid)t</code></pre> <pre class="has"><code>org.apache.hadoop.hive.ql.io.orc.OrcSerde 格式create table if not exists tb_iptv_data_orc(expodate string,addcode string,sbtid string,rscode string,rsname string,scid string)row format DELIMITED FIELDS TERMINATED BY '|'LINES TERMINATED BY '\n' stored as orc;</code></pre> <pre class="has"><code>org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe 格式create table if not exists tb_iptv_data_rc(expodate string,addcode string,sbtid string,rscode string,rsname string,scid string)row format DELIMITED FIELDS TERMINATED BY '|'LINES TERMINATED BY '\n' stored as rcfile as select * from tb_iptv_data;//建表耗时Stage-Stage-1: Map: 15   Cumulative CPU: 255.19 sec   HDFS Read: 3868912709 HDFS Write: 3662099227 SUCCESSTotal MapReduce CPU Time Spent: 4 minutes 15 seconds 190 msecOKTime taken: 300.767 seconds//sql 执行耗时6711120Time taken: 199.498 seconds, Fetched: 1 row(s)</code></pre> <pre class="has"><code>org.apache.hadoop.hive.serde2.avro.AvroSerDe 格式create table if not exists tb_iptv_data_avro(expodate string,addcode string,sbtid string,rscode string,rsname string,scid string)row format DELIMITED FIELDS TERMINATED BY '|'LINES TERMINATED BY '\n' stored as avro as select * from tb_iptv_data;//建表耗时Stage-Stage-1: Map: 15   Cumulative CPU: 550.79 sec   HDFS Read: 3868919834 HDFS Write: 4086779757 SUCCESSTotal MapReduce CPU Time Spent: 9 minutes 10 seconds 790 msecOKTime taken: 356.338 seconds//sql 执行耗时6711120Time taken: 268.299 seconds, Fetched: 1 row(s)</code></pre> <pre class="has"><code>org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe 格式create table if not exists tb_iptv_data_parquet(expodate string,addcode string,sbtid string,rscode string,rsname string,scid string)row format DELIMITED FIELDS TERMINATED BY '|'LINES TERMINATED BY '\n' stored as avro;TERMINATED BY '|'LINES TERMINATED BY '\n' stored as parquetfile;</code></pre> <pre class="has"><code>org.apache.hive.hcatalog.data.JsonSerDe 格式create table if not exists tb_iptv_data_json(expodate string,addcode string,sbtid string,rscode string,rsname string,scid string)row format Serde "org.apache.hive.hcatalog.data.JsonSerDe";</code></pre> <p><img decoding="async" alt="大数据之hive Serde序列化/反序列化性能对比（一）" class="has" src="http://img.555519.xyz/uploads3/20220902/c3308b9138a3052b8646aae0df3d9338.jpg"></p> <p><img decoding="async" alt="大数据之hive Serde序列化/反序列化性能对比（一）" class="has" src="http://img.555519.xyz/uploads3/20220902/947687c93fb85776754454db4f73405d.jpg"></p> <p>各表的数据大小</p> <ol> <li>总结</li> </ol> <ul> <li>数据存储时的压缩耗时 以orc 格式效率最高，其次是qarquet,而 squence/rcfile/avro 的效率较慢</li> <li>数据压缩后大小，以orcfile 格式的压缩比最优，parquet 次之</li> <li>sql 查询性能的对比可以看出，parquet 性能最优,其次是rcfile格式（<strong>此处的对比结果与网上其他文章中的结论不符合，同时也与orc 官网介绍的结论不一样是什么情况？这个问题研究中</strong>）</li> </ul> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-19247.htm">兽用疫苗保存方法视频（兽用疫苗常温下能放多久）</a></p>
+                                        <p>下一个：<a href="/news/article-19705.htm">宠物粮行业分析报告怎么写范文图片（宠物粮前景）</a></p>
                                     </div>
-                                    <div class="col-md-12">
-                                        <div class="about-detail">
-                                            <p class="ad-first-pra">这一次的节点更新覆盖了新加坡、日本、美国、加拿大、欧洲、香港、韩国等地区,最高速度可达22 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <ul class="pagination"><li><a href="/date/2024-08/page-3.htm">&laquo;</a></li> <li><a href="/date/2024-08/">1</a></li><li><a href="/date/2024-08/page-2.htm">2</a></li><li><a href="/date/2024-08/page-3.htm">3</a></li><li class="active"><span>4</span></li> <li class="disabled"><span>&raquo;</span></li></ul>                    </div>
                     <div class="col-md-3">
                         <div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">热门文章</h3>
-    </div>
-    <div class="panel-body">
-        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-9-4-free-v2ray.htm" title="9月4日|最高速度20.4M/S，2024最新Clash/SSR/V2ray/Shadowrocket免费节点高速订阅链接">9月4日|最高速度20.4M/S，2024最新Clash/SSR/V2ray/Shadowrocket免费节点高速订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-6-23-shadowrocket-node.htm" title="6月23日|最高速度18M/S，2024最新Clash/SSR/Shadowrocket/V2ray免费节点高速订阅链接">6月23日|最高速度18M/S，2024最新Clash/SSR/Shadowrocket/V2ray免费节点高速订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-5-10-clash-node-daily-updates.htm" title="5月10日|最高速度22.6M/S，2024最新V2ray/SSR/Clash/Shadowrocket免费节点高速订阅链接">5月10日|最高速度22.6M/S，2024最新V2ray/SSR/Clash/Shadowrocket免费节点高速订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-6-25-free-clash.htm" title="6月25日|最高速度18.8M/S，2024最新V2ray/Clash/SSR/Shadowrocket免费节点高速订阅链接">6月25日|最高速度18.8M/S，2024最新V2ray/Clash/SSR/Shadowrocket免费节点高速订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-19704.htm" title="大数据之hive Serde序列化/反序列化性能对比">大数据之hive Serde序列化/反序列化性能对比</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-12-clash-windows.htm" title="10月12日|最高速度19.8M/S，2024最新Shadowrocket/Clash/V2ray/SSR免费节点高速订阅链接">10月12日|最高速度19.8M/S，2024最新Shadowrocket/Clash/V2ray/SSR免费节点高速订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-12-clash-v2ray-ss-ssr.htm" title="8月12日|最高速度20.5M/S，2024最新Clash/SSR/Shadowrocket/V2ray免费节点高速订阅链接">8月12日|最高速度20.5M/S，2024最新Clash/SSR/Shadowrocket/V2ray免费节点高速订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-24-shadowrocket-node.htm" title="9月24日|最高速度18.6M/S，2024最新V2ray/Clash/SSR/Shadowrocket免费节点高速订阅链接">9月24日|最高速度18.6M/S，2024最新V2ray/Clash/SSR/Shadowrocket免费节点高速订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-7-26-node-share-links.htm" title="7月26日|最高速度22.7M/S，2024最新Clash/SSR/V2ray/Shadowrocket免费节点高速订阅链接">7月26日|最高速度22.7M/S，2024最新Clash/SSR/V2ray/Shadowrocket免费节点高速订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-7-clash-node.htm" title="9月7日|最高速度18.7M/S，2024最新SSR/Clash/V2ray/Shadowrocket免费节点高速订阅链接">9月7日|最高速度18.7M/S，2024最新SSR/Clash/V2ray/Shadowrocket免费节点高速订阅链接</a></li>
-                    </ul>
-    </div>
-</div>
-
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">归纳</h3>
-    </div>
-    <div class="panel-body">
-        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
-            </li>
-                    </ul>
-    </div>
-</div>
-
-
+                            <div class="panel-heading">
+                                <h3 class="panel-title">热门文章</h3>
+                            </div>
+                            <div class="panel-body">
+                                <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                                    <li class="py-2"><a href="/free-nodes/2024-5-8-clash-v2ray-ss-ssr.htm" title="5月8日|最高速度22.5M/S，2024最新Shadowrocket/Clash/SSR/V2ray免费节点高速订阅链接">5月8日|最高速度22.5M/S，2024最新Shadowrocket/Clash/SSR/V2ray免费节点高速订阅链接</a></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
