@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodeclashv2ray.github.io/news/article-22454.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>我们如何更改MySQL AUTO_INCREMENT起始号码？</title>
+        <meta name="description" content="MySQL AUTO_INCREMENT值从1开始，但是我们可以通过以下两种方式进行更改- 借助ALTER TABLE查询 我们可以使用ALTER TABLE查询来更改AUTO_INCREMENT的起" />
+        <link rel="icon" href="__ADDON__/img/nodeclashv2ray/favicon.ico" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- Place favicon.ico in the root directory -->
+    <!-- All css files are included here. -->
+    <!-- Bootstrap fremwork main css -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/bootstrap.min.css">
+    <!-- This core.css file contents all plugings css file. -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/core.css">
+    <!-- Theme shortcodes/elements style -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/shortcode/shortcodes.css">
+    <!-- Theme main style -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/style.css">
+    <!-- Responsive css -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/responsive.css">
+    <!-- Style customizer (Remove these two lines please) -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/style-customizer.css">
+    <!-- User style -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/custom.css">
+    <!-- Modernizr JS -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/vendor/modernizr-2.8.3.min.js"></script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BKWDB6T1Z4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BKWDB6T1Z4');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Body main wrapper start -->
+    <div class="wrapper">
+        <!-- Start of Header Top Area -->
+        <header id="header-content">
+            <!-- Start of mainmenu area -->
+            <div id="sticky-header-with-topbar" class="header-bottom-area bg-white height-100  transparent-header hidden-xs">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-sm-12">
+                            <div class="logo f-left sm-center">
+                                                                <a href="/">Node Clash V2ray</a>
+                                                            </div>
+                        </div>
+                        <div class="col-md-7 col-sm-12">
+                            <div class="mainmenu-container">
+                                <ul class="main-menu">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                        <li><a href="#">关于</a></li>
+                                    <li><a href="#">联系</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile-menu-area start -->
+            <div class="mobile-menu-area hidden-md hidden-lg hidden-sm">
+                <div class="fluid-container mobile-menu-container">
+                    <div class="mobile-logo">
+                                                <a href="/">Node Clash V2ray</a>
+                                            </div>
+                    <div class="mobile-menu clearfix">
+                        <nav id="mobile_dropdown">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                                <li><a href="#">关于</a></li>
+                                <li><a href="#">联系</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile-menu-area end -->
+        </header>
+<!-- End of Header Top Area -->
+        <!-- Start Bradcaump area -->
+        <div class="tf-bradcaump-area sbg-3" data-black-overlay="8">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="bradcaump-wrap text-center">
+                            <h1 class="bradcaump-title">我们如何更改MySQL AUTO_INCREMENT起始号码？</h1>
+                            <nav class="bradcaump-inner">
+                                <a class="breadcrumb-item" href="/">首页</a>
+                                <span class="brd-separetor">/</span>
+                                <a class="breadcrumb-item" href="/news/">新闻资讯</a>
+                                <span class="brd-separetor">/</span>
+                                <span class="breadcrumb-item active">正文</span>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Bradcaump area -->
+        <section id="tf-about-container" class="tf-about-area ptb-100 bg-gray xtb-60">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                          				  				  				<p>MySQL AUTO_INCREMENT值从1开始，但是我们可以通过以下两种方式进行更改-</p> <h2>借助ALTER TABLE查询</h2> <p>我们可以使用ALTER TABLE查询来更改AUTO_INCREMENT的起始值，如下所示：</p> <pre>ALTER&nbsp;TABLE&nbsp;table_name&nbsp;AUTO_INCREMENT&nbsp;=&nbsp;value;</pre> <h2>示例</h2> <p>假设我们创建了一个表，其列'id'为AUTO_INCREMENT。现在，如果我们将值插入其中，那么序列号将从1开始，如您在以下查询中看到的那样-</p> <pre>mysql&gt;&nbsp;Create&nbsp;Table&nbsp;EMP(id&nbsp;int&nbsp;NOT&nbsp;NULL&nbsp;PRIMARY&nbsp;KEY&nbsp;AUTO_INCREMENT,&nbsp;NAME&nbsp;VARCHAR(10));  mysql&gt;&nbsp;Insert&nbsp;Into&nbsp;EMP(Name)&nbsp;Values('Aryan');  mysql&gt;&nbsp;Insert&nbsp;Into&nbsp;EMP(Name)&nbsp;Values('Yash');  mysql&gt;&nbsp;Select&nbsp;*&nbsp;from&nbsp;EMP; +----+-------+ |&nbsp;id&nbsp;|&nbsp;NAME&nbsp;&nbsp;| +----+-------+ |&nbsp;1&nbsp;&nbsp;|&nbsp;Aryan&nbsp;| |&nbsp;2&nbsp;&nbsp;|&nbsp;Yash&nbsp;&nbsp;| +----+-------+ 2&nbsp;rows&nbsp;in&nbsp;set&nbsp;(0.00&nbsp;sec)</pre> <p>现在，如果要在以后更改序列号，则需要使用ALTER TABLE查询来更改AUTO_INCREMENT的值，如下所示：</p> <pre>mysql&gt;&nbsp;Alter&nbsp;table&nbsp;emp&nbsp;auto_increment&nbsp;=&nbsp;10; Records:&nbsp;2&nbsp;Duplicates:&nbsp;0&nbsp;Warnings:&nbsp;0  mysql&gt;&nbsp;Insert&nbsp;Into&nbsp;EMP(Name)&nbsp;Values('Daksh');  mysql&gt;&nbsp;Insert&nbsp;Into&nbsp;EMP(Name)&nbsp;Values('Shayra');  mysql&gt;&nbsp;Select&nbsp;*&nbsp;from&nbsp;EMP; +----+--------+ |&nbsp;id&nbsp;|&nbsp;NAME&nbsp;&nbsp;&nbsp;| +----+--------+ |&nbsp;1&nbsp;&nbsp;|&nbsp;Aryan&nbsp;&nbsp;| |&nbsp;2&nbsp;&nbsp;|&nbsp;Yash&nbsp;&nbsp;&nbsp;| |&nbsp;10&nbsp;|&nbsp;Daksh&nbsp;&nbsp;| |&nbsp;11&nbsp;|&nbsp;Shayra&nbsp;| +----+--------+ 4&nbsp;rows&nbsp;in&nbsp;set&nbsp;(0.00&nbsp;sec)</pre> <p>上面的查询将AUTO_INCREMENT的值更改为10，因此在插入新值之后，我们将从10开始获取序列号。</p> <h2>借助CREATE TABLE查询</h2> <p>我们还可以在创建表时更改AUTO_INCREMENT值。可以通过使用CREATE TABLE查询指定AUTO_INCREMENT的值来完成，如下所示：</p> <pre>CREATE&nbsp;TABLE&nbsp;(Column1&nbsp;INT&nbsp;PRIMARY&nbsp;KEY&nbsp;NOT&nbsp;NULL&nbsp;AUTO_INCREMENT,&nbsp;Column2&nbsp;data&nbsp;type)&nbsp;AUTO_INCREMENT&nbsp;=&nbsp;value;</pre> <h2>示例</h2> <pre>mysql&gt;&nbsp;Create&nbsp;Table&nbsp;EMP1(id&nbsp;INT&nbsp;NOT&nbsp;NULL&nbsp;PRIMARY&nbsp;KEY&nbsp;AUTO_INCREMENT,&nbsp;NAME&nbsp;VARCHAR(10))&nbsp;AUTO_INCREMENT&nbsp;=&nbsp;100;</pre> <p>上面的查询在创建表时将AUTO_INCREMENT的值指定为100。现在，如果我们将值插入其中，那么序列号将从100开始，而不是默认值1，如下所示-</p> <pre>mysql&gt;&nbsp;Insert&nbsp;into&nbsp;emp1(name)&nbsp;values('Sohan');  mysql&gt;&nbsp;Insert&nbsp;into&nbsp;emp1(name)&nbsp;values('Harshit');  mysql&gt;&nbsp;Select&nbsp;*&nbsp;from&nbsp;emp1; +-----+---------+ |&nbsp;id&nbsp;&nbsp;|&nbsp;NAME&nbsp;&nbsp;&nbsp;&nbsp;| +-----+---------+ |&nbsp;100&nbsp;|&nbsp;&nbsp;&nbsp;Sohan&nbsp;| |&nbsp;101&nbsp;|&nbsp;Harshit&nbsp;| +-----+---------+ 2&nbsp;rows&nbsp;in&nbsp;set&nbsp;(0.00&nbsp;sec)</pre> <div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-21999.htm">KMP算法中的next数组详解</a></p>
+                                        <p>下一个：<a href="/news/article-22456.htm">眉山泡菜哪个品牌最好吃最正宗(眉山泡菜哪个品牌最好吃的)</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">热门文章</h3>
+                            </div>
+                            <div class="panel-body">
+                                <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                                    <li class="py-2"><a href="/free-nodes/2024-5-8-clash-v2ray-ss-ssr.htm" title="5月8日|最高速度22.5M/S，2024最新Shadowrocket/Clash/SSR/V2ray免费节点高速订阅链接">5月8日|最高速度22.5M/S，2024最新Shadowrocket/Clash/SSR/V2ray免费节点高速订阅链接</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+                <!-- Start of Footer Area -->
+        <footer id="footer" class="footer-area footer-bg">
+            <div class="footer-bottom-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="copy-right-text">
+                                NodeClashV2ray节点订阅站 版权所有 Powered by WordPress
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--End of Footer Area -->
+    </div>
+    <!-- Body main wrapper end -->
+    <!-- Placed js at the end of the document so the pages load faster -->
+    <!-- jquery latest version -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/vendor/jquery-1.12.0.min.js"></script>
+    <!-- Bootstrap framework js -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/bootstrap.min.js"></script>
+    <!-- Owl Carousel framework js -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/owl.carousel.min.js"></script>
+    <!-- All js plugins included in this file. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/plugins.js"></script>
+    <!-- Slick min.js. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/slick.min.js"></script>
+    <!-- Waypoints.min.js. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/waypoints.min.js"></script>
+    <!-- Main js file that contents all jQuery plugins activation. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
