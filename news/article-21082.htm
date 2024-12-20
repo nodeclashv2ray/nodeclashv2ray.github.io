@@ -7,7 +7,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>go语言编译过程概述</title>
         <meta name="description" content="总结自《go语言设计与实现》 名词解释:   中间代码 中间代码是编译器或者虚拟机使用的语言，它可以来帮助我们分析计算机程序。在编译过程中，编译器会在将源代码转换到机器码的过程中，先把源代码转换成一种" />
-        <link rel="icon" href="__ADDON__/img/nodeclashv2ray/favicon.ico" type="image/x-icon"/>
+        <link rel="icon" href="/assets/website/img/nodeclashv2ray/favicon.ico" type="image/x-icon"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <!-- Place favicon.ico in the root directory -->
     <!-- All css files are included here. -->
@@ -119,7 +119,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-9">
-                                          				  				  				</h1> <p>总结自《go语言设计与实现》</p> <h2 id="名词解释">名词解释:</h2> <ul> <li> <p>中间代码</p> <p>中间代码是编译器或者虚拟机使用的语言，它可以来帮助我们分析计算机程序。在编译过程中，编译器会在将源代码转换到机器码的过程中，先把源代码转换成一种中间的表示形式，即中间代码。将编程语言到机器码的过程拆成中间代码生成和机器码生成两个简单步骤可以简化该问题，中间代码是一种更接近机器语言的表示形式，对中间代码的优化和分析相比直接分析高级编程语言更容易。</p> </li> <li> <p>SSA</p> <p>静态单赋值是中间代码的特性，如果中间代码具有静态单赋值的特性，那么每个变量就只会被赋值一次。在实践中，我们通常会用下标实现静态单赋值，这里以下面的代码举个例子：</p> <pre><code class="language-go">x := 1 x := 2 y := x</code></pre> <p>经过简单的分析，我们就能够发现上述的代码第一行的赋值语句<code>x := 1</code> 不会起到任何作用。下面是具有 SSA 特性的中间代码，我们可以清晰地发现变量<code>y_1</code> 和<code>x_1</code> 是没有任何关系的，所以在机器码生成时就可以省去<code>x := 1</code> 的赋值，通过减少需要执行的指令优化这段代码。</p> <pre><code class="language-go">x_1 := 1 x_2 := 2 y_1 := x_2</code></pre> </li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/cfa334ba9c6a542de5c8467bb418cdbc.jpg" alt="go语言编译过程概述"></p> <h2 id="过程概述">过程概述</h2> <ol> <li> <p>词法与语法分析</p> <ul> <li> <p>编译过程其实都是从解析代码的源文件开始的，词法分析的作用就是解析源代码文件，它将文件中的字符串序列转换成 Token 序列，方便后面的处理和解析，我们一般会把执行词法分析的程序称为词法解析器。</p> </li> <li> <p>而语法分析的输入是词法分析器输出的 Token 序列，语法分析器会按照顺序解析 Token 序列，该过程会将词法分析生成的 Token 按照编程语言定义好的文法（Grammar）自下而上或者自上而下的规约，每一个 Go 的源代码文件最终会被归纳成一个 SourceFile 结构 。</p> </li> </ul> <p>词法分析会返回一个不包含空格、换行等字符的 Token 序列，例如：package, json, import, (, io, ), …，而语法分析会把 Token 序列转换成有意义的结构体，即语法树。</p> </li> <li> <p>类型检查</p> <p>当拿到一组文件的抽象语法树之后，Go 语言的编译器会对语法树中定义和使用的类型进行检查，类型检查会按照以下的顺序分别验证和处理不同类型的节点：</p> <ol> <li>常量、类型和函数名及类型；</li> <li>变量的赋值和初始化；</li> <li>函数和闭包的主体；</li> <li>哈希键值对的类型；</li> <li>导入函数体；</li> <li>外部的声明；</li> </ol> <p>通过对整棵抽象语法树的遍历(也会修改语法树)，我们在每个节点上都会对当前子树的类型进行验证，以保证节点不存在类型错误，所有的类型错误和不匹配都会在这一个阶段被暴露出来，其中包括：结构体对接口的实现。</p> <p>类型检查阶段不止会对节点的类型进行验证，还会展开和改写一些内建的函数，例如 make 关键字在这个阶段会根据子树的结构被替换成 runtime.makeslice或者 runtime.makechan等函数。</p> </li> <li> <p>中间代码生成</p> <p>当我们将源文件转换成了抽象语法树、对整棵树的语法进行解析并进行类型检查之后，就可以认为当前文件中的代码不存在语法错误和类型错误的问题了，Go 语言的编译器就会将输入的抽象语法树转换成中间代码。</p> <p>在类型检查之后，编译器会通过 cmd/compile/internal/gc.compileFunctions编译整个 Go 语言项目中的全部函数，这些函数会在一个编译队列中等待几个 Goroutine 的消费，并发执行的 Goroutine 会将所有函数对应的抽象语法树转换成中间代码。由于 Go 语言编译器的中间代码使用了 SSA 的特性，所以在这一阶段我们能够分析出代码中的无用变量和片段并对代码进行优化</p> </li> <li> <p>机器码生成</p> <p>Go 语言源代码的 src/cmd/compile/internal 目录中包含了很多机器码生成相关的包，不同类型的 CPU 分别使用了不同的包生成机器码，其中包括 amd64、arm、arm64、mips、mips64、ppc64、s390x、x86 和 wasm</p> </li> </ol> 			                <div class="clearfix"></div>
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				</h1> <p>总结自《go语言设计与实现》</p> <h2 id="名词解释">名词解释:</h2> <ul> <li> <p>中间代码</p> <p>中间代码是编译器或者虚拟机使用的语言，它可以来帮助我们分析计算机程序。在编译过程中，编译器会在将源代码转换到机器码的过程中，先把源代码转换成一种中间的表示形式，即中间代码。将编程语言到机器码的过程拆成中间代码生成和机器码生成两个简单步骤可以简化该问题，中间代码是一种更接近机器语言的表示形式，对中间代码的优化和分析相比直接分析高级编程语言更容易。</p> </li> <li> <p>SSA</p> <p>静态单赋值是中间代码的特性，如果中间代码具有静态单赋值的特性，那么每个变量就只会被赋值一次。在实践中，我们通常会用下标实现静态单赋值，这里以下面的代码举个例子：</p> <pre><code class="language-go">x := 1 x := 2 y := x</code></pre> <p>经过简单的分析，我们就能够发现上述的代码第一行的赋值语句<code>x := 1</code> 不会起到任何作用。下面是具有 SSA 特性的中间代码，我们可以清晰地发现变量<code>y_1</code> 和<code>x_1</code> 是没有任何关系的，所以在机器码生成时就可以省去<code>x := 1</code> 的赋值，通过减少需要执行的指令优化这段代码。</p> <pre><code class="language-go">x_1 := 1 x_2 := 2 y_1 := x_2</code></pre> </li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/cfa334ba9c6a542de5c8467bb418cdbc.jpg" alt="go语言编译过程概述"></p> <h2 id="过程概述">过程概述</h2> <ol> <li> <p>词法与语法分析</p> <ul> <li> <p>编译过程其实都是从解析代码的源文件开始的，词法分析的作用就是解析源代码文件，它将文件中的字符串序列转换成 Token 序列，方便后面的处理和解析，我们一般会把执行词法分析的程序称为词法解析器。</p> </li> <li> <p>而语法分析的输入是词法分析器输出的 Token 序列，语法分析器会按照顺序解析 Token 序列，该过程会将词法分析生成的 Token 按照编程语言定义好的文法（Grammar）自下而上或者自上而下的规约，每一个 Go 的源代码文件最终会被归纳成一个 SourceFile 结构 。</p> </li> </ul> <p>词法分析会返回一个不包含空格、换行等字符的 Token 序列，例如：package, json, import, (, io, ), …，而语法分析会把 Token 序列转换成有意义的结构体，即语法树。</p> </li> <li> <p>类型检查</p> <p>当拿到一组文件的抽象语法树之后，Go 语言的编译器会对语法树中定义和使用的类型进行检查，类型检查会按照以下的顺序分别验证和处理不同类型的节点：</p> <ol> <li>常量、类型和函数名及类型；</li> <li>变量的赋值和初始化；</li> <li>函数和闭包的主体；</li> <li>哈希键值对的类型；</li> <li>导入函数体；</li> <li>外部的声明；</li> </ol> <p>通过对整棵抽象语法树的遍历(也会修改语法树)，我们在每个节点上都会对当前子树的类型进行验证，以保证节点不存在类型错误，所有的类型错误和不匹配都会在这一个阶段被暴露出来，其中包括：结构体对接口的实现。</p> <p>类型检查阶段不止会对节点的类型进行验证，还会展开和改写一些内建的函数，例如 make 关键字在这个阶段会根据子树的结构被替换成 runtime.makeslice或者 runtime.makechan等函数。</p> </li> <li> <p>中间代码生成</p> <p>当我们将源文件转换成了抽象语法树、对整棵树的语法进行解析并进行类型检查之后，就可以认为当前文件中的代码不存在语法错误和类型错误的问题了，Go 语言的编译器就会将输入的抽象语法树转换成中间代码。</p> <p>在类型检查之后，编译器会通过 cmd/compile/internal/gc.compileFunctions编译整个 Go 语言项目中的全部函数，这些函数会在一个编译队列中等待几个 Goroutine 的消费，并发执行的 Goroutine 会将所有函数对应的抽象语法树转换成中间代码。由于 Go 语言编译器的中间代码使用了 SSA 的特性，所以在这一阶段我们能够分析出代码中的无用变量和片段并对代码进行优化</p> </li> <li> <p>机器码生成</p> <p>Go 语言源代码的 src/cmd/compile/internal 目录中包含了很多机器码生成相关的包，不同类型的 CPU 分别使用了不同的包生成机器码，其中包括 amd64、arm、arm64、mips、mips64、ppc64、s390x、x86 和 wasm</p> </li> </ol> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-20626.htm">宠物粮食厂家有哪些（宠物粮食厂家有哪些品牌）</a></p>
                                         <p>下一个：<a href="/news/article-21084.htm">宠物店里的狗粮建议买吗（宠物店的狗粮能买吗）</a></p>
@@ -147,6 +148,15 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                             <div class="copy-right-text">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
                                 NodeClashV2ray节点订阅站 版权所有 Powered by WordPress
                             </div>
                         </div>
