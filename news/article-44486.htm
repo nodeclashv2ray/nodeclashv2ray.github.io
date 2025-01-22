@@ -1,0 +1,216 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodeclashv2ray.github.io/news/article-44486.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>JVM将初始和最大内存大小设置为相同值的好处</title>
+        <meta name="description" content="操作系统的内存分配和解除分配 目录  			  微信公众号：Java大家族  JVM将初始和最大内存大小设置为相同值的好处 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;启" />
+        <link rel="icon" href="/assets/website/img/nodeclashv2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NodeClashV2ray节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodeclashv2ray.github.io/news/article-44486.htm" />
+    <meta property="og:site_name" content="NodeClashV2ray节点订阅站" />
+    <meta property="og:title" content="JVM将初始和最大内存大小设置为相同值的好处" />
+    <meta property="og:image" content="https://nodeclashv2ray.github.io/uploads/20240509/b6725acbce350d53cc6d3ba45e3b97b9.webp" />
+        <meta property="og:release_date" content="2025-01-22T10:13:07" />
+    <meta property="og:updated_time" content="2025-01-22T10:13:07" />
+        <meta property="og:description" content="操作系统的内存分配和解除分配 目录  			  微信公众号：Java大家族  JVM将初始和最大内存大小设置为相同值的好处 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;启" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- Place favicon.ico in the root directory -->
+    <!-- All css files are included here. -->
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="JVM将初始和最大内存大小设置为相同值的好处">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Bootstrap fremwork main css -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/bootstrap.min.css">
+    <!-- This core.css file contents all plugings css file. -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/core.css">
+    <!-- Theme shortcodes/elements style -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/shortcode/shortcodes.css">
+    <!-- Theme main style -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/style.css">
+    <!-- Responsive css -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/responsive.css">
+    <!-- Style customizer (Remove these two lines please) -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/style-customizer.css">
+    <!-- User style -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/custom.css">
+    <!-- Modernizr JS -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/vendor/modernizr-2.8.3.min.js"></script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BKWDB6T1Z4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BKWDB6T1Z4');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Body main wrapper start -->
+    <div class="wrapper">
+        <!-- Start of Header Top Area -->
+        <header id="header-content">
+            <!-- Start of mainmenu area -->
+            <div id="sticky-header-with-topbar" class="header-bottom-area bg-white height-100  transparent-header hidden-xs">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-sm-12">
+                            <div class="logo f-left sm-center">
+                                                                <a href="/">Node Clash V2ray</a>
+                                                            </div>
+                        </div>
+                        <div class="col-md-7 col-sm-12">
+                            <div class="mainmenu-container">
+                                <ul class="main-menu">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                        <li><a href="#">关于</a></li>
+                                    <li><a href="#">联系</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile-menu-area start -->
+            <div class="mobile-menu-area hidden-md hidden-lg hidden-sm">
+                <div class="fluid-container mobile-menu-container">
+                    <div class="mobile-logo">
+                                                <a href="/">Node Clash V2ray</a>
+                                            </div>
+                    <div class="mobile-menu clearfix">
+                        <nav id="mobile_dropdown">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                                <li><a href="#">关于</a></li>
+                                <li><a href="#">联系</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile-menu-area end -->
+        </header>
+<!-- End of Header Top Area -->
+        <!-- Start Bradcaump area -->
+        <div class="tf-bradcaump-area sbg-3" data-black-overlay="8">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="bradcaump-wrap text-center">
+                            <h1 class="bradcaump-title">JVM将初始和最大内存大小设置为相同值的好处</h1>
+                            <nav class="bradcaump-inner">
+                                <a class="breadcrumb-item" href="/">首页</a>
+                                <span class="brd-separetor">/</span>
+                                <a class="breadcrumb-item" href="/news/">新闻资讯</a>
+                                <span class="brd-separetor">/</span>
+                                <span class="breadcrumb-item active">正文</span>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Bradcaump area -->
+        <section id="tf-about-container" class="tf-about-area ptb-100 bg-gray xtb-60">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				  			 <div id="log-box">  				<div id="catalog"><ul id="catalog-ul"> <li><i class="be be-arrowright"></i> <a href="#title-0" title="操作系统的内存分配和解除分配">操作系统的内存分配和解除分配</a></li> </ul><span class="log-zd"><span class="log-close"><a title="隐藏目录"><i class="be be-cross"></i><strong>目录</strong></a></span></span></div>  			</div> <blockquote> <p>微信公众号：<strong>Java大家族</strong></p> </blockquote> <h3>JVM将初始和最大内存大小设置为相同值的好处</h3> <p>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;启动应用程序时，我们指定初始内存大小和最大内存大小。对于在 JVM（Java 虚拟机）上运行的应用程序，初始和最大内存大小通过 “-Xms” 和 “-Xmx” 参数指定。如果 Java 应用程序在容器上运行，则通过“-XX：InitialRAMPercentage”和“-XX：MaxRAMPercentage”参数指定它。大多数企业将初始内存大小设置为低于最大内存大小的值。与这种普遍接受的做法相反，将初始内存大小设置为与最大内存大小相同具有如下优势。让我们在这篇文章中讨论它们。</p> <h3>1. 可用性</h3> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;假设您正在启动应用程序，初始堆大小为 2GB，最大堆大小为 24GB。这意味着当应用程序启动时，操作系统将为您的应用程序分配 2GB 的内存。从那时起，当应用程序开始处理新请求时，将分配额外的内存，直到达到最大 24GB。</p> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;假设当您的应用程序的内存消耗正在从2GB增长到24GB的过程中，此时，服务器启动了其他一些进程，并且这些进程开始消耗内存。这种情况在生产/云环境中非常常见，尤其是在应用程序与其他进程（如自定义脚本、cron 作业、监视代理等）一起运行时。</p> <p>发生这种情况时，您的应用程序将遇到以下情况：</p> <p>“java.lang.OutOfMemoryError：Java heap space”<br />操作系统将终止您的应用程序，并显示“内存不足：杀死进程。<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这意味着您的应用程序将在事务过程中崩溃。如果应用程序在启动期间以最大内存启动，则应用程序将是安全的。操作系统将仅终止内存消耗正在增长的新启动的脚本/cron 作业，而不会终止在启动期间内存已完全分配的应用程序。</p> <h3>2. 性能</h3> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们还观察到，以相同的初始堆大小和最大堆大小启动的应用程序往往比以较低的初始堆大小启动的应用程序的性能相对较好。</p> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这是一个真实的案例研究：我们使用记忆密集型应用程序进行测试。此应用程序处理非常大的二进制堆转储文件并生成分析报告。在这个应用程序中，我们反复分析一个11GB大小的二进制文件，这样它就会给操作系统带来内存压力。</p> <p>我们进行了两个测试场景：</p> <p>方案 1：我们将初始堆大小设置为 2GB，最大堆大小设置为 24GB。<br />方案 2：我们将初始堆大小和最大堆大小都设置为 24GB。<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在场景 1 中，我们观察到平均响应时间为 385.32 秒，而在场景 2 中，我们观察到平均响应时间为 366.55 秒。响应时间缩短了 5.11%。响应时间的这种改善是由于以下两个原因：</p> <span class="directory"></span><h4 id="title-0">操作系统的内存分配和解除分配</h4> <p>GC 暂停时间影响<br />让我们在这里讨论它们：</p> <p>从操作系统分配和解除分配内存<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当您为初始堆大小和最大堆大小设置了不同的大小时，JVM 将不得不与操作系统协商，以便在需要时分配内存。同样，当应用程序对内存的需求在运行时出现故障时，操作系统将占用分配的内存。这种持续的分配和解除分配将增加应用程序的开销。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/3fcb5a6294a52473838f2dbe0e1f511c.jpg" alt="JVM将初始和最大内存大小设置为相同值的好处"></p> <p>&nbsp;场景 1：内存分配波动（按 GCeasy 绘制的图表）</p> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上图显示了场景 1 JVM 的已分配和已解除分配的内存。从图表中，您可以注意到内存在不断波动（在 2GB 到 24GB 之间波动）。当应用程序处理堆转储时，内存最多可达 24GB。处理后，内存将回落到 2GB。当它再次处理新的堆转储时，内存会回弹到 24GB。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/0fe4cc5fbfd9cc1a6a7c8644fcdaba95.jpg" alt="JVM将初始和最大内存大小设置为相同值的好处"></p> <h5>场景 2：内存分配常量（由 GCeasy 绘制）</h5> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上图显示了场景 2 JVM 在其生命周期内分配的内存。你可以看到没有波动。内存是在启动期间从操作系统保留的，从那时起，没有波动。无论应用程序中的活动如何，它始终保持在24GB。此行为有可能在一定程度上提高应用程序的性能。</p> <h5>GC 暂停时间影响</h5> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当垃圾回收运行时，它会暂停应用程序，这将对客户产生负面影响。我们使用 GCeasy 工具研究了两种方案的垃圾回收性能。结果如下：</p> <h5>垃圾回收性能结果</h5> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们注意到 GC 吞吐量和 GC 暂停时间略有下降。在方案 1 中，GC 吞吐量为 96.59%，而在方案 2 中，GC 吞吐量略好 （97.83%）。同样，在场景 1 中，Max GC 的暂停时间为 5.23 秒，而在场景 2 中仅为 1.65 秒。。</p> <p><strong>应用程序启动时间</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果将初始堆大小设置为与最大堆大小相同，则应用程序的启动时间也会更好。以下是 Oracle 文档的摘录：</p> <p><strong>“</strong><strong>如果初始堆太小，Java 应用程序的启动速度会变慢，因为 JVM 被迫频繁地执行垃圾回收，直到堆增长到更合理的大小。为获得最佳启动性能，请将初始堆大小设置为与最大堆大小相同。</strong><strong>"</strong></p> <h3>4. 成本</h3> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;无论您将初始堆大小 （-Xms） 和最大堆大小 （-Xmx） 设置为相同值还是其他值，您支付给云托管提供商的计算成本都不会更改。假设您正在使用阿里云、腾讯云等云厂商的实例，那么无论设置初始堆大小和最大堆大小的值如何，您最终都将支付固定小时的费用。云提供商不会根据您在该计算机中使用的内存量向您收费。它们仅根据您使用实例的时间收费。因此，将初始堆大小设置为低于最大堆大小不会节省成本。</p> <h3>结论</h3> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在配置线程池或连接池时，将初始堆大小配置为小于最大堆大小是有意义的。在这些资源中，过度分配会产生不必要的影响，但是，内存并非如此。因此，如果要构建企业应用程序，强烈建议将初始堆大小和最大堆大小设置为相同的值。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-43973.htm">动物防疫中心站（动物防疫中心电话）</a></p>
+                                        <p>下一个：<a href="/news/article-44487.htm">新手开宠物店进货渠道有哪些（开宠物店货源哪里找）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">热门文章</h3>
+                            </div>
+                            <div class="panel-body">
+                                <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                                    <li class="py-2"><a href="/free-nodes/2024-5-8-clash-v2ray-ss-ssr.htm" title="5月8日|最高速度22.5M/S，2024最新Shadowrocket/Clash/SSR/V2ray免费节点高速订阅链接">5月8日|最高速度22.5M/S，2024最新Shadowrocket/Clash/SSR/V2ray免费节点高速订阅链接</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+                <!-- Start of Footer Area -->
+        <footer id="footer" class="footer-area footer-bg">
+            <div class="footer-bottom-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="copy-right-text">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                                NodeClashV2ray节点订阅站 版权所有 Powered by WordPress
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--End of Footer Area -->
+    </div>
+    <!-- Body main wrapper end -->
+    <!-- Placed js at the end of the document so the pages load faster -->
+    <!-- jquery latest version -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/vendor/jquery-1.12.0.min.js"></script>
+    <!-- Bootstrap framework js -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/bootstrap.min.js"></script>
+    <!-- Owl Carousel framework js -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/owl.carousel.min.js"></script>
+    <!-- All js plugins included in this file. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/plugins.js"></script>
+    <!-- Slick min.js. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/slick.min.js"></script>
+    <!-- Waypoints.min.js. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/waypoints.min.js"></script>
+    <!-- Main js file that contents all jQuery plugins activation. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,216 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodeclashv2ray.github.io/news/article-43972.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>MySQL 回表</title>
+        <meta name="description" content="MySQL回表  　　　　五花马，千金裘，呼儿将出换美酒，与尔同销万古愁。 一、简述 回表，顾名思义就是回到表中，也就是先通过普通索引扫描出数据所在的行，再通过行主键ID取出索引中未包含的数据。所以回" />
+        <link rel="icon" href="/assets/website/img/nodeclashv2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NodeClashV2ray节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodeclashv2ray.github.io/news/article-43972.htm" />
+    <meta property="og:site_name" content="NodeClashV2ray节点订阅站" />
+    <meta property="og:title" content="MySQL 回表" />
+    <meta property="og:image" content="https://nodeclashv2ray.github.io/uploads/20240509/db5476e14bc35c7e8a1a66712b1fa960.webp" />
+        <meta property="og:release_date" content="2025-01-21T09:50:12" />
+    <meta property="og:updated_time" content="2025-01-21T09:50:12" />
+        <meta property="og:description" content="MySQL回表  　　　　五花马，千金裘，呼儿将出换美酒，与尔同销万古愁。 一、简述 回表，顾名思义就是回到表中，也就是先通过普通索引扫描出数据所在的行，再通过行主键ID取出索引中未包含的数据。所以回" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- Place favicon.ico in the root directory -->
+    <!-- All css files are included here. -->
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="MySQL 回表">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Bootstrap fremwork main css -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/bootstrap.min.css">
+    <!-- This core.css file contents all plugings css file. -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/core.css">
+    <!-- Theme shortcodes/elements style -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/shortcode/shortcodes.css">
+    <!-- Theme main style -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/style.css">
+    <!-- Responsive css -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/responsive.css">
+    <!-- Style customizer (Remove these two lines please) -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/style-customizer.css">
+    <!-- User style -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/custom.css">
+    <!-- Modernizr JS -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/vendor/modernizr-2.8.3.min.js"></script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BKWDB6T1Z4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BKWDB6T1Z4');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Body main wrapper start -->
+    <div class="wrapper">
+        <!-- Start of Header Top Area -->
+        <header id="header-content">
+            <!-- Start of mainmenu area -->
+            <div id="sticky-header-with-topbar" class="header-bottom-area bg-white height-100  transparent-header hidden-xs">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-sm-12">
+                            <div class="logo f-left sm-center">
+                                                                <a href="/">Node Clash V2ray</a>
+                                                            </div>
+                        </div>
+                        <div class="col-md-7 col-sm-12">
+                            <div class="mainmenu-container">
+                                <ul class="main-menu">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                        <li><a href="#">关于</a></li>
+                                    <li><a href="#">联系</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile-menu-area start -->
+            <div class="mobile-menu-area hidden-md hidden-lg hidden-sm">
+                <div class="fluid-container mobile-menu-container">
+                    <div class="mobile-logo">
+                                                <a href="/">Node Clash V2ray</a>
+                                            </div>
+                    <div class="mobile-menu clearfix">
+                        <nav id="mobile_dropdown">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                                <li><a href="#">关于</a></li>
+                                <li><a href="#">联系</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile-menu-area end -->
+        </header>
+<!-- End of Header Top Area -->
+        <!-- Start Bradcaump area -->
+        <div class="tf-bradcaump-area sbg-3" data-black-overlay="8">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="bradcaump-wrap text-center">
+                            <h1 class="bradcaump-title">MySQL 回表</h1>
+                            <nav class="bradcaump-inner">
+                                <a class="breadcrumb-item" href="/">首页</a>
+                                <span class="brd-separetor">/</span>
+                                <a class="breadcrumb-item" href="/news/">新闻资讯</a>
+                                <span class="brd-separetor">/</span>
+                                <span class="breadcrumb-item active">正文</span>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Bradcaump area -->
+        <section id="tf-about-container" class="tf-about-area ptb-100 bg-gray xtb-60">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p style="text-align: center"><strong><span style="font-size: 18pt"><span style="font-family: Calibri">MySQL</span><span style="font-family: 宋体">回表</span></span></strong></p> <p style="text-align: center"> <p><span style="font-size: 14pt; color: rgba(51, 153, 102, 1)"><em><span style="font-family: 宋体">　　　　五花马，千金裘，呼儿将出换美酒，与尔同销万古愁。</span></em></span></p> <h2><span style="text-decoration: underline"><em><strong><span style="color: rgba(0, 0, 255, 1); text-decoration: underline">一、简述</span></strong></em></span></h2> <p><span style="font-family: 宋体">回表，顾名思义就是回到表中，也就是先通过普通索引扫描出数据所在的行，再通过行主键</span><span style="font-family: Calibri">ID</span><span style="font-family: 宋体">取出索引中未包含的数据。所以回表的产生也是需要一定条件的，如果一次索引查询就能获得所有的</span><span style="font-family: Calibri">select</span><span style="font-family: 宋体">记录就不需要回表，如果</span><span style="font-family: Calibri">select</span><span style="font-family: 宋体">所需获得列中有其他的非索引列，就会发生回表动作。即基于非主键索引的查询需要多扫描一棵索引树</span>。</p> <h2><span style="text-decoration: underline"><em><strong><span style="color: rgba(0, 0, 255, 1); text-decoration: underline"><span style="font-family: Calibri">二、InnoDB</span><span style="font-family: 宋体">引擎有两大类索引</span></span></strong></em></span></h2> <p><span style="font-family: 宋体">要弄明白回表，首先得了解 InnoDB 两大索引，即聚集索引&nbsp;（clustered index）和普通索引（secondary index）。</span></p> <h3><span style="color: rgba(0, 0, 255, 1)"><span style="font-family: 宋体">聚集索引</span><span style="font-family: 宋体">（</span><span style="font-family: Calibri">clustered index</span><span style="font-family: 宋体">）</span></span></h3> <p><span style="font-family: Calibri">InnoDB</span><span style="font-family: 宋体">聚集索引的叶子节点存储行记录，因此，</span><span style="font-family: Calibri">InnoDB</span><span style="font-family: 宋体">必须要有且只有一个聚集索引。</span></p> <ul> <li><span style="font-family: 宋体">如果表定义了主键，则</span><span style="font-family: Calibri">Primary Key</span><span style="font-family: 宋体">就是聚集索引；</span></li> <li><span style="font-family: 宋体">如果表没有定义主键，则第一个非空唯一索引（Not</span><span style="font-family: Calibri">NULL Unique</span><span style="font-family: 宋体">）列是聚集索引；</span></li> <li><span style="font-family: 宋体">否则，</span><span style="font-family: Calibri">InnoDB</span><span style="font-family: 宋体">会创建一个隐藏的</span><span style="font-family: Calibri">row-id</span><span style="font-family: 宋体">作为聚集索引；</span></li> </ul> <h3><span style="color: rgba(0, 0, 255, 1)"><span style="font-family: 宋体">普通索引（</span><span style="font-family: Calibri">secondary index</span><span style="font-family: 宋体">）</span></span></h3> <p class="p"><span style="font-family: Arial">普通索引也叫二级索引，除聚簇索引外的索引都是普通索引，即非聚簇索引。</span></p> <p class="p">InnoDB的普通索引叶子节点<span style="font-family: Arial">存储的是主键（聚簇索引）的值，而</span>MyISAM的普通索引存储的是记录指针。</p> <h2><span style="text-decoration: underline; color: rgba(0, 0, 255, 1)"><em><strong>三、回表示例</strong></em></span></h2> <h3><span style="color: rgba(0, 0, 255, 1)">数据准备</span></h3> <p>先创建一张表<span style="font-family: Calibri">t_back_to_table</span>&nbsp;，<span style="font-family: 宋体">表中</span><span style="font-family: Calibri">id</span><span style="font-family: 宋体">为主键索引即聚簇索引，</span><span style="font-family: Calibri">drinker_id</span><span style="font-family: 宋体">为普通索引。</span><span style="font-family: Calibri"><br /></span></p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 0, 255, 1)">CREATE</span><span style="color: rgba(0, 0, 255, 1)">TABLE</span><span style="color: rgba(0, 0, 0, 1)"> t_back_to_table (  id</span><span style="color: rgba(0, 0, 255, 1)">INT</span><span style="color: rgba(0, 0, 255, 1)">PRIMARY</span><span style="color: rgba(0, 0, 255, 1)">KEY</span><span style="color: rgba(0, 0, 0, 1)">,  drinker_id</span><span style="color: rgba(0, 0, 255, 1)">INT</span><span style="color: rgba(128, 128, 128, 1)">NOT</span><span style="color: rgba(0, 0, 255, 1)">NULL</span><span style="color: rgba(0, 0, 0, 1)">,  drinker_name</span><span style="color: rgba(0, 0, 255, 1)">VARCHAR</span> (<span style="color: rgba(128, 0, 0, 1); font-weight: bold">15</span> )<span style="color: rgba(128, 128, 128, 1)">NOT</span><span style="color: rgba(0, 0, 255, 1)">NULL</span><span style="color: rgba(0, 0, 0, 1)">,  drinker_feature</span><span style="color: rgba(0, 0, 255, 1)">VARCHAR</span> (<span style="color: rgba(128, 0, 0, 1); font-weight: bold">15</span> )<span style="color: rgba(128, 128, 128, 1)">NOT</span><span style="color: rgba(0, 0, 255, 1)">NULL</span><span style="color: rgba(0, 0, 0, 1)">,</span><span style="color: rgba(0, 0, 255, 1)">INDEX</span><span style="color: rgba(0, 0, 0, 1)"> ( drinker_id )  ) ENGINE</span><span style="color: rgba(128, 128, 128, 1)">=</span> INNODB;</pre> </div> <p><span style="font-family: 宋体">再执行下面的</span><span style="font-family: Calibri">SQL</span><span style="font-family: 宋体">语句，插入</span>四条测试数据。</p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 0, 255, 1)">INSERT</span><span style="color: rgba(0, 0, 255, 1)">INTO</span><span style="color: rgba(0, 0, 0, 1)"> t_back_to_table ( id, drinker_id, drinker_name, drinker_feature )</span><span style="color: rgba(0, 0, 255, 1)">VALUES</span><span style="color: rgba(0, 0, 0, 1)">  (</span><span style="color: rgba(128, 0, 0, 1); font-weight: bold">1</span>,<span style="color: rgba(128, 0, 0, 1); font-weight: bold">2</span>,<span style="color: rgba(255, 0, 0, 1)">'</span><span style="color: rgba(255, 0, 0, 1)">广西-玉林</span><span style="color: rgba(255, 0, 0, 1)">'</span>,<span style="color: rgba(255, 0, 0, 1)">'</span><span style="color: rgba(255, 0, 0, 1)">喝到天亮</span><span style="color: rgba(255, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)"> ),  (</span><span style="color: rgba(128, 0, 0, 1); font-weight: bold">2</span>,<span style="color: rgba(128, 0, 0, 1); font-weight: bold">1</span>,<span style="color: rgba(255, 0, 0, 1)">'</span><span style="color: rgba(255, 0, 0, 1)">广西-河池</span><span style="color: rgba(255, 0, 0, 1)">'</span>,<span style="color: rgba(255, 0, 0, 1)">'</span><span style="color: rgba(255, 0, 0, 1)">白酒三斤半啤酒随便灌</span><span style="color: rgba(255, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)"> ),  (</span><span style="color: rgba(128, 0, 0, 1); font-weight: bold">3</span>,<span style="color: rgba(128, 0, 0, 1); font-weight: bold">3</span>,<span style="color: rgba(255, 0, 0, 1)">'</span><span style="color: rgba(255, 0, 0, 1)">广西-贵港</span><span style="color: rgba(255, 0, 0, 1)">'</span>,<span style="color: rgba(255, 0, 0, 1)">'</span><span style="color: rgba(255, 0, 0, 1)">喝到晚上</span><span style="color: rgba(255, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)"> ),  (</span><span style="color: rgba(128, 0, 0, 1); font-weight: bold">4</span>,<span style="color: rgba(128, 0, 0, 1); font-weight: bold">4</span>,<span style="color: rgba(255, 0, 0, 1)">'</span><span style="color: rgba(255, 0, 0, 1)">广西-柳州</span><span style="color: rgba(255, 0, 0, 1)">'</span>,<span style="color: rgba(255, 0, 0, 1)">'</span><span style="color: rgba(255, 0, 0, 1)">喝酒不吃饭</span><span style="color: rgba(255, 0, 0, 1)">'</span> );</pre> </div> <p><span style="font-family: Calibri"><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/db5371cbdd2dacad0e32d42f24eae176.jpg" alt="MySQL 回表"></span></p> <h3><span style="color: rgba(0, 0, 255, 1)">NO回表case</span></h3> <p><span style="font-family: Calibri"><span style="font-family: 宋体">使用主键索引</span><span>id</span><span style="font-family: 宋体">，</span><span style="font-family: 宋体">查询出</span><span>id</span><span style="font-family: 宋体">为</span><span>3</span><span style="font-family: &quot;PingFang SC&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif"></span><span style="font-family: 宋体">的数据。</span></span></p> <div class="cnblogs_code"> <pre>EXPLAIN<span style="color: rgba(0, 0, 255, 1)">SELECT</span><span style="color: rgba(128, 128, 128, 1)">*</span><span style="color: rgba(0, 0, 255, 1)">FROM</span> t_back_to_table<span style="color: rgba(0, 0, 255, 1)">WHERE</span> id<span style="color: rgba(128, 128, 128, 1)">=</span><span style="color: rgba(128, 0, 0, 1); font-weight: bold">3</span>;</pre> </div> <p><span style="font-family: 宋体">执行</span><span style="font-family: Calibri">EXPLAIN SELECT * FROM t_back_to_table WHERE id = 3，</span><span style="font-family: 宋体">这条</span><span style="font-family: Calibri">SQL</span><span style="font-family: 宋体">语句就不需要回表。</span></p> <p>因为是<span style="font-family: 宋体">根据主键的查询方式，则只需要搜索</span><span style="font-family: Calibri">ID</span><span style="font-family: 宋体">这棵</span><span style="font-family: Calibri">B+</span><span style="font-family: 宋体">树</span>，树上的叶子节点存储了行记录，<span style="font-family: 宋体">根据这个唯一的索引，</span><span style="font-family: Calibri">MySQL</span><span style="font-family: 宋体">就能确定搜索的记录。</span></p> <h3><span style="color: rgba(0, 0, 255, 1)">回表case</span></h3> <p><span style="font-family: 宋体">使用</span><span style="font-family: Calibri">drinker_id</span><span style="font-family: 宋体">这个索引来查询</span><span style="font-family: Calibri">drinker_id = 3</span><span style="font-family: 宋体">的记录时就会涉及到回表。</span></p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 0, 255, 1)">SELECT</span><span style="color: rgba(128, 128, 128, 1)">*</span><span style="color: rgba(0, 0, 255, 1)">FROM</span> t_back_to_table<span style="color: rgba(0, 0, 255, 1)">WHERE</span> drinker_id<span style="color: rgba(128, 128, 128, 1)">=</span><span style="color: rgba(128, 0, 0, 1); font-weight: bold">3</span>;</pre> </div> <p>因为<span style="font-family: 宋体">通过</span><span style="font-family: Calibri">drinker_id</span><span style="font-family: 宋体">这个普通索引查询方式，则需要先搜索</span><span style="font-family: Calibri">drinker_id</span><span style="font-family: 宋体">索引树(该索引树上记录着主键ID的值)，然后得到主键</span><span style="font-family: Calibri">ID</span><span style="font-family: 宋体">的值为</span><span style="font-family: Calibri">3</span><span style="font-family: 宋体">，再到</span><span style="font-family: Calibri">ID</span><span style="font-family: 宋体">索引树搜索一次。这个过程虽然用了索引，但实际上底层进行了两次索引查询，这个过程就称为回表。</span></p> <p><span style="font-family: 宋体">回表小结</span></p> <ul> <li>对比发现，基于非主键索引的查询需要多扫描一棵索引树，先定位主键值，再定位行记录，它的性能较扫一遍索引树更低。</li> <li>在应用中应该尽量使用主键查询，这里表中就四条数据，如果数据量大的话，就可以明显的看出使用主键查询效率更高。</li> <li>使用聚集索引（主键或第一个唯一索引）就不会回表，普通索引就会回表。</li> </ul> <h2><span style="text-decoration: underline; color: rgba(0, 0, 255, 1)"><em><strong>四、索引存储结构</strong></em></span></h2> <p><span style="font-family: Calibri">InnoDB</span><span style="font-family: 宋体">引擎</span>的聚集索引和普通索引都是B+Tree<span style="font-family: 宋体">存储结构</span><span style="font-family: 宋体">，</span><span style="font-family: 宋体">只有叶子节点存储数据</span><span style="font-family: 宋体">。</span></p> <ul> <li><span style="font-family: 宋体">新的</span>B+<span style="font-family: 宋体">树结构没有在所有的节点里存储记录数据，而是只在最下层的叶子节点存储，上层的所有非叶子节点只存放索引信息，这样的结构可以让单个节点存放更多索引值，增大</span><span style="font-family: &quot;Segoe UI Emoji&quot;">Degree</span><span style="font-family: 宋体">的值，提高命中目标记录的几率。</span></li> <li><span style="font-family: 宋体">这种结构会在上层非叶子节点存储一部分冗余数据，但是这样的缺点都是可以容忍的，因为冗余的都是索引数据，不会对内存造成大的负担。</span></li> </ul> <h3><span style="font-family: 宋体; color: rgba(0, 0, 255, 1)">聚簇索引</span></h3> <p>id 是主键，所以是聚簇索引，其叶子节点存储的是对应行记录的数据<span style="font-family: 宋体">。</span></p> <p style="text-align: center"><strong><span style="font-family: 宋体; font-size: 12px">聚簇索引存储结构</span></strong></p> <p><span style="font-family: 宋体"><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/553c3e7f27ca858c15dd2e529bfbe72a.jpg" alt="MySQL 回表"></span></p> <p><span style="font-family: Arial">如果查询条件为主键（聚簇索引），则只需扫描一次</span>B+树即可通过聚簇索引定位到要查找的行记录数据。</p> <p><span style="font-family: 宋体">如：</span></p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 0, 255, 1)">SELECT</span><span style="color: rgba(128, 128, 128, 1)">*</span><span style="color: rgba(0, 0, 255, 1)">FROM</span> t_back_to_table<span style="color: rgba(0, 0, 255, 1)">WHERE</span> id<span style="color: rgba(128, 128, 128, 1)">=</span><span style="color: rgba(128, 0, 0, 1); font-weight: bold">1</span>;</pre> </div> <p><span style="font-family: 宋体">查找过程：</span></p> <div style="text-align: center"><span style="font-size: 12px"><strong>聚簇索引查找过程</strong></span></div> <div><img decoding="async" src="https://img2022.cnblogs.com/blog/1580332/202204/1580332-20220421091706969-281478151.png" alt="MySQL 回表"></div> <h3><span style="font-family: 宋体; color: rgba(0, 0, 255, 1)">普通索引</span></h3> <p><span style="font-family: Arial">drinker_id</span><span style="font-family: Arial">是普通索引（二级索引），非聚簇索引</span><span style="font-family: 宋体">的</span><span style="font-family: Arial">叶子节点存储的是聚簇索引的值，即主键ID的值</span><span style="font-family: 宋体">。</span></p> <p style="text-align: center"><span style="font-family: 宋体; font-size: 12px"><strong>普通索引存储结构</strong></span></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/1b5d9621bdaa47b9d6f5012e2232a3c0.jpg" alt="MySQL 回表"></p> <p><span style="font-family: Arial">如果查询条件为普通索引（非聚簇索引），需要扫描两次</span>B+树<span style="font-family: 宋体">。</span></p> <ul> <li><span style="font-family: Arial">第一次扫描</span><span style="font-family: 宋体">先</span><span style="font-family: Arial">通过普通索引定位到聚簇索引的值</span><span style="font-family: 宋体">。</span></li> <li><span style="font-family: Arial">第二次扫描通过</span><span style="font-family: 宋体">第一次扫描获得的</span><span style="font-family: Arial">聚簇索引的值定位到要查找的行记录数据。</span></li> </ul> <p><span style="font-family: Arial">如：</span></p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 0, 255, 1)">SELECT</span><span style="color: rgba(128, 128, 128, 1)">*</span><span style="color: rgba(0, 0, 255, 1)">FROM</span> t_back_to_table<span style="color: rgba(0, 0, 255, 1)">WHERE</span> drinker_id<span style="color: rgba(128, 128, 128, 1)">=</span><span style="color: rgba(128, 0, 0, 1); font-weight: bold">1</span>;</pre> </div> <p>（1）第一步，<span style="font-family: 宋体">先通过普通索引定位到主键值</span><span style="font-family: Calibri">id=</span><span style="font-family: Calibri">1</span>；</p> <p><span style="font-family: 宋体">（</span><span style="font-family: Calibri">2</span><span style="font-family: 宋体">）</span>第二步，回表查询，再通过定位到的主键值即聚集索引定位到行记录数据。</p> <p style="text-align: center"><span style="font-size: 12px"><strong>普通索引查找过程</strong></span></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/9a03a14d51a1ed6f6c69eb060656bbce.jpg" alt="MySQL 回表"></p> <h2 class="p"><span style="text-decoration: underline"><em><strong><span style="font-family: 宋体; color: rgba(0, 0, 255, 1); text-decoration: underline">五、如何防止回表</span></strong></em></span></h2> <p class="p"><span style="font-family: 宋体">既然我们知道了有回表这么回事，肯定就要尽可能去防微杜渐。最常见的防止回表手段就是索引覆盖，通过索引打败索引。</span></p> <h3 class="p"><span style="font-family: Arial; color: rgba(0, 0, 255, 1)">索引覆盖</span></h3> <p class="p"><span style="font-family: 宋体">为什么可以使用索引打败索引防止回表呢？因为其</span><span style="font-family: Arial">只需要在一棵索引树上就能获取</span>SQL所需的所有列数据，无需回表<span style="font-family: 宋体">查询</span><span style="font-family: Arial">。</span></p> <div class="cnblogs_code"> <pre>例如：<span style="color: rgba(0, 0, 255, 1)">SELECT</span><span style="color: rgba(128, 128, 128, 1)">*</span><span style="color: rgba(0, 0, 255, 1)">FROM</span> t_back_to_table<span style="color: rgba(0, 0, 255, 1)">WHERE</span> drinker_id<span style="color: rgba(128, 128, 128, 1)">=</span><span style="color: rgba(128, 0, 0, 1); font-weight: bold">1</span>;</pre> </div> <p class="p"><strong><span style="font-family: Arial">如何实现覆盖索引？</span></strong></p> <p class="p"><span style="font-family: Arial">常见的方法是将被查询的字段，建立到联合索引中。</span></p> <p class="p">解释性SQL的explain的输出结果Extra字段为Using index时表示触发了索引覆盖。</p> <p class="p"><strong><span style="font-family: Arial">No覆盖索引case1</span></strong></p> <p class="p"><span style="font-family: Arial">继续使用之前创建的&nbsp;t_back_to_table 表，通过普通索引drinker_id 查询id 和&nbsp;drinker_id 列。</span></p> <div class="cnblogs_code"> <pre>EXPLAIN<span style="color: rgba(0, 0, 255, 1)">SELECT</span> id, drinker_id<span style="color: rgba(0, 0, 255, 1)">FROM</span> t_back_to_table<span style="color: rgba(0, 0, 255, 1)">WHERE</span> drinker_id<span style="color: rgba(128, 128, 128, 1)">=</span><span style="color: rgba(128, 0, 0, 1); font-weight: bold">1</span>;</pre> </div> <p class="p"><span style="font-family: Arial"><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/290f40c5b4b8450f3088a39a9034a936.jpg" alt="MySQL 回表"></span></p> <p class="p">explain分析：为什么没有创建覆盖索引Extra字段仍为Using index，因为drinker_id<span style="font-family: Arial">是普通索引，使用到了</span>drinker_id<span style="font-family: Arial">索引，</span><span style="font-family: 宋体">在上面有提到</span><span style="font-family: Arial">普通索引</span><span style="font-family: 宋体">的叶子节点保存了</span><span style="font-family: Arial">聚簇索引的值</span><span style="font-family: 宋体">，</span><span style="font-family: 宋体">所以</span><span style="font-family: Arial">通过一次扫描</span>B+树即可查询到相应的结果，这样就实现了<span style="font-family: 宋体">隐形的</span><span style="font-family: Arial">覆盖索引</span><span style="font-family: 宋体">，</span><span style="font-family: 宋体">即没有人为的建立联合索引</span><span style="font-family: 宋体">。（</span>drinker_id<span style="font-family: 宋体">索引上包含了主键索引的值</span><span style="font-family: 宋体">）</span></p> <p class="p"><strong><span style="font-family: 宋体">No覆盖索引case2</span></strong></p> <p class="p"><span style="font-family: 宋体">继续使用之前创建的&nbsp;t_back_to_table 表，通过普通索引</span><span style="font-family: Arial">drinker_id</span><span style="font-family: 宋体">查询</span><span style="font-family: Arial">id</span><span style="font-family: 宋体">、</span><span style="font-family: Arial">drinker_id</span><span style="font-family: 宋体">和</span>drinker_feature<span style="font-family: 宋体">三</span><span style="font-family: 宋体">列数据。</span></p> <div class="cnblogs_code"> <pre>EXPLAIN<span style="color: rgba(0, 0, 255, 1)">SELECT</span> id, drinker_id, drinker_feature<span style="color: rgba(0, 0, 255, 1)">FROM</span> t_back_to_table<span style="color: rgba(0, 0, 255, 1)">WHERE</span> drinker_id<span style="color: rgba(128, 128, 128, 1)">=</span><span style="color: rgba(128, 0, 0, 1); font-weight: bold">1</span>;</pre> </div> <p class="p"><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/d8bb40c1bdfea273be90c09905bb38f1.jpg" alt="MySQL 回表"></p> <p class="p">explain分析：drinker_id<span style="font-family: Arial">是普通索引</span><span style="font-family: 宋体">其叶子节点上仅</span><span style="font-family: 宋体">包含主键索引的值</span><span style="font-family: Arial">，而</span>drinker_<span style="font-family: Arial">feature</span><span style="font-family: Arial">列</span><span style="font-family: 宋体">并</span><span style="font-family: Arial">不在索引树上，所以通过</span>drinker_id<span style="font-family: Arial">索引在查询到</span>id和drinker_id<span style="font-family: Arial">的值后，需要根据主键id 进行回表查询，得到</span>drinker_<span style="font-family: Arial">feature</span><span style="font-family: Arial">的值。此时的</span>Extra列的NULL表示进行了回表查询。</p> <p class="p"><strong>覆盖索引case</strong></p> <p class="p"><span style="font-family: Arial">为了实现索引覆盖，需要建组合索引</span><span style="font-family: Arial">idx_drinker_id_drinker_feature(drinker_id,drinker_feature)</span></p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 0, 0, 1)">#删除索引 drinker_id</span><span style="color: rgba(0, 0, 255, 1)">DROP</span><span style="color: rgba(0, 0, 255, 1)">INDEX</span> drinker_id<span style="color: rgba(0, 0, 255, 1)">ON</span><span style="color: rgba(0, 0, 0, 1)"> t_back_to_table;  #建立组合索引</span><span style="color: rgba(0, 0, 255, 1)">CREATE</span><span style="color: rgba(0, 0, 255, 1)">INDEX</span> idx_drinker_id_drinker_feature<span style="color: rgba(0, 0, 255, 1)">on</span> t_back_to_table(`drinker_id`,`drinker_feature`);</pre> </div> <p class="p"><span style="font-family: 宋体">继续使用之前创建的&nbsp;t_back_to_table 表，通过覆盖索引</span><span style="font-family: Arial">idx_drinker_id_drinker_feature</span><span style="font-family: 宋体">查询</span><span style="font-family: Arial">id</span><span style="font-family: 宋体">、</span><span style="font-family: Arial">drinker_id</span><span style="font-family: 宋体">和</span>drinker_feature<span style="font-family: 宋体">三</span><span style="font-family: 宋体">列数据。</span></p> <div class="cnblogs_code"> <pre>EXPLAIN<span style="color: rgba(0, 0, 255, 1)">SELECT</span> id, drinker_id, drinker_feature<span style="color: rgba(0, 0, 255, 1)">FROM</span> t_back_to_table<span style="color: rgba(0, 0, 255, 1)">WHERE</span> drinker_id<span style="color: rgba(128, 128, 128, 1)">=</span><span style="color: rgba(128, 0, 0, 1); font-weight: bold">1</span>;</pre> </div> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/86aa8879a40e4124c073c24d0c7959a1.jpg" alt="MySQL 回表"></p> <p>explain分析：此时字段<span style="font-family: Arial">drinker_id</span><span style="font-family: Arial">和</span><span style="font-family: Arial">drinker_feature</span><span style="font-family: Arial">是组合索引</span><span style="font-family: Arial">idx_drinker_id_drinker_feature</span><span style="font-family: Arial">，查询的字段</span>id、<span style="font-family: Arial">drinker_id</span><span style="font-family: Arial">和</span><span style="font-family: Arial">drinker_feature</span><span style="font-family: Arial">的值刚刚都在索引树上，只需扫描一次组合索引</span>B+树即可，这就是实现了索引覆盖，此时的Extra字段为Using index表示使用了索引覆盖。</p> <h2 class="p"><span style="text-decoration: underline"><em><strong><span style="color: rgba(0, 0, 255, 1); text-decoration: underline"><span style="font-family: 宋体">六、</span><span style="font-family: Arial">索引覆盖优化</span>SQL<span style="font-family: Arial">场景</span></span></strong></em></span></h2> <p class="p"><span style="font-family: Arial">适合使用索引覆盖来优化SQL的场景如全表count查询、列查询回表和分页查询等。</span></p> <h3 class="p"><span style="color: rgba(0, 0, 255, 1)"><span style="font-family: Arial">全表</span>count查询优化</span></h3> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 0, 0, 1)">#首先删除 t_back_to_table 表中的组合索引</span><span style="color: rgba(0, 0, 255, 1)">DROP</span><span style="color: rgba(0, 0, 255, 1)">INDEX</span> idx_drinker_id_drinker_feature<span style="color: rgba(0, 0, 255, 1)">ON</span><span style="color: rgba(0, 0, 0, 1)"> t_back_to_table;  EXPLAIN</span><span style="color: rgba(0, 0, 255, 1)">SELECT</span><span style="color: rgba(255, 0, 255, 1)">COUNT</span>(drinker_id)<span style="color: rgba(0, 0, 255, 1)">FROM</span> t_back_to_table</pre> </div> <p class="p"><span style="font-family: Arial"><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/16cc50af5722bfeb0abe599d92534000.jpg" alt="MySQL 回表"></span></p> <p class="p"><span style="font-family: 宋体">explain分析：此时的Extra字段为Null 表示没有使用索引覆盖。</span></p> <p class="p"><span style="font-family: Arial">使用索引覆盖优化，创建</span>drinker_id<span style="font-family: Arial">字段索引。</span></p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 0, 0, 1)">#创建 drinker_id 字段索引</span><span style="color: rgba(0, 0, 255, 1)">CREATE</span><span style="color: rgba(0, 0, 255, 1)">INDEX</span> idx_drinker_id<span style="color: rgba(0, 0, 255, 1)">on</span><span style="color: rgba(0, 0, 0, 1)"> t_back_to_table(drinker_id);  EXPLAIN</span><span style="color: rgba(0, 0, 255, 1)">SELECT</span><span style="color: rgba(255, 0, 255, 1)">COUNT</span>(drinker_id)<span style="color: rgba(0, 0, 255, 1)">FROM</span> t_back_to_table</pre> </div> <p class="p"><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/033e48943d520ec72885ffb9cb3d4ac0.jpg" alt="MySQL 回表"></p> <p class="p"><span style="font-family: Arial">explain分析：此时的</span>Extra字段为Using index表示使用了索引覆盖。</p> <h3 class="p"><span style="font-family: Arial; color: rgba(0, 0, 255, 1)">列查询回表优化</span></h3> <p class="p"><span style="font-family: Arial">前文在描述索引覆盖使用的例子就是列查询回表优化。</span></p> <p class="p"><span style="font-family: Arial">例如：</span></p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 0, 255, 1)">SELECT</span> id, drinker_id, drinker_feature<span style="color: rgba(0, 0, 255, 1)">FROM</span> t_back_to_table<span style="color: rgba(0, 0, 255, 1)">WHERE</span> drinker_id<span style="color: rgba(128, 128, 128, 1)">=</span><span style="color: rgba(128, 0, 0, 1); font-weight: bold">1</span>;</pre> </div> <p class="p"><span style="font-family: Arial">使用索引覆盖：建组合索引</span> idx_drinker_id_drinker_feature on t_back_to_table(`drinker_id`,`drinker_feature`)即可<span style="font-family: 宋体">。</span></p> <h3 class="p"><span style="font-family: Arial; color: rgba(0, 0, 255, 1)">分页查询优化</span></h3> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 0, 0, 1)">#首先删除 t_back_to_table 表中的索引 idx_drinker_id</span><span style="color: rgba(0, 0, 255, 1)">DROP</span><span style="color: rgba(0, 0, 255, 1)">INDEX</span> idx_drinker_id<span style="color: rgba(0, 0, 255, 1)">ON</span><span style="color: rgba(0, 0, 0, 1)"> t_back_to_table;  EXPLAIN</span><span style="color: rgba(0, 0, 255, 1)">SELECT</span> id, drinker_id, drinker_name, drinker_feature<span style="color: rgba(0, 0, 255, 1)">FROM</span> t_back_to_table<span style="color: rgba(0, 0, 255, 1)">ORDER</span><span style="color: rgba(0, 0, 255, 1)">BY</span> drinker_id limit<span style="color: rgba(128, 0, 0, 1); font-weight: bold">200</span>,<span style="color: rgba(128, 0, 0, 1); font-weight: bold">10</span>;</pre> </div> <p class="p"><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/53d69d32240ea0e24b64d3d4042dd8d6.jpg" alt="MySQL 回表"></p> <p class="p"><span style="font-family: Arial">explain分析：因为</span>drinker_id 字段不是索引，所以在分页查询需要进行回表查询，此时Extra为U sing filesort 文件排序，查询性能低下。</p> <p class="p"><span style="font-family: Arial">使用索引覆盖：建组合索引</span>idx_drinker_id_drinker_name_drinker_feature</p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 0, 0, 1)">#建立组合索引 idx_drinker_id_drinker_name_drinker_feature (`drinker_id`,`drinker_name`,`drinker_feature`)</span><span style="color: rgba(0, 0, 255, 1)">CREATE</span><span style="color: rgba(0, 0, 255, 1)">INDEX</span> idx_drinker_id_drinker_name_drinker_feature<span style="color: rgba(0, 0, 255, 1)">on</span> t_back_to_table(`drinker_id`,`drinker_name`,`drinker_feature`);</pre> </div> <p class="p"><span style="font-family: 宋体">再次根据 drinker_id 分页查询：</span></p> <div class="cnblogs_code"> <pre>EXPLAIN<span style="color: rgba(0, 0, 255, 1)">SELECT</span> id, drinker_id, drinker_name, drinker_feature<span style="color: rgba(0, 0, 255, 1)">FROM</span> t_back_to_table<span style="color: rgba(0, 0, 255, 1)">ORDER</span><span style="color: rgba(0, 0, 255, 1)">BY</span> drinker_id limit<span style="color: rgba(128, 0, 0, 1); font-weight: bold">200</span>,<span style="color: rgba(128, 0, 0, 1); font-weight: bold">10</span>;</pre> </div> <p class="p"><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/da3e86815e45d2b4b895fdd5730c860a.jpg" alt="MySQL 回表"></p> <p class="p"><span style="font-family: Arial">explain分析：此时的</span>Extra字段为Using index表示使用了索引覆盖。</p> <p class="p"> <p class="p"> <p class="p"> <p class="p"> <div style="text-align: center"><span style="color: rgba(0, 128, 128, 1)"><em><strong><span style="font-size: 18pt">五花马</span></strong></em></span></div> <div style="text-align: center"><span style="color: rgba(0, 128, 128, 1)"><em><strong><span style="font-size: 18pt">　　　　千金裘</span></strong></em></span></div> <div style="text-align: center"><span style="color: rgba(0, 128, 128, 1)"><em><strong><span style="font-size: 18pt">　　　　　　　　　　　　呼儿将出换美酒</span></strong></em></span></div> <div style="text-align: center"><span style="color: rgba(0, 128, 128, 1)"><em><strong><span style="font-size: 18pt">与尔同销万古愁</span></strong></em></span></div> <div><span style="color: rgba(0, 128, 128, 1)"><em><strong><span style="font-size: 18pt"></span></strong></em></span></div> <p class="p"> <p class="p"> <p class="p"> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-43488.htm">猫粮排名前十品牌进口有哪些（猫粮进口品牌十大排行）</a></p>
+                                        <p>下一个：<a href="/news/article-43973.htm">动物防疫中心站（动物防疫中心电话）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">热门文章</h3>
+                            </div>
+                            <div class="panel-body">
+                                <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                                    <li class="py-2"><a href="/free-nodes/2024-5-8-clash-v2ray-ss-ssr.htm" title="5月8日|最高速度22.5M/S，2024最新Shadowrocket/Clash/SSR/V2ray免费节点高速订阅链接">5月8日|最高速度22.5M/S，2024最新Shadowrocket/Clash/SSR/V2ray免费节点高速订阅链接</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+                <!-- Start of Footer Area -->
+        <footer id="footer" class="footer-area footer-bg">
+            <div class="footer-bottom-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="copy-right-text">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                                NodeClashV2ray节点订阅站 版权所有 Powered by WordPress
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--End of Footer Area -->
+    </div>
+    <!-- Body main wrapper end -->
+    <!-- Placed js at the end of the document so the pages load faster -->
+    <!-- jquery latest version -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/vendor/jquery-1.12.0.min.js"></script>
+    <!-- Bootstrap framework js -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/bootstrap.min.js"></script>
+    <!-- Owl Carousel framework js -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/owl.carousel.min.js"></script>
+    <!-- All js plugins included in this file. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/plugins.js"></script>
+    <!-- Slick min.js. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/slick.min.js"></script>
+    <!-- Waypoints.min.js. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/waypoints.min.js"></script>
+    <!-- Main js file that contents all jQuery plugins activation. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
