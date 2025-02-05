@@ -1,0 +1,218 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodeclashv2ray.github.io/news/article-49966.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>图解Redis之数据结构篇压缩列表</title>
+        <meta name="description" content="前言 &nbsp;&nbsp;&nbsp;&nbsp;同整数集合一样压缩列表也不是基础数据结构，而是 Redis 自己设计的一种数据存储结构。它有点儿类似数组，通过一片连续的内存空间，来存储数据。不过" />
+        <link rel="icon" href="/assets/website/img/nodeclashv2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NodeClashV2ray节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodeclashv2ray.github.io/news/article-49966.htm" />
+    <meta property="og:site_name" content="NodeClashV2ray节点订阅站" />
+    <meta property="og:title" content="图解Redis之数据结构篇压缩列表" />
+    <meta property="og:image" content="https://nodeclashv2ray.github.io/uploads/20240509/2ef35c74caa8c91411865e8e24f42f85.webp" />
+        <meta property="og:release_date" content="2025-02-02T09:27:44" />
+    <meta property="og:updated_time" content="2025-02-02T09:27:44" />
+        <meta property="og:description" content="前言 &nbsp;&nbsp;&nbsp;&nbsp;同整数集合一样压缩列表也不是基础数据结构，而是 Redis 自己设计的一种数据存储结构。它有点儿类似数组，通过一片连续的内存空间，来存储数据。不过" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- Place favicon.ico in the root directory -->
+    <!-- All css files are included here. -->
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="图解Redis之数据结构篇压缩列表">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Bootstrap fremwork main css -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/bootstrap.min.css">
+    <!-- This core.css file contents all plugings css file. -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/core.css">
+    <!-- Theme shortcodes/elements style -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/shortcode/shortcodes.css">
+    <!-- Theme main style -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/style.css">
+    <!-- Responsive css -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/responsive.css">
+    <!-- Style customizer (Remove these two lines please) -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/style-customizer.css">
+    <!-- User style -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/custom.css">
+    <!-- Modernizr JS -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/vendor/modernizr-2.8.3.min.js"></script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BKWDB6T1Z4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BKWDB6T1Z4');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Body main wrapper start -->
+    <div class="wrapper">
+        <!-- Start of Header Top Area -->
+        <header id="header-content">
+            <!-- Start of mainmenu area -->
+            <div id="sticky-header-with-topbar" class="header-bottom-area bg-white height-100  transparent-header hidden-xs">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-sm-12">
+                            <div class="logo f-left sm-center">
+                                <a href="/">
+                                                                <span>Node Clash V2ray</span>
+                                                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-7 col-sm-12">
+                            <div class="mainmenu-container">
+                                <ul class="main-menu">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                        <li><a href="#">关于</a></li>
+                                    <li><a href="#">联系</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile-menu-area start -->
+            <div class="mobile-menu-area hidden-md hidden-lg hidden-sm">
+                <div class="fluid-container mobile-menu-container">
+                    <div class="mobile-logo">
+                                                <a href="/">Node Clash V2ray</a>
+                                            </div>
+                    <div class="mobile-menu clearfix">
+                        <nav id="mobile_dropdown">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                                <li><a href="#">关于</a></li>
+                                <li><a href="#">联系</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile-menu-area end -->
+        </header>
+<!-- End of Header Top Area -->
+        <!-- Start Bradcaump area -->
+        <div class="tf-bradcaump-area sbg-3" data-black-overlay="8">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="bradcaump-wrap text-center">
+                            <h1 class="bradcaump-title">图解Redis之数据结构篇压缩列表</h1>
+                            <nav class="bradcaump-inner">
+                                <a class="breadcrumb-item" href="/">首页</a>
+                                <span class="brd-separetor">/</span>
+                                <a class="breadcrumb-item" href="/news/">新闻资讯</a>
+                                <span class="brd-separetor">/</span>
+                                <span class="breadcrumb-item active">正文</span>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Bradcaump area -->
+        <section id="tf-about-container" class="tf-about-area ptb-100 bg-gray xtb-60">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <div id="cnblogs_post_body" class="blogpost-body cnblogs-markdown"> <h3 id="前言">前言</h3> <p>&nbsp;&nbsp;&nbsp;&nbsp;同整数集合一样压缩列表也不是基础数据结构，而是 Redis 自己设计的一种数据存储结构。它有点儿类似数组，通过一片连续的内存空间，来存储数据。不过，它跟数组不同的一点是，它允许存储的数据大小不同。</p> <h3 id="一压缩列表">一、压缩列表</h3> <p>&nbsp;&nbsp;&nbsp;&nbsp;听到“压缩”两个字，直观的反应就是节省内存。之所以说这种存储结构节省内存,是相较于数组的存储思路而言的。我们知道,数组要求每个元素的大小相同,如果我们要存储不同长度的字符串,那我们就需要用最大长度的字符串大小作为元素的大小(假设是20个字节)。存储小于 20 个字节长度的字符串的时候，便会浪费部分存储空间。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220723/23493a58d7110fea466f6270982f1459.jpg" alt="图解Redis之数据结构篇压缩列表"></p> <p>&nbsp;&nbsp;&nbsp;&nbsp;数组的优势占用一片连续的空间可以很好的利用CPU缓存访问数据。如果我们想要保留这种优势，又想节省存储空间我们可以对数组进行压缩。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220723/529fd504d8db2b7fb1842bff4192df31.jpg" alt="图解Redis之数据结构篇压缩列表"></p> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;但是这样有一个问题，我们在遍历它的时候由于不知道每个元素的大小是多少，因此也就无法计算出下一个节点的具体位置。这个时候我们可以给每个节点增加一个lenght的属性。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220723/d7696476725adc9d150eb144dbc07767.jpg" alt="图解Redis之数据结构篇压缩列表"></p> <p>&nbsp;&nbsp;&nbsp;&nbsp;如此。我们在遍历节点的之后就知道每个节点的长度(占用内存的大小)，就可以很容易计算出下一个节点再内存中的位置。这种结构就像一个简单的压缩列表了。</p> <h3 id="二redis压缩列表">二、Redis压缩列表</h3> <p>&nbsp;&nbsp;&nbsp;&nbsp;压缩列表(zip1ist)是列表和哈希的底层实现之一。</p> <p>&nbsp;&nbsp;&nbsp;&nbsp;当一个列表只包含少量列表项,并且每个列表项要么就是小整数值,要么就是长度比较短的字符串,那么Redis就会使用压缩列表来做列表的底层实现。</p> <p>&nbsp;&nbsp;&nbsp;&nbsp;当一个哈希只包含少量键值对,比且每个键值对的键和值要么就是小整数值,要么就是长度比较短的字符串,那么Redis就会使用压缩列表来做哈希的底层实现。</p> <h4 id="redis压缩列表的构成">2.1 Redis压缩列表的构成</h4> <p>&nbsp;&nbsp;&nbsp;&nbsp;压缩列表是Redis为了节约内存而开发的,是由一系列特殊编码的连续内存块组成的顺序型(sequential)数据结枃。一个压缩列表可以包含任意多个节点(entry),每个节点可以保存一个字节数组或者一个整数值，如下图。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220723/2e3a44e6d3310a9096106dc3e080bd14.jpg" alt="图解Redis之数据结构篇压缩列表"></p> <p>示例：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220723/7b1be06f2811457a1025b17bfaa19e1b.jpg" alt="图解Redis之数据结构篇压缩列表"></p> <p>&nbsp;&nbsp;&nbsp;&nbsp;如上图，展示了一个总长为80字节，包含3个节点的压缩列表。如果我们有一个指向压缩列表起始地址的指针p，那么表为节点的地址就是P+60。</p> <h4 id="redis压缩列表节点的构成">2.2 Redis压缩列表节点的构成</h4> <p>&nbsp;&nbsp;&nbsp;&nbsp;每个压缩列表节点可以保存一个字节数组或者一个整数值。其中，字节数组可以是以下三种长度中的一种。</p> <ul> <li>长度小于等于63(2^6-1)字节的字节数组;</li> <li>长度小于等于16383(2^14-1)字节的字节数组</li> <li>长度小于等于4294967295(2^32-1)字节的字节数组</li> </ul> <p>整数值可以是以下6种长度中的一种</p> <ul> <li>4位长,介于0至12之间的无符号整数</li> <li>1字节长的有符号整数</li> <li>3字节长的有符号整数</li> <li>int16_t类型整数</li> <li>int32_t类型整数</li> <li>int64_t类型整数</li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220723/e527f4895dc0f511d1a94857a86c5cc2.jpg" alt="图解Redis之数据结构篇压缩列表"></p> <p>&nbsp;&nbsp;&nbsp;&nbsp;节点的 previous_entry_length属性以字节为单位,记录了压缩列表中前一个节点的长度。 previous_entry_length属性的长度可以是1字节或者5字节。</p> <ul> <li>如果前一节点的长度小于254字节,那么 previous_entry_length属性的长度为1字节，前一节点的长度就保存在这一个字节里面。</li> <li>如果前一节点的长度大于等于254字节,那么 previous_entry_length属性的长度为5字节:其中属性的第一字节会被设置为0xFE(十进制值254),而之后的四个字节则用于保存前一节点的长度.</li> </ul> <p>&nbsp;&nbsp;&nbsp;&nbsp;节点的encoding属性记录了节点的content属性所保存数据的类型以及长度。</p> <ul> <li>一字节、两字节或者五字节长,值的最高位为00、01或者10的是字节数组编码这种编码表示节点的 content属性保存着字节数组,数组的长度由编码除去最高两位之后的其他位记录。</li> <li>一字节长,值的最高位以11开头的是整数编码:这种编码表示节点的content属性保存着整数值,整数值的类型和长度由编码除去最高两位之后的其他位记录。</li> </ul> <p>&nbsp;&nbsp;&nbsp;&nbsp;节点的content属性负责保存节点的值,节点值可以是一个字节数组或者整数,值的类型和长度由节点的encoding属性决定。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220723/ac08ac4a5647c2f6cde8dd8f49bb46d3.jpg" alt="图解Redis之数据结构篇压缩列表"></p> <ul> <li>编码的最高两位00表示节点保存的是一个字节数组。</li> <li>编码的后六位001011记录了字节数组的长度11。</li> <li>content属性保存着节点的值"hello world"。</li> <li>编码11000000表示节点保存的是一个int16_t类型的整数值;</li> <li>content属性保存着节点的值10086</li> </ul> <h4 id="常用操作的时间复杂度">2.3 常用操作的时间复杂度</h4> <table> <thead> <tr class="header"> <th>操作</th> <th>时间复杂度</th> </tr> </thead> <tbody> <tr class="odd"> <td>创建一个新的压缩列表</td> <td>O(1)</td> </tr> <tr class="even"> <td>创建一个包含给定值的新节点,并将这个新节点添加到压缩列表的表头或者表尾</td> <td>平均O(N)，最坏O(N^2)(可能发生连锁更新)</td> </tr> <tr class="odd"> <td>将包含给定值的新节点插人到给定节点之后</td> <td>平均O(N)，最坏O(N^2)(可能发生连锁更新)</td> </tr> <tr class="even"> <td>返回压缩列表给定索引上的节点</td> <td>O(N)</td> </tr> <tr class="odd"> <td>在压缩列表中査找并返回包含了给定值的节点</td> <td>因为节点的值可能是一个字节数组,所以检查节点值和给定值是否相同的复杂度为O(N),而查找整个列表的复杂度则为(N^2)</td> </tr> <tr class="even"> <td>返回给定节点的下一个节点</td> <td>O(1)</td> </tr> <tr class="odd"> <td>返回给定节点的前一个节点</td> <td>O(1)</td> </tr> <tr class="even"> <td>获取给定节点所保存的值</td> <td>O(1)</td> </tr> <tr class="odd"> <td>从压缩列表中删除给定的节点</td> <td>平均O(N)，最坏O(N^2)(可能发生连锁更新)</td> </tr> <tr class="even"> <td>删除压缩列表在给定索引上的连续多个</td> <td>平均O(N)，最坏O(N^2)(可能发生连锁更新)</td> </tr> <tr class="odd"> <td>返回压缩列表目前占用的内存字节数</td> <td>O(1)</td> </tr> <tr class="even"> <td>返回压缩列表目前包含的节点数量</td> <td>点数量小于65535时为O(1),大于65535时为O(N)</td> </tr> </tbody> </table> <h3 id="本文重点">本文重点</h3> <ul> <li> <p>压缩列表是Redis为节约内存自己设计的一种顺序型数据结构。</p> </li> <li>压缩列表被用作列表键和哈希键的底层实现之一。</li> <li>压缩列表可以包含多个节点,每个节点可以保存一个字节数组或者整数值。</li> <li> <p>添加新节点到压缩列表,或者从压缩列表中删除节点,可能会引发连锁更新操作,但这种操作出现的几率并不高。</p> </li> </ul> <h3 id="参考">参考</h3> <p>《Redis设计与实现》</p> <p>《Redis开发与运维》</p> <p>《Redis官方文档》</p> <h3 id="end-----">-----END-----</h3> </div> <p>转载于:https://www.cnblogs.com/hunternet/p/11306690.html</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-49449.htm">动物疫苗在哪打（动物疫苗一般在哪里打）</a></p>
+                                        <p>下一个：<a href="/news/article-49967.htm">性能优化之html、css、js三者的加载顺序</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">热门文章</h3>
+                            </div>
+                            <div class="panel-body">
+                                <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                                    <li class="py-2"><a href="/free-nodes/2024-5-8-clash-v2ray-ss-ssr.htm" title="5月8日|最高速度22.5M/S，2024最新Shadowrocket/Clash/SSR/V2ray免费节点高速订阅链接">5月8日|最高速度22.5M/S，2024最新Shadowrocket/Clash/SSR/V2ray免费节点高速订阅链接</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+                <!-- Start of Footer Area -->
+        <footer id="footer" class="footer-area footer-bg">
+            <div class="footer-bottom-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="copy-right-text">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                                NodeClashV2ray节点订阅站 版权所有 Powered by WordPress
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--End of Footer Area -->
+    </div>
+    <!-- Body main wrapper end -->
+    <!-- Placed js at the end of the document so the pages load faster -->
+    <!-- jquery latest version -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/vendor/jquery-1.12.0.min.js"></script>
+    <!-- Bootstrap framework js -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/bootstrap.min.js"></script>
+    <!-- Owl Carousel framework js -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/owl.carousel.min.js"></script>
+    <!-- All js plugins included in this file. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/plugins.js"></script>
+    <!-- Slick min.js. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/slick.min.js"></script>
+    <!-- Waypoints.min.js. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/waypoints.min.js"></script>
+    <!-- Main js file that contents all jQuery plugins activation. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
