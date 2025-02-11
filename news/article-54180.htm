@@ -1,0 +1,216 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodeclashv2ray.github.io/news/article-54180.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Spring Boot 2.4 新特性之一键构建Docker镜像</title>
+        <meta name="description" content="背景 在我们开发过程中为了支持 Docker 容器化，一般使用 Maven 编译打包然后生成镜像，能够大大提供上线效率，同时能够快速动态扩容，快速回滚，着实很方便。docker-maven-plugi" />
+        <link rel="icon" href="/assets/website/img/nodeclashv2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NodeClashV2ray节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodeclashv2ray.github.io/news/article-54180.htm" />
+    <meta property="og:site_name" content="NodeClashV2ray节点订阅站" />
+    <meta property="og:title" content="Spring Boot 2.4 新特性之一键构建Docker镜像" />
+    <meta property="og:image" content="https://nodeclashv2ray.github.io/uploads/20240509/a130b8e0856f6526f95a2052a607d5b2.webp" />
+        <meta property="og:release_date" content="2025-02-10T07:38:02" />
+    <meta property="og:updated_time" content="2025-02-10T07:38:02" />
+        <meta property="og:description" content="背景 在我们开发过程中为了支持 Docker 容器化，一般使用 Maven 编译打包然后生成镜像，能够大大提供上线效率，同时能够快速动态扩容，快速回滚，着实很方便。docker-maven-plugi" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- Place favicon.ico in the root directory -->
+    <!-- All css files are included here. -->
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Spring Boot 2.4 新特性之一键构建Docker镜像">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Bootstrap fremwork main css -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/bootstrap.min.css">
+    <!-- This core.css file contents all plugings css file. -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/core.css">
+    <!-- Theme shortcodes/elements style -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/shortcode/shortcodes.css">
+    <!-- Theme main style -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/style.css">
+    <!-- Responsive css -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/responsive.css">
+    <!-- Style customizer (Remove these two lines please) -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/style-customizer.css">
+    <!-- User style -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/custom.css">
+    <!-- Modernizr JS -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/vendor/modernizr-2.8.3.min.js"></script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BKWDB6T1Z4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BKWDB6T1Z4');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Body main wrapper start -->
+    <div class="wrapper">
+        <!-- Start of Header Top Area -->
+        <header id="header-content">
+            <!-- Start of mainmenu area -->
+            <div id="sticky-header-with-topbar" class="header-bottom-area bg-white height-100  transparent-header hidden-xs">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-sm-12">
+                            <div class="logo f-left sm-center">
+                                <a href="/">
+                                                                <span>Node Clash V2ray</span>
+                                                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-7 col-sm-12">
+                            <div class="mainmenu-container">
+                                <ul class="main-menu">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                    </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile-menu-area start -->
+            <div class="mobile-menu-area hidden-md hidden-lg hidden-sm">
+                <div class="fluid-container mobile-menu-container">
+                    <div class="mobile-logo">
+                                                <a href="/">Node Clash V2ray</a>
+                                            </div>
+                    <div class="mobile-menu clearfix">
+                        <nav id="mobile_dropdown">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li><a href="/client.htm">客户端</a></li>
+                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile-menu-area end -->
+        </header>
+<!-- End of Header Top Area -->
+        <!-- Start Bradcaump area -->
+        <div class="tf-bradcaump-area sbg-3" data-black-overlay="8">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="bradcaump-wrap text-center">
+                            <h1 class="bradcaump-title">Spring Boot 2.4 新特性之一键构建Docker镜像</h1>
+                            <nav class="bradcaump-inner">
+                                <a class="breadcrumb-item" href="/">首页</a>
+                                <span class="brd-separetor">/</span>
+                                <a class="breadcrumb-item" href="/news/">新闻资讯</a>
+                                <span class="brd-separetor">/</span>
+                                <span class="breadcrumb-item active">正文</span>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Bradcaump area -->
+        <section id="tf-about-container" class="tf-about-area ptb-100 bg-gray xtb-60">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <p><strong>背景</strong></p> <p>在我们开发过程中为了支持 Docker 容器化，一般使用 Maven 编译打包然后生成镜像，能够大大提供上线效率，同时能够快速动态扩容，快速回滚，着实很方便。docker-maven-plugin 插件就是为了帮助我们在 Maven 工程中，通过简单的配置，自动生成镜像并推送到仓库中。</p> <p><strong>spotify 、fabric8</strong></p> <p>这里主要使用的主要是如下两种插件 spotify 、fabric8 , … -配置通过 xml 定义出 Dockerfile 或者挂载外部 Dockerfile 通过调用 Docker remote api 构建出镜像</p> <p>pig 微服务平台所有的容器化都是基于此构建</p> <pre><code class="prism language-java"><span class="token generics function"><span class="token punctuation">&lt;</span>plugin<span class="token punctuation">&gt;</span></span><span class="token generics function"><span class="token punctuation">&lt;</span>groupId<span class="token punctuation">&gt;</span></span>com<span class="token punctuation">.</span>spotify<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">&gt;</span><span class="token generics function"><span class="token punctuation">&lt;</span>artifactId<span class="token punctuation">&gt;</span></span>docker<span class="token operator">-</span>maven<span class="token operator">-</span>plugin<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">-</span>配置通过 xml 定义出 Dockerfile 或者挂载外部 Dockerfile<span class="token operator">&lt;</span><span class="token operator">/</span>plugin<span class="token operator">&gt;</span><span class="token generics function"><span class="token punctuation">&lt;</span>plugin<span class="token punctuation">&gt;</span></span><span class="token generics function"><span class="token punctuation">&lt;</span>groupId<span class="token punctuation">&gt;</span></span>io<span class="token punctuation">.</span>fabric8<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">&gt;</span><span class="token generics function"><span class="token punctuation">&lt;</span>artifactId<span class="token punctuation">&gt;</span></span>docker<span class="token operator">-</span>maven<span class="token operator">-</span>plugin<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">-</span>配置通过 xml 定义出 Dockerfile 或者挂载外部 Dockerfile<span class="token operator">&lt;</span><span class="token operator">/</span>plugin<span class="token operator">&gt;</span></code></pre> <p>执行相应的插件周期即可 mvn docker:build &amp;&amp; mvn docker:push</p> <p><strong>jib</strong></p> <p>项目每次发布实际上变更的代码量不大，尤其依赖的 jar 变动的可能性较小，如果使用前两种插件构建镜像，会导致每次都全量构建，会导致存储和带宽资源浪费。</p> <p>jib 是 Google 于 18 年 7 月发布的一个针对 Java 应用的构建镜像的工具(支持 Maven 和 Gradle) ，好处是能够复用构建缓存，能够加快构建，减小传输体积</p> <pre><code class="prism language-java"><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>配置通过 xml 定义出 Dockerfile ，本质上和外挂 Dockerfile 并无区别<span class="token operator">--</span><span class="token operator">&gt;</span><span class="token generics function"><span class="token punctuation">&lt;</span>plugin<span class="token punctuation">&gt;</span></span><span class="token generics function"><span class="token punctuation">&lt;</span>groupId<span class="token punctuation">&gt;</span></span>com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>cloud<span class="token punctuation">.</span>tools<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">&gt;</span><span class="token generics function"><span class="token punctuation">&lt;</span>artifactId<span class="token punctuation">&gt;</span></span>jib<span class="token operator">-</span>maven<span class="token operator">-</span>plugin<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>plugin<span class="token operator">&gt;</span>  mvn jib<span class="token operator">:</span>dockerBuild</code></pre> <p><strong>以上三种方案的问题</strong></p> <p>在实际开发过程中，大部分的 spring boot 项目构建 Dockerfile 都是相同，不需要通过的 XML 或者通过外挂 Dockerfile 来重新定义</p> <p>以上插件需要对 Dockerfile 的定义知识有相对的了 对开发并不友好</p> <p>没充分理由 Spring Boot 2.3 以后的 Jar 分层技术。</p> <p>解决方案</p> <p>Spring Boot 2.4 推出了自己的 docker 构建工具 整合在原有的 spring-boot-maven-plugin 中，只需要配置对应目标仓库和主机信息即可完成镜像构建。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220602/2349456f498e78b9a5b7253fd59ac514.jpg" alt="Spring Boot 2.4 新特性之一键构建Docker镜像"><br /> 如下配置即可完成上图中 通过开发机器在不安装 Docker 的同时，通过 192.168.0.10 的 Docker Remote API 完成镜像构建并发布到 192.168.0.20 的镜像仓库</p> <pre><code class="prism language-java"><span class="token generics function"><span class="token punctuation">&lt;</span>plugin<span class="token punctuation">&gt;</span></span><span class="token generics function"><span class="token punctuation">&lt;</span>groupId<span class="token punctuation">&gt;</span></span>org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">&gt;</span><span class="token generics function"><span class="token punctuation">&lt;</span>artifactId<span class="token punctuation">&gt;</span></span>spring<span class="token operator">-</span>boot<span class="token operator">-</span>maven<span class="token operator">-</span>plugin<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">&gt;</span><span class="token generics function"><span class="token punctuation">&lt;</span>configuration<span class="token punctuation">&gt;</span></span><span class="token generics function"><span class="token punctuation">&lt;</span>image<span class="token punctuation">&gt;</span></span><span class="token generics function"><span class="token punctuation">&lt;</span>name<span class="token punctuation">&gt;</span></span><span class="token number">192.168</span><span class="token number">.0</span><span class="token number">.20</span><span class="token operator">/</span>pig4cloud<span class="token operator">/</span>$<span class="token punctuation">{<!-- --></span>project<span class="token punctuation">.</span>artifactId<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>name<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 执行完build 自动push<span class="token operator">--</span><span class="token operator">&gt;</span><span class="token generics function"><span class="token punctuation">&lt;</span>publish<span class="token punctuation">&gt;</span></span><span class="token boolean">true</span><span class="token operator">&lt;</span><span class="token operator">/</span>publish<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>image<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>配置构建宿主机信息，本机不用配置<span class="token operator">--</span><span class="token operator">&gt;</span><span class="token generics function"><span class="token punctuation">&lt;</span>docker<span class="token punctuation">&gt;</span></span><span class="token generics function"><span class="token punctuation">&lt;</span>host<span class="token punctuation">&gt;</span></span>http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span><span class="token number">192.168</span><span class="token number">.0</span><span class="token number">.10</span><span class="token operator">:</span><span class="token number">2375</span><span class="token operator">&lt;</span><span class="token operator">/</span>host<span class="token operator">&gt;</span><span class="token generics function"><span class="token punctuation">&lt;</span>tlsVerify<span class="token punctuation">&gt;</span></span><span class="token boolean">false</span><span class="token operator">&lt;</span><span class="token operator">/</span>tlsVerify<span class="token operator">&gt;</span><span class="token generics function"><span class="token punctuation">&lt;</span>publishRegistry<span class="token punctuation">&gt;</span></span><span class="token generics function"><span class="token punctuation">&lt;</span>username<span class="token punctuation">&gt;</span></span>username<span class="token operator">&lt;</span><span class="token operator">/</span>username<span class="token operator">&gt;</span><span class="token generics function"><span class="token punctuation">&lt;</span>password<span class="token punctuation">&gt;</span></span>password<span class="token operator">&lt;</span><span class="token operator">/</span>password<span class="token operator">&gt;</span><span class="token generics function"><span class="token punctuation">&lt;</span>url<span class="token punctuation">&gt;</span></span><span class="token number">192.168</span><span class="token number">.0</span><span class="token number">.20</span><span class="token operator">&lt;</span><span class="token operator">/</span>url<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>publishRegistry<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>docker<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>configuration<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>plugin<span class="token operator">&gt;</span></code></pre> <p>执行以下命令即可完成 镜像的构建和自动发布</p> <pre><code class="prism language-java">mvn spring<span class="token operator">-</span>boot<span class="token operator">:</span>build<span class="token operator">-</span>image</code></pre> <p>其他说明</p> <p>docker host 配置不生效</p> <p>如下图 ① 处配置 节点，但是 ② 报错提示 host 不一致<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220602/86958ca03acdea08e1b07b83d0619c97.jpg" alt="Spring Boot 2.4 新特性之一键构建Docker镜像"><br /> 检查本地是否配置 $DOCKER_HOST 环境变量，经过阅读源码后发现优先读取此变量。</p> <pre><code class="prism language-java">⋊<span class="token operator">&gt;</span><span class="token operator">~</span> echo $DOCKER_HOST<span class="token number">11</span><span class="token operator">:</span><span class="token number">07</span><span class="token operator">:</span><span class="token number">51</span> tcp<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span><span class="token number">172.17</span><span class="token number">.0</span><span class="token number">.111</span><span class="token operator">:</span><span class="token number">2375</span></code></pre> <p><strong>网络支持</strong></p> <p>截取部分构建过程中的日志，如下需要从 github 下载相关的依赖 约 100M ，这个过程大概率会失败。建议通过配置代理或者使用国外 ECS 来解决。</p> <pre><code class="prism language-java"><span class="token operator">:</span><span class="token operator">:</span> Spring Boot<span class="token operator">:</span><span class="token operator">:</span><span class="token punctuation">(</span>v2<span class="token punctuation">.</span><span class="token number">4.0</span><span class="token punctuation">)</span><span class="token punctuation">[</span>INFO<span class="token punctuation">]</span><span class="token operator">&gt;</span> Running creator<span class="token punctuation">[</span>INFO<span class="token punctuation">]</span><span class="token punctuation">[</span>creator<span class="token punctuation">]</span>         Downloading from https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>github<span class="token punctuation">.</span>com<span class="token operator">/</span>bell<span class="token operator">-</span>sw<span class="token operator">/</span>Liberica<span class="token operator">/</span>releases<span class="token operator">/</span>download<span class="token operator">/</span><span class="token number">8</span>u275<span class="token operator">+</span><span class="token number">1</span><span class="token operator">/</span>bellsoft<span class="token operator">-</span>jre8u275<span class="token operator">+</span><span class="token number">1</span><span class="token operator">-</span>linux<span class="token operator">-</span>amd64<span class="token punctuation">.</span>tar<span class="token punctuation">.</span>gz<span class="token punctuation">[</span>INFO<span class="token punctuation">]</span><span class="token punctuation">[</span>creator<span class="token punctuation">]</span>       JVMKill Agent<span class="token number">1.16</span><span class="token number">.0</span><span class="token operator">:</span> Contributing to layer<span class="token punctuation">[</span>INFO<span class="token punctuation">]</span><span class="token punctuation">[</span>creator<span class="token punctuation">]</span>         Downloading from https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>github<span class="token punctuation">.</span>com<span class="token operator">/</span>cloudfoundry<span class="token operator">/</span>jvmkill<span class="token operator">/</span>releases<span class="token operator">/</span>download<span class="token operator">/</span>v1<span class="token punctuation">.</span><span class="token number">16.0</span><span class="token punctuation">.</span>RELEASE<span class="token operator">/</span>jvmkill<span class="token operator">-</span><span class="token number">1.16</span><span class="token number">.0</span><span class="token operator">-</span>RELEASE<span class="token punctuation">.</span>so<span class="token punctuation">[</span>INFO<span class="token punctuation">]</span><span class="token punctuation">[</span>creator<span class="token punctuation">]</span>         Downloading from https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>repo<span class="token punctuation">.</span>spring<span class="token punctuation">.</span>io<span class="token operator">/</span>release<span class="token operator">/</span>org<span class="token operator">/</span>springframework<span class="token operator">/</span>cloud<span class="token operator">/</span>spring<span class="token operator">-</span>cloud<span class="token operator">-</span>bindings<span class="token operator">/</span><span class="token number">1.6</span><span class="token number">.0</span><span class="token operator">/</span>spring<span class="token operator">-</span>cloud<span class="token operator">-</span>bindings<span class="token operator">-</span><span class="token number">1.6</span><span class="token number">.0</span><span class="token punctuation">.</span>jar<span class="token punctuation">[</span>INFO<span class="token punctuation">]</span><span class="token punctuation">[</span>creator<span class="token punctuation">]</span>         Verifying checksum<span class="token punctuation">[</span>INFO<span class="token punctuation">]</span><span class="token punctuation">[</span>creator<span class="token punctuation">]</span><span class="token number">192.168</span><span class="token number">.0</span><span class="token number">.20</span><span class="token operator">/</span>pig4cloud<span class="token operator">/</span>demo<span class="token operator">:</span>latest<span class="token punctuation">[</span>INFO<span class="token punctuation">]</span><span class="token punctuation">[</span>INFO<span class="token punctuation">]</span> Successfully built image<span class="token string">'192.168.0.20/pig4cloud/demo:latest'</span><span class="token punctuation">[</span>INFO<span class="token punctuation">]</span><span class="token operator">&gt;</span> Pushing image<span class="token string">'192.168.0.20/pig4cloud/demo:latest'</span><span class="token number">100</span><span class="token operator">%</span><span class="token punctuation">[</span>INFO<span class="token punctuation">]</span><span class="token operator">&gt;</span> Pushed image<span class="token string">'192.168.0.20/pig4cloud/demo:latest'</span><span class="token punctuation">[</span>INFO<span class="token punctuation">]</span> BUILD SUCCESS</code></pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-53651.htm">卖宠物粮食的公司叫什么名字呢 卖宠物粮食的公司叫什么名字呢好听</a></p>
+                                        <p>下一个：<a href="/news/article-54181.htm">宠物店一年的利润多少合适（一般宠物店一年的利润多少）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">热门文章</h3>
+                            </div>
+                            <div class="panel-body">
+                                <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                                    <li class="py-2"><a href="/free-nodes/2024-5-8-clash-v2ray-ss-ssr.htm" title="5月8日|最高速度22.5M/S，2024最新Shadowrocket/Clash/SSR/V2ray免费节点高速订阅链接">5月8日|最高速度22.5M/S，2024最新Shadowrocket/Clash/SSR/V2ray免费节点高速订阅链接</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+                <!-- Start of Footer Area -->
+        <footer id="footer" class="footer-area footer-bg">
+            <div class="footer-bottom-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="copy-right-text">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                                NodeClashV2ray节点订阅站 版权所有 Powered by WordPress
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--End of Footer Area -->
+    </div>
+    <!-- Body main wrapper end -->
+    <!-- Placed js at the end of the document so the pages load faster -->
+    <!-- jquery latest version -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/vendor/jquery-1.12.0.min.js"></script>
+    <!-- Bootstrap framework js -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/bootstrap.min.js"></script>
+    <!-- Owl Carousel framework js -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/owl.carousel.min.js"></script>
+    <!-- All js plugins included in this file. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/plugins.js"></script>
+    <!-- Slick min.js. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/slick.min.js"></script>
+    <!-- Waypoints.min.js. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/waypoints.min.js"></script>
+    <!-- Main js file that contents all jQuery plugins activation. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
