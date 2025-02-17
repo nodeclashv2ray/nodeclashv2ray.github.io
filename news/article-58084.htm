@@ -1,0 +1,215 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodeclashv2ray.github.io/news/article-58084.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>python 调用 C/C++ 详解</title>
+        <meta name="description" content="关于gcc以及python的版本配置建议大家去看我之前的一篇文章，里面比较详细地点明了关于32位和64的一些坑。 接下来将简单介绍python如何调用C和C++。包括调用整型，数组等情况。   C函数" />
+        <link rel="icon" href="/assets/website/img/nodeclashv2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NodeClashV2ray节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodeclashv2ray.github.io/news/article-58084.htm" />
+    <meta property="og:site_name" content="NodeClashV2ray节点订阅站" />
+    <meta property="og:title" content="python 调用 C/C++ 详解" />
+    <meta property="og:image" content="https://nodeclashv2ray.github.io/uploads/20240509/e593eb6fd5365c2c99de8d7f1709f6ec.webp" />
+        <meta property="og:release_date" content="2025-02-17T09:57:15" />
+    <meta property="og:updated_time" content="2025-02-17T09:57:15" />
+        <meta property="og:description" content="关于gcc以及python的版本配置建议大家去看我之前的一篇文章，里面比较详细地点明了关于32位和64的一些坑。 接下来将简单介绍python如何调用C和C++。包括调用整型，数组等情况。   C函数" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- Place favicon.ico in the root directory -->
+    <!-- All css files are included here. -->
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="python 调用 C/C++ 详解">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Bootstrap fremwork main css -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/bootstrap.min.css">
+    <!-- This core.css file contents all plugings css file. -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/core.css">
+    <!-- Theme shortcodes/elements style -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/shortcode/shortcodes.css">
+    <!-- Theme main style -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/style.css">
+    <!-- Responsive css -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/responsive.css">
+    <!-- Style customizer (Remove these two lines please) -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/style-customizer.css">
+    <!-- User style -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/custom.css">
+    <!-- Modernizr JS -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/vendor/modernizr-2.8.3.min.js"></script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BKWDB6T1Z4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BKWDB6T1Z4');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Body main wrapper start -->
+    <div class="wrapper">
+        <!-- Start of Header Top Area -->
+        <header id="header-content">
+            <!-- Start of mainmenu area -->
+            <div id="sticky-header-with-topbar" class="header-bottom-area bg-white height-100  transparent-header hidden-xs">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-sm-12">
+                            <div class="logo f-left sm-center">
+                                <a href="/">
+                                                                <span>Node Clash V2ray</span>
+                                                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-7 col-sm-12">
+                            <div class="mainmenu-container">
+                                <ul class="main-menu">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                    </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile-menu-area start -->
+            <div class="mobile-menu-area hidden-md hidden-lg hidden-sm">
+                <div class="fluid-container mobile-menu-container">
+                    <div class="mobile-logo">
+                                                <a href="/">Node Clash V2ray</a>
+                                            </div>
+                    <div class="mobile-menu clearfix">
+                        <nav id="mobile_dropdown">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li><a href="/client.htm">客户端</a></li>
+                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile-menu-area end -->
+        </header>
+<!-- End of Header Top Area -->
+        <!-- Start Bradcaump area -->
+        <div class="tf-bradcaump-area sbg-3" data-black-overlay="8">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="bradcaump-wrap text-center">
+                            <h1 class="bradcaump-title">python 调用 C/C++ 详解</h1>
+                            <nav class="bradcaump-inner">
+                                <a class="breadcrumb-item" href="/">首页</a>
+                                <span class="brd-separetor">/</span>
+                                <a class="breadcrumb-item" href="/news/">新闻资讯</a>
+                                <span class="brd-separetor">/</span>
+                                <span class="breadcrumb-item active">正文</span>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Bradcaump area -->
+        <section id="tf-about-container" class="tf-about-area ptb-100 bg-gray xtb-60">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-dracula"> <p>关于gcc以及python的版本配置建议大家去看我之前的一篇文章，里面比较详细地点明了关于32位和64的一些坑。</p> <p>接下来将简单介绍python如何调用C和C++。包括调用整型，数组等情况。</p> </h1> <h4> <a id="Cint_5" rel="nofollow"></a>C函数返回整型int</h4> <p>c代码 test.c</p> <pre><code class="prism language-C">#include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; int func(int a, int b) { 	int ans = a + b; 	printf("You input %d and %d\n", a, b); 	printf("The result is %d\n", ans); 	return ans; } </code></pre> <p>编译成so包</p> <pre><code>gcc -o testpycll_64.so -shared -fPIC test.c </code></pre> <p>其中参数‘-fPIC’：当产生共享库的时候，应该创建位置无关的代码，这会让共享库使用任意的地址而不是固定的地址，要实现这个功能，需要使用-fPIC参数。</p> <p>python代码</p> <pre><code class="prism language-python"><span class="token keyword">import</span> ctypes <span class="token keyword">import</span> platform  ll <span class="token operator">=</span> ctypes<span class="token punctuation">.</span>cdll<span class="token punctuation">.</span>LoadLibrary lib <span class="token operator">=</span> ll<span class="token punctuation">(</span><span class="token string">"./testpycll_64.so"</span><span class="token punctuation">)</span> lib<span class="token punctuation">.</span>func<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token comment"># platform.architecture()</span> </code></pre> <p>运行之后的结果：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221207/0cfeeadd082eb1825f3f031b981cc8c4.jpg" alt="python 调用 C/C++ 详解"><br /> 这里有一个问题，我是在jupyter notebook下的，只显示了C函数的返回值，对于过程打印语句并没有输出。但在命令行下是可以输出的，如下所示：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221207/c2574d6a882395ac050d65aa994bd4f1.jpg" alt="python 调用 C/C++ 详解"><br /><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://mypy.py"  rel="nofollow">mypy.py</a> 是python文件名。</p> <h4> <a id="C_int_41" rel="nofollow"></a>C函数返回整型数组 int[]</h4> <p>C代码：</p> <pre><code class="prism language-C">#include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; int* func(int a, int b) { 	int* res = (int *)malloc(3*sizeof(int)); 	int ans = a + b; 	printf("You input %d and %d\n", a, b); 	printf("The result is %d\n", ans);  	res[0] = a; 	res[1] = b; 	res[2] = ans; 	return res;  	//return ans; } </code></pre> <p><strong>python 代码：需要用到numpy包</strong><br /> （这里原先一直返回失败，也是试了非常多的方法才解决）</p> <pre><code class="prism language-python"><span class="token keyword">import</span> ctypes <span class="token keyword">import</span> platform <span class="token keyword">from</span> numpy<span class="token punctuation">.</span>ctypeslib <span class="token keyword">import</span> ndpointer  ll <span class="token operator">=</span> ctypes<span class="token punctuation">.</span>cdll<span class="token punctuation">.</span>LoadLibrary lib <span class="token operator">=</span> ll<span class="token punctuation">(</span><span class="token string">"./testpycll_64.so"</span><span class="token punctuation">)</span>  lib<span class="token punctuation">.</span>func<span class="token punctuation">.</span>restype <span class="token operator">=</span> ndpointer<span class="token punctuation">(</span>dtype<span class="token operator">=</span>ctypes<span class="token punctuation">.</span>c_int<span class="token punctuation">,</span> shape<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span> res <span class="token operator">=</span> lib<span class="token punctuation">.</span>func<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token keyword">print</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> </code></pre> <p>运行之后的结果：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221207/d7d042cfa7aab090843504e5c5eef017.jpg" alt="python 调用 C/C++ 详解"></p> <h4> <a id="C_int_81" rel="nofollow"></a>C函数传入整型数组 int[]</h4> <p>C代码</p> <pre><code class="prism language-C">#include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; int func(int a[], int n) { 	int sum = 0; 	for(int i=0; i&lt;n; i++) 		sum += a[i]; 	 	return sum; } </code></pre> <p>python代码：<br /> 有多种写法，这里给出几种：<br /> （1）</p> <pre><code class="prism language-python">ll <span class="token operator">=</span> ctypes<span class="token punctuation">.</span>cdll<span class="token punctuation">.</span>LoadLibrary lib <span class="token operator">=</span> ll<span class="token punctuation">(</span><span class="token string">"./testpycll_64.so"</span><span class="token punctuation">)</span>  INPUT <span class="token operator">=</span> ctypes<span class="token punctuation">.</span>c_int <span class="token operator">*</span> <span class="token number">4</span><span class="token punctuation">;</span> <span class="token comment"># 实例化一个长度为2的整型数组</span> inputdata <span class="token operator">=</span> INPUT<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> inputdata<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> inputdata<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> inputdata<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span> inputdata<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>  lib<span class="token punctuation">.</span>func<span class="token punctuation">.</span>restype <span class="token operator">=</span> ctypes<span class="token punctuation">.</span>c_int<span class="token punctuation">;</span> res <span class="token operator">=</span> lib<span class="token punctuation">.</span>func<span class="token punctuation">(</span>inputdata<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment"># res = lib.func2(1,2);</span> <span class="token keyword">print</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> </code></pre> <p>（2）</p> <pre><code class="prism language-python">ll <span class="token operator">=</span> ctypes<span class="token punctuation">.</span>cdll<span class="token punctuation">.</span>LoadLibrary lib <span class="token operator">=</span> ll<span class="token punctuation">(</span><span class="token string">"./testpycll_64.so"</span><span class="token punctuation">)</span>  pyarray <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span> carray <span class="token operator">=</span> <span class="token punctuation">(</span>ctypes<span class="token punctuation">.</span>c_int <span class="token operator">*</span> <span class="token builtin">len</span><span class="token punctuation">(</span>pyarray<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token operator">*</span>pyarray<span class="token punctuation">)</span>  res <span class="token operator">=</span> lib<span class="token punctuation">.</span>func<span class="token punctuation">(</span>carray<span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>pyarray<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">print</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>  </code></pre> <p>（3）搭配numpy数组</p> <pre><code class="prism language-python"><span class="token keyword">import</span> ctypes <span class="token keyword">import</span> platform <span class="token keyword">from</span> numpy<span class="token punctuation">.</span>ctypeslib <span class="token keyword">import</span> ndpointer <span class="token keyword">import</span> numpy <span class="token keyword">as</span> np  ll <span class="token operator">=</span> ctypes<span class="token punctuation">.</span>cdll<span class="token punctuation">.</span>LoadLibrary<span class="token punctuation">;</span> lib <span class="token operator">=</span> ll<span class="token punctuation">(</span><span class="token string">"./testpycll_64.so"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   pyarray <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span><span class="token string">"int32"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> lib<span class="token punctuation">.</span>func<span class="token punctuation">.</span>argtypes <span class="token operator">=</span> <span class="token punctuation">[</span>ndpointer<span class="token punctuation">(</span>ctypes<span class="token punctuation">.</span>c_int<span class="token punctuation">,</span> shape<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span> <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> ctypes<span class="token punctuation">.</span>c_int<span class="token punctuation">]</span><span class="token punctuation">;</span> lib<span class="token punctuation">.</span>func<span class="token punctuation">.</span>restype <span class="token operator">=</span> ctypes<span class="token punctuation">.</span>c_int<span class="token punctuation">;</span> res <span class="token operator">=</span> lib<span class="token punctuation">.</span>func<span class="token punctuation">(</span>pyarray<span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>pyarray<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># print (np.array(pyarray))</span>  <span class="token keyword">print</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> </code></pre> <p><strong>其余的数据类型就举一反三啦，ctypes下有很多数据类型，例如c_int, c_bool等，大家可以自己去尝试。</strong></p> </h1> <p>调用方法和C类似，只是需要加上</p> <pre><code class="prism language-C++">extern "C"  {     ... } </code></pre> <p>C++ 代码</p> <pre><code class="prism language-C++">#include &lt;iostream&gt; #include &lt;string&gt; using namespace std; class TestClass { public:     char* func(); };  char* TestClass::func()  {     cout &lt;&lt; "In func without argument" &lt;&lt; endl;     char* temp = "In func without argument";     return temp;     }   extern "C"  {     TestClass A;     char* myfunc1()      {         return A.func();      }  } </code></pre> <p>生成so包指令：注意变成g++</p> <pre><code>g++ -o testpycll_64.so -shared -fPIC test.cpp </code></pre> <p>python代码</p> <pre><code class="prism language-python"><span class="token keyword">import</span> ctypes <span class="token keyword">import</span> platform <span class="token keyword">from</span> numpy<span class="token punctuation">.</span>ctypeslib <span class="token keyword">import</span> ndpointer <span class="token keyword">import</span> numpy <span class="token keyword">as</span> np  ll <span class="token operator">=</span> ctypes<span class="token punctuation">.</span>cdll<span class="token punctuation">.</span>LoadLibrary<span class="token punctuation">;</span> lib <span class="token operator">=</span> ll<span class="token punctuation">(</span><span class="token string">"./testpycll_64.so"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  lib<span class="token punctuation">.</span>myfunc1<span class="token punctuation">.</span>restype <span class="token operator">=</span> ctypes<span class="token punctuation">.</span>c_uint64<span class="token punctuation">;</span> res <span class="token operator">=</span> lib<span class="token punctuation">.</span>myfunc1<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> res <span class="token operator">=</span> ctypes<span class="token punctuation">.</span>string_at<span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">print</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">;</span> </code></pre> <p>运行结果：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221207/d063a0485ecb61c54541be9a6e857c0c.jpg" alt="python 调用 C/C++ 详解"></p> <p>以上大致是python调用C/C++的方法，有不足之处还望大家指出。</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-58083.htm">win11系统没有应用商店如何解决</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">热门文章</h3>
+                            </div>
+                            <div class="panel-body">
+                                <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                                    <li class="py-2"><a href="/free-nodes/2024-5-8-clash-v2ray-ss-ssr.htm" title="5月8日|最高速度22.5M/S，2024最新Shadowrocket/Clash/SSR/V2ray免费节点高速订阅链接">5月8日|最高速度22.5M/S，2024最新Shadowrocket/Clash/SSR/V2ray免费节点高速订阅链接</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+                <!-- Start of Footer Area -->
+        <footer id="footer" class="footer-area footer-bg">
+            <div class="footer-bottom-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="copy-right-text">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                                NodeClashV2ray节点订阅站 版权所有 Powered by WordPress
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--End of Footer Area -->
+    </div>
+    <!-- Body main wrapper end -->
+    <!-- Placed js at the end of the document so the pages load faster -->
+    <!-- jquery latest version -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/vendor/jquery-1.12.0.min.js"></script>
+    <!-- Bootstrap framework js -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/bootstrap.min.js"></script>
+    <!-- Owl Carousel framework js -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/owl.carousel.min.js"></script>
+    <!-- All js plugins included in this file. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/plugins.js"></script>
+    <!-- Slick min.js. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/slick.min.js"></script>
+    <!-- Waypoints.min.js. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/waypoints.min.js"></script>
+    <!-- Main js file that contents all jQuery plugins activation. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
