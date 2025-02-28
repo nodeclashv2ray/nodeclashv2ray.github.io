@@ -1,0 +1,216 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodeclashv2ray.github.io/news/article-63952.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>python向hive插入数据遇到的坑</title>
+        <meta name="description" content="大数据体系  python向hive插入数据遇到的坑    因项目需求，应用python建模需要通过hive取数，并将结果写入hive表。 尝试了以下几条坑爹路，仅做记录如下：   通过impyla库" />
+        <link rel="icon" href="/assets/website/img/nodeclashv2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NodeClashV2ray节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodeclashv2ray.github.io/news/article-63952.htm" />
+    <meta property="og:site_name" content="NodeClashV2ray节点订阅站" />
+    <meta property="og:title" content="python向hive插入数据遇到的坑" />
+    <meta property="og:image" content="https://nodeclashv2ray.github.io/uploads/20240509/dacbb713ee36a45b7e4ca6259284290d.webp" />
+        <meta property="og:release_date" content="2025-02-27T05:56:29" />
+    <meta property="og:updated_time" content="2025-02-27T05:56:29" />
+        <meta property="og:description" content="大数据体系  python向hive插入数据遇到的坑    因项目需求，应用python建模需要通过hive取数，并将结果写入hive表。 尝试了以下几条坑爹路，仅做记录如下：   通过impyla库" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- Place favicon.ico in the root directory -->
+    <!-- All css files are included here. -->
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="python向hive插入数据遇到的坑">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Bootstrap fremwork main css -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/bootstrap.min.css">
+    <!-- This core.css file contents all plugings css file. -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/core.css">
+    <!-- Theme shortcodes/elements style -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/shortcode/shortcodes.css">
+    <!-- Theme main style -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/style.css">
+    <!-- Responsive css -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/responsive.css">
+    <!-- Style customizer (Remove these two lines please) -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/style-customizer.css">
+    <!-- User style -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/custom.css">
+    <!-- Modernizr JS -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/vendor/modernizr-2.8.3.min.js"></script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BKWDB6T1Z4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BKWDB6T1Z4');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Body main wrapper start -->
+    <div class="wrapper">
+        <!-- Start of Header Top Area -->
+        <header id="header-content">
+            <!-- Start of mainmenu area -->
+            <div id="sticky-header-with-topbar" class="header-bottom-area bg-white height-100  transparent-header hidden-xs">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-sm-12">
+                            <div class="logo f-left sm-center">
+                                <a href="/">
+                                                                <span>Node Clash V2ray</span>
+                                                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-7 col-sm-12">
+                            <div class="mainmenu-container">
+                                <ul class="main-menu">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                    </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile-menu-area start -->
+            <div class="mobile-menu-area hidden-md hidden-lg hidden-sm">
+                <div class="fluid-container mobile-menu-container">
+                    <div class="mobile-logo">
+                                                <a href="/">Node Clash V2ray</a>
+                                            </div>
+                    <div class="mobile-menu clearfix">
+                        <nav id="mobile_dropdown">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li><a href="/client.htm">客户端</a></li>
+                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile-menu-area end -->
+        </header>
+<!-- End of Header Top Area -->
+        <!-- Start Bradcaump area -->
+        <div class="tf-bradcaump-area sbg-3" data-black-overlay="8">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="bradcaump-wrap text-center">
+                            <h1 class="bradcaump-title">python向hive插入数据遇到的坑</h1>
+                            <nav class="bradcaump-inner">
+                                <a class="breadcrumb-item" href="/">首页</a>
+                                <span class="brd-separetor">/</span>
+                                <a class="breadcrumb-item" href="/news/">新闻资讯</a>
+                                <span class="brd-separetor">/</span>
+                                <span class="breadcrumb-item active">正文</span>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Bradcaump area -->
+        <section id="tf-about-container" class="tf-about-area ptb-100 bg-gray xtb-60">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <div class="toc"> <h3>大数据体系</h3> <ul> <li><a href="#pythonhive_2" rel="nofollow">python向hive插入数据遇到的坑</a></li> </ul> </div> </h1> <p>因项目需求，应用python建模需要通过hive取数，并将结果写入hive表。<br /> 尝试了以下几条坑爹路，仅做记录如下：</p> <ol> <li> <p>通过impyla库搭建hive与python桥梁<br /> 1.1 环境配置的坑（回头放连接）<br /> 注: 远程访问hive一定要记得配置账号密码！！！报错：。。。-4.。。<br /> 1.2 一定不要用impyla中的executemany去批量插入数据，也不要用其他的方式向hive插入数据，都是坑！奇慢无比！找资料也都是说不建议这么做。</p> </li> <li> <p>长途跋涉hdfs法<br /> 2.1 先用python的pyhdfs库将结果写成hdfs文件，然后。。。尼玛！！根本没成功连上服务器的hdfs，本地hdfs到是可以的<br /> 2.2 那既然写hdfs，我就直接将模型结果通过hadoop/hdfs命令上传至hdfs。然后， 通过hive命令load data将hdfs中的结果再导入hive。虽然有点绕，但是成功了！！！BUT！！！小兄弟，这个直接操作HDFS风险太高了，要不你还是另寻他法吧，不可以拒绝哦！！！<br /> 2.3 好吧，根据建议，使用kafka，抱歉这个坑后面再来踩。<br /> 2.4 临时处理方案：先将结果写入mysql，再转入hive，这个没有坑，具体我也只是写到mysql，无坑。。就是有点绕。。。</p> </li> </ol> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-63350.htm">附近领养宠物小狗的地方有哪些（附近哪里可以领养宠物）</a></p>
+                                        <p>下一个：<a href="/news/article-63953.htm">你确定你会用Enum枚举了？</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">热门文章</h3>
+                            </div>
+                            <div class="panel-body">
+                                <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                                    <li class="py-2"><a href="/free-nodes/2024-5-8-clash-v2ray-ss-ssr.htm" title="5月8日|最高速度22.5M/S，2024最新Shadowrocket/Clash/SSR/V2ray免费节点高速订阅链接">5月8日|最高速度22.5M/S，2024最新Shadowrocket/Clash/SSR/V2ray免费节点高速订阅链接</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+                <!-- Start of Footer Area -->
+        <footer id="footer" class="footer-area footer-bg">
+            <div class="footer-bottom-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="copy-right-text">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                                NodeClashV2ray节点订阅站 版权所有 Powered by WordPress
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--End of Footer Area -->
+    </div>
+    <!-- Body main wrapper end -->
+    <!-- Placed js at the end of the document so the pages load faster -->
+    <!-- jquery latest version -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/vendor/jquery-1.12.0.min.js"></script>
+    <!-- Bootstrap framework js -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/bootstrap.min.js"></script>
+    <!-- Owl Carousel framework js -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/owl.carousel.min.js"></script>
+    <!-- All js plugins included in this file. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/plugins.js"></script>
+    <!-- Slick min.js. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/slick.min.js"></script>
+    <!-- Waypoints.min.js. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/waypoints.min.js"></script>
+    <!-- Main js file that contents all jQuery plugins activation. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
