@@ -1,0 +1,216 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodeclashv2ray.github.io/news/article-82503.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>基于vue-seamless-scroll实现无缝滚动效果_vue.js</title>
+        <meta name="description" content="vue中，基于vue-seamless-scroll无缝滚动，供大家参考，具体内容如下 1、安装vue-seamless-scroll  npm install vue-seamless-scroll" />
+        <link rel="icon" href="/assets/website/img/nodeclashv2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NodeClashV2ray节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodeclashv2ray.github.io/news/article-82503.htm" />
+    <meta property="og:site_name" content="NodeClashV2ray节点订阅站" />
+    <meta property="og:title" content="基于vue-seamless-scroll实现无缝滚动效果_vue.js" />
+    <meta property="og:image" content="https://nodeclashv2ray.github.io/uploads/20240509/4cbb73e0aa17b8766b7638e8dbf212e5.webp" />
+        <meta property="og:release_date" content="2025-03-27T08:14:27" />
+    <meta property="og:updated_time" content="2025-03-27T08:14:27" />
+        <meta property="og:description" content="vue中，基于vue-seamless-scroll无缝滚动，供大家参考，具体内容如下 1、安装vue-seamless-scroll  npm install vue-seamless-scroll" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- Place favicon.ico in the root directory -->
+    <!-- All css files are included here. -->
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="基于vue-seamless-scroll实现无缝滚动效果_vue.js">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Bootstrap fremwork main css -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/bootstrap.min.css">
+    <!-- This core.css file contents all plugings css file. -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/core.css">
+    <!-- Theme shortcodes/elements style -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/shortcode/shortcodes.css">
+    <!-- Theme main style -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/style.css">
+    <!-- Responsive css -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/responsive.css">
+    <!-- Style customizer (Remove these two lines please) -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/style-customizer.css">
+    <!-- User style -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/custom.css">
+    <!-- Modernizr JS -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/vendor/modernizr-2.8.3.min.js"></script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BKWDB6T1Z4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BKWDB6T1Z4');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Body main wrapper start -->
+    <div class="wrapper">
+        <!-- Start of Header Top Area -->
+        <header id="header-content">
+            <!-- Start of mainmenu area -->
+            <div id="sticky-header-with-topbar" class="header-bottom-area bg-white height-100  transparent-header hidden-xs">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-sm-12">
+                            <div class="logo f-left sm-center">
+                                <a href="/">
+                                                                <span>Node Clash V2ray</span>
+                                                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-7 col-sm-12">
+                            <div class="mainmenu-container">
+                                <ul class="main-menu">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                    </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile-menu-area start -->
+            <div class="mobile-menu-area hidden-md hidden-lg hidden-sm">
+                <div class="fluid-container mobile-menu-container">
+                    <div class="mobile-logo">
+                                                <a href="/">Node Clash V2ray</a>
+                                            </div>
+                    <div class="mobile-menu clearfix">
+                        <nav id="mobile_dropdown">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li><a href="/client.htm">客户端</a></li>
+                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile-menu-area end -->
+        </header>
+<!-- End of Header Top Area -->
+        <!-- Start Bradcaump area -->
+        <div class="tf-bradcaump-area sbg-3" data-black-overlay="8">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="bradcaump-wrap text-center">
+                            <h1 class="bradcaump-title">基于vue-seamless-scroll实现无缝滚动效果_vue.js</h1>
+                            <nav class="bradcaump-inner">
+                                <a class="breadcrumb-item" href="/">首页</a>
+                                <span class="brd-separetor">/</span>
+                                <a class="breadcrumb-item" href="/news/">新闻资讯</a>
+                                <span class="brd-separetor">/</span>
+                                <span class="breadcrumb-item active">正文</span>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Bradcaump area -->
+        <section id="tf-about-container" class="tf-about-area ptb-100 bg-gray xtb-60">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p>vue中，基于vue-seamless-scroll无缝滚动，供大家参考，具体内容如下</p> <p>1、安装vue-seamless-scroll</p> <div class="ay1code"> <pre class="brush:js;">npm install vue-seamless-scroll --save　</pre> </div> <p>2、引入组件</p> <p>全局引入在main.js中添加</p> <div class="ay1code"> <pre class="brush:js;">import scroll from 'vue-seamless-scroll'  Vue.use(scroll)</pre> </div> <p>组件局部引入</p> <div class="ay1code"> <pre class="brush:js;">&lt;vue-seamless-scroll&gt;&lt;/vue-seamless-scroll&gt;  import vueSeamlessScroll from 'vue-seamless-scroll'  components: {          vueSeamlessScroll  },</pre> </div> <p>3、配置参数</p> <div class="ay1code"> <pre class="brush:js;">// 监听属性 类似于data概念  computed: {          defaultOption () {                  return {                      step: 0.2, // 数值越大速度滚动越快                      limitMoveNum: 2, // 开始无缝滚动的数据量 this.dataList.length                      hoverStop: true, // 是否开启鼠标悬停stop                      direction: 1, // 0向下 1向上 2向左 3向右                      openWatch: true, // 开启数据实时监控刷新dom                      singleHeight: 0, // 单步运动停止的高度(默认值0是无缝不停止的滚动) direction =&gt; 0/1                      singleWidth: 0, // 单步运动停止的宽度(默认值0是无缝不停止的滚动) direction =&gt; 2/3                      waitTime: 1000 // 单步运动停止的时间(默认值1000ms)                  }              }             },　</pre> </div> <p>4、完整实例代码</p> <div class="ay1code"> <pre class="brush:xhtml;">&lt;template&gt;      &lt;div class="" style="padding: 50px;"&gt;          &lt;div class="page-example3" style=""&gt;              &lt;vue-seamless-scroll :data="listData" :class-option="defaultOption" &gt;                  &lt;ul class="ul-scoll"&gt;                      &lt;li v-for="(item, index) in listData" :key='index'&gt;                          &lt;span class="title"&gt;{{item.title}}：&lt;/span&gt;&lt;span class="date"&gt;{{item.time}}&lt;/span&gt;                      &lt;/li&gt;                  &lt;/ul&gt;              &lt;/vue-seamless-scroll&gt;          &lt;/div&gt;      &lt;/div&gt;  &lt;/template&gt;     &lt;script&gt;      import vueSeamlessScroll from 'vue-seamless-scroll'      export default {          name: 'Example3',          data() {              // 这里存放数据              return {                  listData: []              }          },          // import引入的组件需要注入到对象中才能使用          components: {              vueSeamlessScroll          },          // 监听属性 类似于data概念          computed: {              defaultOption () {                  return {                      step: 1, // 数值越大速度滚动越快                      limitMoveNum: 2, // 开始无缝滚动的数据量 this.dataList.length                      hoverStop: true, // 是否开启鼠标悬停stop                      direction: 1, // 0向下 1向上 2向左 3向右                      openWatch: true, // 开启数据实时监控刷新dom                      singleHeight: 0, // 单步运动停止的高度(默认值0是无缝不停止的滚动) direction =&gt; 0/1                      singleWidth: 0, // 单步运动停止的宽度(默认值0是无缝不停止的滚动) direction =&gt; 2/3                      waitTime: 1000 // 单步运动停止的时间(默认值1000ms)                  }              }             },          // 方法集合          methods: {},          // 监控data中的数据变化          watch: {},          // 生命周期 - 创建完成（可以访问当前this实例）          created() {             },          // 生命周期 - 挂载完成（可以访问DOM元素）          mounted() {              for(let i = 0 ; i &lt; 15 ; i++){                  let j = {                      title:'无缝滚动第几条啊啊啊-'+i,                      time: '2020-04-10'                  }                  this.listData.push(j)              }          }      }  &lt;/script&gt;     &lt;style scoped lang="scss"&gt;      //@import url(); 引入公共css类      .page-example3{          width: 400px;          height: 200px;          overflow: hidden;          border: 1px solid #283dff;          .ul-scoll{              li{                  margin: 6px;                  padding: 5px;                  background: rgba(198, 142, 226, 0.4);              }          }      }  &lt;/style&gt;</pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-81759.htm">公务员国考什么时候报名（公务员国考什么时候考试时间）</a></p>
+                                        <p>下一个：<a href="/news/article-82504.htm">宠物领养人条件（宠物领养人条件有哪些）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">热门文章</h3>
+                            </div>
+                            <div class="panel-body">
+                                <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                                    <li class="py-2"><a href="/free-nodes/2024-5-8-clash-v2ray-ss-ssr.htm" title="5月8日|最高速度22.5M/S，2024最新Shadowrocket/Clash/SSR/V2ray免费节点高速订阅链接">5月8日|最高速度22.5M/S，2024最新Shadowrocket/Clash/SSR/V2ray免费节点高速订阅链接</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+                <!-- Start of Footer Area -->
+        <footer id="footer" class="footer-area footer-bg">
+            <div class="footer-bottom-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="copy-right-text">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                                NodeClashV2ray节点订阅站 版权所有 Powered by WordPress
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--End of Footer Area -->
+    </div>
+    <!-- Body main wrapper end -->
+    <!-- Placed js at the end of the document so the pages load faster -->
+    <!-- jquery latest version -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/vendor/jquery-1.12.0.min.js"></script>
+    <!-- Bootstrap framework js -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/bootstrap.min.js"></script>
+    <!-- Owl Carousel framework js -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/owl.carousel.min.js"></script>
+    <!-- All js plugins included in this file. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/plugins.js"></script>
+    <!-- Slick min.js. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/slick.min.js"></script>
+    <!-- Waypoints.min.js. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/waypoints.min.js"></script>
+    <!-- Main js file that contents all jQuery plugins activation. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
