@@ -1,0 +1,218 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodeclashv2ray.github.io/news/article-93386.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>java实现简单三子棋游戏_java</title>
+        <meta name="description" content="本文实例为大家分享了java实现简单三子棋游戏的具体代码，供大家参考，具体内容如下 JOptionPane类的使用 编写程序，实现简单的三子棋游戏。在三子棋中，双方在3×3的棋盘中轮流下棋，一方用*示" />
+        <link rel="icon" href="/assets/website/img/nodeclashv2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NodeClashV2ray节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodeclashv2ray.github.io/news/article-93386.htm" />
+    <meta property="og:site_name" content="NodeClashV2ray节点订阅站" />
+    <meta property="og:title" content="java实现简单三子棋游戏_java" />
+    <meta property="og:image" content="https://nodeclashv2ray.github.io/uploads/20240509/e593eb6fd5365c2c99de8d7f1709f6ec.webp" />
+        <meta property="og:release_date" content="2025-04-11T08:57:23" />
+    <meta property="og:updated_time" content="2025-04-11T08:57:23" />
+        <meta property="og:description" content="本文实例为大家分享了java实现简单三子棋游戏的具体代码，供大家参考，具体内容如下 JOptionPane类的使用 编写程序，实现简单的三子棋游戏。在三子棋中，双方在3×3的棋盘中轮流下棋，一方用*示" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- Place favicon.ico in the root directory -->
+    <!-- All css files are included here. -->
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="java实现简单三子棋游戏_java">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Bootstrap fremwork main css -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/bootstrap.min.css">
+    <!-- This core.css file contents all plugings css file. -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/core.css">
+    <!-- Theme shortcodes/elements style -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/shortcode/shortcodes.css">
+    <!-- Theme main style -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/style.css">
+    <!-- Responsive css -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/responsive.css">
+    <!-- Style customizer (Remove these two lines please) -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/style-customizer.css">
+    <!-- User style -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/custom.css">
+    <!-- Modernizr JS -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/vendor/modernizr-2.8.3.min.js"></script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BKWDB6T1Z4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BKWDB6T1Z4');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Body main wrapper start -->
+    <div class="wrapper">
+        <!-- Start of Header Top Area -->
+        <header id="header-content">
+            <!-- Start of mainmenu area -->
+            <div id="sticky-header-with-topbar" class="header-bottom-area bg-white height-100  transparent-header hidden-xs">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-sm-12">
+                            <div class="logo f-left sm-center">
+                                <a href="/">
+                                                                <span>Node Clash V2ray</span>
+                                                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-7 col-sm-12">
+                            <div class="mainmenu-container">
+                                <ul class="main-menu">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                    </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile-menu-area start -->
+            <div class="mobile-menu-area hidden-md hidden-lg hidden-sm">
+                <div class="fluid-container mobile-menu-container">
+                    <div class="mobile-logo">
+                                                <a href="/">Node Clash V2ray</a>
+                                            </div>
+                    <div class="mobile-menu clearfix">
+                        <nav id="mobile_dropdown">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li><a href="/client.htm">客户端</a></li>
+                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile-menu-area end -->
+        </header>
+<!-- End of Header Top Area -->
+        <!-- Start Bradcaump area -->
+        <div class="tf-bradcaump-area sbg-3" data-black-overlay="8">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="bradcaump-wrap text-center">
+                            <h1 class="bradcaump-title">java实现简单三子棋游戏_java</h1>
+                            <nav class="bradcaump-inner">
+                                <a class="breadcrumb-item" href="/">首页</a>
+                                <span class="brd-separetor">/</span>
+                                <a class="breadcrumb-item" href="/news/">新闻资讯</a>
+                                <span class="brd-separetor">/</span>
+                                <span class="breadcrumb-item active">正文</span>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Bradcaump area -->
+        <section id="tf-about-container" class="tf-about-area ptb-100 bg-gray xtb-60">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p>本文实例为大家分享了java实现简单三子棋游戏的具体代码，供大家参考，具体内容如下</p> <p><strong>JOptionPane类的使用</strong></p> <p>编写程序，实现简单的三子棋游戏。在三子棋中，双方在3×3的棋盘中轮流下棋，一方用*示，另一方用O表示。如果一方的3个棋子占据了同一行，同一列或者对角线，则该方获胜。如果棋盘已被棋子占满，但没有一方获胜则出现平局。在程序中，一方为用户，用户在界面上输入每次下棋的位置；另一方下棋的位置为随机自动生成。示例界面如图所示。</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220504/4724181f16cc4af6d922313f0c30108d.jpg"></p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220504/2fdba20bd96005846861b4eea71ce240.jpg"></p> <p>提示：(1) 采用Scanner类或者JOptionPane类中提供的方法输入，输出采用System.out中的方法或JOptionPane类提供的方法。 (2) 字符串处理可以使用String或StringBuffer类。</p> <p><strong>实现代码：</strong></p> <div class="ay1code"> <pre class="brush:java;">import java.util.Random;  import javax.swing.*;  public class Main {     public static boolean check(StringBuffer st,int pos){   //检查pos上的棋子有没有获胜        char des=st.charAt(pos);        char []s=new char[10];        for(int i=1;i&lt;=9;i++) s[i]=st.charAt(i);        if((s[3]==des&amp;&amp;s[6]==des&amp;&amp;s[9]==des)||        (s[1]==des&amp;&amp;s[4]==des&amp;&amp;s[7]==des)||        (s[2]==des&amp;&amp;s[5]==des&amp;&amp;s[8]==des)||        (s[1]==des&amp;&amp;s[3]==des&amp;&amp;s[2]==des)||        (s[6]==des&amp;&amp;s[4]==des&amp;&amp;s[5]==des)||        (s[9]==des&amp;&amp;s[7]==des&amp;&amp;s[8]==des)||        (s[1]==des&amp;&amp;s[5]==des&amp;&amp;s[9]==des)||        (s[3]==des&amp;&amp;s[5]==des&amp;&amp;s[7]==des)) return true;        return false;     }     public static void main(String[] args) {        StringBuffer s= new StringBuffer("0123456789");        String tp;        for(int i=0;i&lt;=5;){           int k=-1;           tp=JOptionPane.showInputDialog("---------------------------\n|    "+s.charAt(1)+"    |    "+s.charAt(2)+"    |    "+s.charAt(3)+"    |\n---------------------------\n|    "+s.charAt(4)+"    |    "+s.charAt(5)+"    |    "+s.charAt(6)+"    |\n---------------------------\n|    "+s.charAt(7)+"    |    "+s.charAt(8)+"    |    "+s.charAt(9)+"    |\n---------------------------\n"+"请输入落子位置(1~9)：");           boolean f=true;           if(tp.length()==1){              k=tp.charAt(0)-'0';              if(k&gt;=1&amp;&amp;k&lt;=9){                 if(s.charAt(k)&gt;='1'&amp;&amp;s.charAt(k)&lt;='9'){                    i++;        //有效下棋                    f=false;                 }              }           }           while(f){              tp=JOptionPane.showInputDialog("---------------------------\n|    "+s.charAt(1)+"    |    "+s.charAt(2)+"    |    "+s.charAt(3)+"    |\n---------------------------\n|    "+s.charAt(4)+"    |    "+s.charAt(5)+"    |    "+s.charAt(6)+"    |\n---------------------------\n|    "+s.charAt(7)+"    |    "+s.charAt(8)+"    |    "+s.charAt(9)+"    |\n---------------------------\n"+"输入错误，请重新输入落子的位置：");              if(tp.length()==1){                 k=tp.charAt(0)-'0';                 if(k&gt;=1&amp;&amp;k&lt;=9){                    if(s.charAt(k)&gt;='1'&amp;&amp;s.charAt(k)&lt;='9'){                       i++;        //有效下棋                       f=false;                    }                 }              }           }           //在k处落子           s.replace(k,k+1,"O");           if(check(s,k)){              //获胜              JOptionPane.showMessageDialog(null,"---------------------------\n|    "+s.charAt(1)+"    |    "+s.charAt(2)+"    |    "+s.charAt(3)+"    |\n---------------------------\n|    "+s.charAt(4)+"    |    "+s.charAt(5)+"    |    "+s.charAt(6)+"    |\n---------------------------\n|    "+s.charAt(7)+"    |    "+s.charAt(8)+"    |    "+s.charAt(9)+"    |\n---------------------------\n"+"恭喜你，你赢了！");              break;           }           //电脑随机落子           if(i==5) {              JOptionPane.showMessageDialog(null,"---------------------------\n|    "+s.charAt(1)+"    |    "+s.charAt(2)+"    |    "+s.charAt(3)+"    |\n---------------------------\n|    "+s.charAt(4)+"    |    "+s.charAt(5)+"    |    "+s.charAt(6)+"    |\n---------------------------\n|    "+s.charAt(7)+"    |    "+s.charAt(8)+"    |    "+s.charAt(9)+"    |\n---------------------------\n"+"平局！");              break;           }           Random rs=new Random();           k=rs.nextInt(9)+1;           while(k&lt;1||k&gt;9||s.charAt(k)=='*'||s.charAt(k)=='O') k=rs.nextInt(9)+1;           s.replace(k,k+1,"*");           if(check(s,k)){              //电脑胜              JOptionPane.showMessageDialog(null,"---------------------------\n|    "+s.charAt(1)+"    |    "+s.charAt(2)+"    |    "+s.charAt(3)+"    |\n---------------------------\n|    "+s.charAt(4)+"    |    "+s.charAt(5)+"    |    "+s.charAt(6)+"    |\n---------------------------\n|    "+s.charAt(7)+"    |    "+s.charAt(8)+"    |    "+s.charAt(9)+"    |\n---------------------------\n"+"你输了，再接再厉吧！");              break;           }        }     }  }</pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-92631.htm">青岛动物疾病预防控制中心（青岛市动物疾病防控中心）</a></p>
+                                        <p>下一个：<a href="/news/article-93387.htm">动物医院管理的计划（动物医院管理制度）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">热门文章</h3>
+                            </div>
+                            <div class="panel-body">
+                                <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                                    <li class="py-2"><a href="/free-nodes/2024-5-8-clash-v2ray-ss-ssr.htm" title="5月8日|最高速度22.5M/S，2024最新Shadowrocket/Clash/SSR/V2ray免费节点高速订阅链接">5月8日|最高速度22.5M/S，2024最新Shadowrocket/Clash/SSR/V2ray免费节点高速订阅链接</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+                <!-- Start of Footer Area -->
+        <footer id="footer" class="footer-area footer-bg">
+            <div class="footer-bottom-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="copy-right-text">
+                                                    <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                                NodeClashV2ray节点订阅站 版权所有 Powered by WordPress
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--End of Footer Area -->
+    </div>
+    <!-- Body main wrapper end -->
+    <!-- Placed js at the end of the document so the pages load faster -->
+    <!-- jquery latest version -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/vendor/jquery-1.12.0.min.js"></script>
+    <!-- Bootstrap framework js -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/bootstrap.min.js"></script>
+    <!-- Owl Carousel framework js -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/owl.carousel.min.js"></script>
+    <!-- All js plugins included in this file. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/plugins.js"></script>
+    <!-- Slick min.js. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/slick.min.js"></script>
+    <!-- Waypoints.min.js. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/waypoints.min.js"></script>
+    <!-- Main js file that contents all jQuery plugins activation. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
