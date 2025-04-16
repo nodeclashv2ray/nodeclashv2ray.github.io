@@ -1,0 +1,218 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodeclashv2ray.github.io/news/article-97090.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>asyncio 系列、asyncio 的协程与任务</title>
+        <meta name="description" content="官网：https://docs.python.org/zh-cn/3/library/asyncio-task.html#scheduling-from-other-threads 一、协程 用asy" />
+        <link rel="icon" href="/assets/website/img/nodeclashv2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NodeClashV2ray节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodeclashv2ray.github.io/news/article-97090.htm" />
+    <meta property="og:site_name" content="NodeClashV2ray节点订阅站" />
+    <meta property="og:title" content="asyncio 系列、asyncio 的协程与任务" />
+    <meta property="og:image" content="https://nodeclashv2ray.github.io/uploads/20240509/dacbb713ee36a45b7e4ca6259284290d.webp" />
+        <meta property="og:release_date" content="2025-04-16T08:39:32" />
+    <meta property="og:updated_time" content="2025-04-16T08:39:32" />
+        <meta property="og:description" content="官网：https://docs.python.org/zh-cn/3/library/asyncio-task.html#scheduling-from-other-threads 一、协程 用asy" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- Place favicon.ico in the root directory -->
+    <!-- All css files are included here. -->
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="asyncio 系列、asyncio 的协程与任务">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Bootstrap fremwork main css -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/bootstrap.min.css">
+    <!-- This core.css file contents all plugings css file. -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/core.css">
+    <!-- Theme shortcodes/elements style -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/shortcode/shortcodes.css">
+    <!-- Theme main style -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/style.css">
+    <!-- Responsive css -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/responsive.css">
+    <!-- Style customizer (Remove these two lines please) -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/style-customizer.css">
+    <!-- User style -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/custom.css">
+    <!-- Modernizr JS -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/vendor/modernizr-2.8.3.min.js"></script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BKWDB6T1Z4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BKWDB6T1Z4');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Body main wrapper start -->
+    <div class="wrapper">
+        <!-- Start of Header Top Area -->
+        <header id="header-content">
+            <!-- Start of mainmenu area -->
+            <div id="sticky-header-with-topbar" class="header-bottom-area bg-white height-100  transparent-header hidden-xs">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-sm-12">
+                            <div class="logo f-left sm-center">
+                                <a href="/">
+                                                                <span>Node Clash V2ray</span>
+                                                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-7 col-sm-12">
+                            <div class="mainmenu-container">
+                                <ul class="main-menu">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                    </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile-menu-area start -->
+            <div class="mobile-menu-area hidden-md hidden-lg hidden-sm">
+                <div class="fluid-container mobile-menu-container">
+                    <div class="mobile-logo">
+                                                <a href="/">Node Clash V2ray</a>
+                                            </div>
+                    <div class="mobile-menu clearfix">
+                        <nav id="mobile_dropdown">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li><a href="/client.htm">客户端</a></li>
+                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile-menu-area end -->
+        </header>
+<!-- End of Header Top Area -->
+        <!-- Start Bradcaump area -->
+        <div class="tf-bradcaump-area sbg-3" data-black-overlay="8">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="bradcaump-wrap text-center">
+                            <h1 class="bradcaump-title">asyncio 系列、asyncio 的协程与任务</h1>
+                            <nav class="bradcaump-inner">
+                                <a class="breadcrumb-item" href="/">首页</a>
+                                <span class="brd-separetor">/</span>
+                                <a class="breadcrumb-item" href="/news/">新闻资讯</a>
+                                <span class="brd-separetor">/</span>
+                                <span class="breadcrumb-item active">正文</span>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Bradcaump area -->
+        <section id="tf-about-container" class="tf-about-area ptb-100 bg-gray xtb-60">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> </h1> <p>官网：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.python.org/zh-cn/3/library/asyncio-task.html#scheduling-from-other-threads"  rel="nofollow">https://docs.python.org/zh-cn/3/library/asyncio-task.html#scheduling-from-other-threads</a></p> <h2 id="fqCOK">一、协程</h2> <p>用async定义的函数，可以叫协程函数、异步函数，本文统一叫协程函数。</p> <p>调用协程函数返回的对象叫协程对象。</p> <p>关键字 await 调用协程函数，也可以叫等待、等待调用，这里统一叫等待。</p> <p>协程通过 async/await 语法进行声明，是编写异步应用的推荐方式。例如，以下代码段 (需要 Python 3.7+) 打印 "hello"，等待 1 秒，然后打印 "world":</p> <pre class="has"><code class="language-python">&gt;&gt;&gt; import asyncio  &gt;&gt;&gt; async def main(): ...     print('hello') ...     await asyncio.sleep(1) ...     print('world')  &gt;&gt;&gt; asyncio.run(main()) hello world</code></pre> <p>跑一个协程有三种方法：</p> <p>1、asyncio.run() 函数用来运行一个协程函数，比如上文中&nbsp;asyncio.run(main())</p> <p>2、await关键字等待一个协程函数</p> <pre class="has"><code class="language-python">import asyncio import time  async def say_after(delay, what):     await asyncio.sleep(delay)     print(what)  async def main():     print(f"started at {time.strftime('%X')}")     await say_after(1, 'hello')     await say_after(2, 'world')     print(f"finished at {time.strftime('%X')}")  asyncio.run(main())</code></pre> <pre class="has"><code class="language-html">输出：</code></pre> <pre class="has"><code>started at 17:13:52 hello world finished at 17:13:55</code></pre> <p>3、用asyncio.create_task() 调用协程函数，生成一个asyncio的任务，然后用await等待这个任务。</p> <pre class="has"><code class="language-python">async def main():     task1 = asyncio.create_task(         say_after(1, 'hello'))      task2 = asyncio.create_task(         say_after(2, 'world'))      print(f"started at {time.strftime('%X')}")      # Wait until both tasks are completed (should take     # around 2 seconds.)     await task1     await task2      print(f"finished at {time.strftime('%X')}")</code></pre> <pre class="has"><code class="language-html">如代码中的第2、5行，是完整的调用协程函数。</code></pre> <h2 id="MyoKZ">二、可等待对象</h2> <p>如果一个对象可以在<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.python.org/zh-cn/3/reference/expressions.html#await"  rel="nofollow"><code>await</code></a>&nbsp;语句中使用，那么它就是<strong>可等待</strong>&nbsp;对象。</p> <p> 可等待&nbsp;对象有三种主要类型:<strong>协程</strong>,<strong>任务</strong>&nbsp;和<strong>Future</strong>.</p> <p>1、协程</p> <p>await 等待协程</p> <pre class="has"><code class="language-python">import asyncio  async def nested():     return 42  async def main():     # Nothing happens if we just call "nested()".     # A coroutine object is created but not awaited,     # so it *won't run at all*.     nested()      # Let's do it differently now and await it:     print(await nested())  # will print "42".  asyncio.run(main())</code></pre> <p>第10行的普通调用不会执行，程序也不会报错，会出现警告：</p> <pre class="has"><code class="language-python">RuntimeWarning: coroutine 'nested' was never awaited   nested() RuntimeWarning: Enable tracemalloc to get the object allocation traceback    Process finished with exit code 0</code></pre> <p>2、任务</p> <p>任务&nbsp;被用来设置到系统日程里以便<strong>并发</strong>&nbsp;执行的协程。本质上是一个协程，需要用await调用。</p> <p> 当一个协程通过<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.python.org/zh-cn/3/library/asyncio-task.html#asyncio.create_task"  rel="nofollow"><code>asyncio.create_task()</code></a>&nbsp;等函数被打包为一个<em>任务</em>，该协程将自动排入日程等待立即运行:</p> <pre class="has"><code class="language-python">import asyncio  async def nested():     return 42  async def main():     # Schedule nested() to run soon concurrently     # with "main()".     task = asyncio.create_task(nested())      # "task" can now be used to cancel "nested()", or     # can simply be awaited to wait until it is complete:     await task  asyncio.run(main())</code></pre> <p>第9行，task是一个future对象，可以取消任务、添加回调等，下文会提及。</p> <p>3、future对象</p> <p>以下文字来自官网：</p> <blockquote> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.python.org/zh-cn/3/library/asyncio-future.html#asyncio.Future"  rel="nofollow"><code>Future</code></a>&nbsp;是一种特殊的<strong>低层级</strong>&nbsp;可等待对象，表示一个异步操作的<strong>最终结果</strong>。</p> <p>当一个 Future 对象<em>被等待</em>，这意味着协程将保持等待直到该 Future 对象在其他地方操作完毕。</p> <p>在 asyncio 中需要 Future 对象以便允许通过 async/await 使用基于回调的代码。</p> <p>通常情况下<strong>没有必要</strong>&nbsp;在应用层级的代码中创建 Future 对象。</p> <p>Future 对象有时会由库和某些 asyncio API 暴露给用户，用作可等待对象:</p> <p>一个很好的返回对象的低层级函数的示例是<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.run_in_executor"  rel="nofollow"><code>loop.run_in_executor()</code></a></p> </blockquote> <pre class="has"><code class="language-python">async def main():     await function_that_returns_a_future_object()      # this is also valid:     await asyncio.gather(         function_that_returns_a_future_object(),         some_python_coroutine()     )</code></pre> <h2 id="arM41">三、运行asyncio的run函数</h2> <p>来自官网：</p> <blockquote> <p><code>asyncio.</code><code>run</code>(<em>coro</em>,<em>*</em>,<em>debug=False</em>)</p> <p>此函数运行传入的协程，负责管理 asyncio 事件循环并<em>完结异步生成器</em>。</p> <p>当有其他 asyncio 事件循环在同一线程中运行时，此函数不能被调用。</p> <p>如果<em>debug</em>&nbsp;为<code>True</code>，事件循环将以调试模式运行。</p> <p>此函数总是会创建一个新的事件循环并在结束时关闭之。它应当被用作 asyncio 程序的主入口点，理想情况下应当只被调用一次。</p> </blockquote> <p>虽然官网说同一线程中只能有一个asyncio 事件循环，但是测试一个py文件中可以有两个asyncio.run(), 并且都能顺利执行。</p> <pre class="has"><code class="language-python">import asyncio  async def foo():     return 42  async def foo2():     return 43  async def main():     task = asyncio.create_task(foo())     await task     return 'main1'  async def main2():     task2 = asyncio.create_task(foo2())     return await task2  print(asyncio.run(main())) print(asyncio.run(main2()))</code></pre> <p>结果：</p> <pre class="has"><code>main1 43</code></pre> <p>asyncio.run(fn()) 函数的返回结果就是调用函数 fn() 返回的结果</p> <p>await task 表达式的值就是task返回的值</p> <h2 id="7kaWY">四、创建任务的函数</h2> <p>来自官网：</p> <blockquote> <p><code>asyncio.</code><code>create_task</code>(<em>coro</em>)</p> <p>将<em>coro</em><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.python.org/zh-cn/3/library/asyncio-task.html#coroutine"  rel="nofollow">协程</a>&nbsp;打包为一个<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.python.org/zh-cn/3/library/asyncio-task.html#asyncio.Task"  rel="nofollow"><code>Task</code></a>&nbsp;排入日程准备执行。返回 Task 对象。</p> <p>该任务会在<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.get_running_loop"  rel="nofollow"><code>get_running_loop()</code></a>&nbsp;返回的循环中执行，如果当前线程没有在运行的循环则会引发<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.python.org/zh-cn/3/library/exceptions.html#RuntimeError"  rel="nofollow"><code>RuntimeError</code></a>。</p> <p>此函数<strong>在 Python 3.7 中被加入</strong>。在 Python 3.7 之前，可以改用低层级的<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.python.org/zh-cn/3/library/asyncio-future.html#asyncio.ensure_future"  rel="nofollow"><code>asyncio.ensure_future()</code></a>&nbsp;函数。</p> </blockquote> <p>以下例子来自官网，两种创建任务方式：</p> <pre class="has"><code class="language-python">async def coro():     ...  # In Python 3.7+ task = asyncio.create_task(coro()) ...  # This works in all Python versions but is less readable task = asyncio.ensure_future(coro())</code></pre> <h2>五、休眠函数</h2> <p><code>asyncio.</code><code>sleep</code>(<em>delay</em>,<em>result=None</em>,<em>*</em>,<em>loop=None</em>)</p> <blockquote> <p>参数：</p> <p>阻塞<em>delay</em>&nbsp;指定的秒数。</p> <p>如果指定了<em>result</em>，则当协程完成时将其返回给调用者。</p> <p><code>sleep()</code>&nbsp;总是会挂起当前任务，以允许其他任务运行。</p> </blockquote> <p>以下协程示例运行 5 秒，每秒显示一次当前日期:</p> <pre class="has"><code class="language-python">import asyncio import datetime  async def display_date():     loop = asyncio.get_running_loop()     end_time = loop.time() + 5.0     while True:         print(datetime.datetime.now())         if (loop.time() + 1.0) &gt;= end_time:             break         await asyncio.sleep(1)  asyncio.run(display_date())</code></pre> <h2 id="hzwkM">六、并发运行任务</h2> <p><code>asyncio.</code><code>gather</code>(<em>*aws</em>,<em>loop=None</em>,<em>return_exceptions=False</em>)</p> <blockquote> <p><em>参数：</em></p> <p><em>aws</em>&nbsp;表示序列中的<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.python.org/zh-cn/3/library/asyncio-task.html#asyncio-awaitables"  rel="nofollow">可等待对象</a>。</p> <p>return_exceptions 表示是是将异常立即返回，还是聚合到结果列表里。</p> <p>如果<em>aws</em>&nbsp;中的某个可等待对象为协程，它将自动作为一个任务加入日程。</p> <p>如果所有可等待对象都成功完成，结果将是一个由所有返回值聚合而成的列表。结果值的顺序与<em>aws</em>&nbsp;中可等待对象的顺序一致。</p> <p>如果<em>return_exceptions</em>&nbsp;为<code>False</code>&nbsp;(默认)，所引发的首个异常会立即传播给等待<code>gather()</code>&nbsp;的任务。<em>aws</em>&nbsp;序列中的其他可等待对象<strong>不会被取消</strong>&nbsp;并将继续运行。</p> <p>如果<em>return_exceptions</em>&nbsp;为<code>True</code>，异常会和成功的结果一样处理，并聚合至结果列表。</p> <p>如果<code>gather()</code><em>被取消</em>，所有被提交 (尚未完成) 的可等待对象也会<em>被取消</em>。</p> <p>如果<em>aws</em>&nbsp;序列中的任一 Task 或 Future 对象<em>被取消</em>，它将被当作引发了<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.python.org/zh-cn/3/library/asyncio-exceptions.html#asyncio.CancelledError"  rel="nofollow"><code>CancelledError</code></a>&nbsp;一样处理 -- 在此情况下<code>gather()</code>&nbsp;调用<strong>不会</strong>&nbsp;被取消。这是为了防止一个已提交的 Task/Future 被取消导致其他 Tasks/Future 也被取消。</p> <p>如果<em>gather</em>&nbsp;本身被取消，则无论<em>return_exceptions</em>&nbsp;取值为何，消息都会被传播（propagated）。</p> </blockquote> <h2 id="lWnNk">七、护盾函数shield 屏蔽取消操作</h2> <p><code>asyncio.</code><code>shield</code>(<em>aw</em>,<em>*</em>,<em>loop=None</em>)</p> <blockquote> <p>保护一个<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.python.org/zh-cn/3/library/asyncio-task.html#asyncio-awaitables"  rel="nofollow">可等待对象</a>&nbsp;防止其被<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.python.org/zh-cn/3/library/asyncio-task.html#asyncio.Task.cancel"  rel="nofollow"><code>取消</code></a>。</p> <p>如果<em>aw</em>&nbsp;是一个协程，它将自动作为任务加入日程。</p> </blockquote> <blockquote> <p><code>res = await shield(something())</code></p> </blockquote> <blockquote> <p><em>不同之处</em>&nbsp;在于如果包含它的协程被取消，在<code>something()</code>&nbsp;中运行的任务不会被取消。从<code>something()</code>&nbsp;的角度看来，取消操作并没有发生。然而其调用者已被取消，因此 "await" 表达式仍然会引发<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.python.org/zh-cn/3/library/asyncio-exceptions.html#asyncio.CancelledError"  rel="nofollow"><code>CancelledError</code></a>。</p> <p>如果通过其他方式取消<code>something()</code>&nbsp;(例如在其内部操作) 则<code>shield()</code>&nbsp;也会取消。</p> </blockquote> <p>如果希望完全忽略取消操作 (不推荐) 则<code>shield()</code>&nbsp;函数需要配合一个 try/except 代码段，如下所示:</p> <pre class="has"><code class="language-python">try:     res = await shield(something()) except CancelledError:     res = None</code></pre> <h2 id="Pdkh4">八、wait_for 函数</h2> <p><code>asyncio.</code><code>wait_for</code>(<em>aw</em>,<em>timeout</em>,<em>*</em>,<em>loop=None</em>)</p> <blockquote> <p>等待<em>aw</em><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.python.org/zh-cn/3/library/asyncio-task.html#asyncio-awaitables"  rel="nofollow">可等待对象</a>&nbsp;完成，指定 timeout 秒数后超时。</p> <p>如果<em>aw</em>&nbsp;是一个协程，它将自动作为任务加入日程。</p> <p><em>timeout</em>&nbsp;可以为<code>None</code>，也可以为 float 或 int 型数值表示的等待秒数。如果<em>timeout</em>&nbsp;为<code>None</code>，则等待直到完成。</p> <p>如果发生超时，任务将取消并引发<code><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.python.org/zh-cn/3/library/asyncio-exceptions.html#asyncio.TimeoutError"  rel="nofollow">asyncio.TimeoutError</a></code>，<em>aw</em>&nbsp;指定的对象也会被取消。</p> <p>如果等待期间，任务被取消，<em>aw</em>&nbsp;指定的对象也会被取消。</p> </blockquote> <pre class="has"><code class="language-python">async def eternity():     # Sleep for one hour     await asyncio.sleep(3600)     print('yay!')  async def main():     # Wait for at most 1 second     try:         await asyncio.wait_for(eternity(), timeout=1.0)     except asyncio.TimeoutError:         print('timeout!')  asyncio.run(main())  # timeout!  # Process finished with exit code 0</code></pre> <h2 id="PjWiU">九、wait函数</h2> <p><code>asyncio.</code><code>wait</code>(<em>aws</em>,<em>*</em>,<em>loop=None</em>,<em>timeout=None</em>,<em>return_when=ALL_COMPLETED</em>)</p> <blockquote> <p>并发运行<em>aws</em>&nbsp;指定的<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.python.org/zh-cn/3/library/asyncio-task.html#asyncio-awaitables"  rel="nofollow">可等待对象</a>&nbsp;并阻塞线程直到满足<em>return_when</em>&nbsp;指定的条件。</p> <p>如果<em>aws</em>&nbsp;中的某个可等待对象为协程，它将自动作为任务加入日程。</p> <p>aws必须为容器</p> <p>返回两个 Task/Future 集合:<code>(done,&nbsp;pending)</code>。</p> <p>用法:</p> <p><code>done, pending = await asyncio.wait([aws, ])</code></p> <p>如指定<em>timeout</em>&nbsp;(float 或 int 类型) 则它将被用于控制返回之前等待的最长秒数。</p> <p>请注意此函数不会引发<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.python.org/zh-cn/3/library/asyncio-exceptions.html#asyncio.TimeoutError"  rel="nofollow"><code>asyncio.TimeoutError</code></a>。当超时发生时，未完成的 Future 或 Task 将在指定秒数后被返回。</p> </blockquote> <p><em>return_when</em>&nbsp;指定此函数应在何时返回。它必须为以下常数之一:</p> <table> <tbody> <tr> <td>常数</td> <td>描述</td> </tr> <tr> <td><code>FIRST_COMPLETED</code></td> <td>函数将在任意可等待对象结束或取消时返回。</td> </tr> <tr> <td><code>FIRST_EXCEPTION</code></td> <td>函数将在任意可等待对象因引发异常而结束时返回。当没有引发任何异常时它就相当于<code>ALL_COMPLETED</code>。</td> </tr> <tr> <td colspan="1"><code>ALL_COMPLETED</code></td> <td colspan="1">函数将在所有可等待对象结束或取消时返回。</td> </tr> </tbody> </table> <pre class="has"><code class="language-python">async def foo():     return 42  async def main():     task = asyncio.create_task(foo())     done, pending = await asyncio.wait([task, ])      if task in done:         print('done')  asyncio.run(main()) ''' 结果如下： done  Process finished with exit code 0 '''</code></pre> <p>如果第6行 await asyncio.wait(task) 直接传入任务会报错：</p> <p><code>TypeError: expect a list of futures, not Task</code></p> <p>wait 和 wait_for的不同</p> <blockquote> <p><code>wait()</code>&nbsp;在超时发生时不会取消可等待对象， wait_for() 会取消。</p> <p>wait() 第一个参数传入任务的序列，不能直接传入序列, wait_for() aws第一个参数直接传入任务。</p> </blockquote> <p><code>as_completed</code>(<em>aws</em>,<em>*</em>,<em>loop=None</em>,<em>timeout=None</em>)</p> <blockquote> <p>&nbsp;并发地运行<em>aws</em>&nbsp;集合中的<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.python.org/zh-cn/3/library/asyncio-task.html#asyncio-awaitables"  rel="nofollow">可等待对象</a>。返回一个<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.python.org/zh-cn/3/library/asyncio-future.html#asyncio.Future"  rel="nofollow"><code>Future</code></a>&nbsp;对象的迭代器。返回的每个 Future 对象代表来自剩余可等待对象集合的最早结果。</p> <p>如果在所有 Future 对象完成前发生超时则将引发<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.python.org/zh-cn/3/library/asyncio-exceptions.html#asyncio.TimeoutError"  rel="nofollow"><code>asyncio.TimeoutError</code></a>。</p> </blockquote> <p>示例:</p> <pre class="has"><code class="language-python">for f in as_completed(aws):     earliest_result = await f     # ...</code></pre> <p>wait 和 as_completed的不同</p> <blockquote> <p>两个函数都是等待任务执行结束，都传入任务的列表，都可以设定等待时间。</p> <p>区别在于：1.有序无序</p> <p>wait返回结果是无序的，调用是对传入的序列进行了集合化处理，as_completed是有序的。</p> <p>&nbsp; &nbsp; 2.返回结果不同</p> <p>wait返回结果有两个，是完成和未完成的任务task的集合，可以对task.result() 直接获取任务的结果。</p> <p>as_completed返回结果有一个，是一个含有协程对象的生成器，对其中的每一个协程对象，需要用await &lt;协程&gt; 获取结果。</p> </blockquote> <p>实例代码：</p> <p>wait：</p> <pre class="has"><code class="language-python">async def foo(arg):     await asyncio.sleep(arg)     return arg  async def main():     task = asyncio.create_task(foo(2))     task1 = asyncio.create_task(foo(1))     task2 = asyncio.create_task(foo(4))     done, pending = await asyncio.wait([task, task1, task2])     print([f.result() for f in done])  # [1, 4, 2]      asyncio.run(main())</code></pre> <p>as_completed：</p> <pre class="has"><code class="language-python">async def foo(arg):     await asyncio.sleep(arg)     return arg  async def main():     task = asyncio.create_task(foo(2))     task1 = asyncio.create_task(foo(1))     task2 = asyncio.create_task(foo(4))      gen = asyncio.as_completed([task, task1, task2])     # print(gen)  # &lt;generator object as_completed at 0x7f4d3b9dd930&gt;      print([await f for f in gen])  # [1, 2, 4]      asyncio.run(main())</code></pre> <h2 id="3PPBU">十、task对象</h2> <p><code>Task</code>(<em>coro</em>,<em>*</em>,<em>loop=None</em>)</p> <blockquote> <p> 可运行 Python<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.python.org/zh-cn/3/library/asyncio-task.html#coroutine"  rel="nofollow">协程</a>。非线程安全。</p> <p>创建：asyncio.create_task()，loop.create_task()，&nbsp;asyncio.ensure_future()</p> <p>取消：cancel()</p> <p>获取结果：result()</p> <p>获取异常：exception()<br /> 添加回调：add_done_callback(<em>callback</em>,<em>*</em>,<em>context=None</em>)移除回调：remove_done_callback(<em>callback</em>)</p> </blockquote> <blockquote> <p>判断是否取消：cancelled()</p> <p>判断是否结束：<code>done</code>()</p> <p>&nbsp; &nbsp; &nbsp; &nbsp; 当 Task 所封包的协程返回一个值、引发一个异常或 Task 本身被取消时，则会被认为<em>已完成。</em></p> </blockquote> <h2 id="bO6M1">十一、内省</h2> <p><code>asyncio.</code><code>current_task</code>(<em>loop=None</em>)</p> <blockquote> <p>返回当前运行的<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.python.org/zh-cn/3/library/asyncio-task.html#asyncio.Task"  rel="nofollow"><code>Task</code></a>&nbsp;实例，如果没有正在运行的任务则返回<code>None</code>。</p> </blockquote> <p><code>asyncio.</code><code>all_tasks</code>(<em>loop=None</em>)</p> <blockquote> <p>返回事件循环所运行的未完成的<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.python.org/zh-cn/3/library/asyncio-task.html#asyncio.Task"  rel="nofollow"><code>Task</code></a>&nbsp;对象的集合。</p> </blockquote> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-96407.htm">国内动物疫苗生产企业有多少家公司（动物疫苗市场规模）</a></p>
+                                        <p>下一个：<a href="/news/article-97091.htm">宠物医院写好评题材 宠物医院写好评题材怎么写</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">热门文章</h3>
+                            </div>
+                            <div class="panel-body">
+                                <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                                    <li class="py-2"><a href="/free-nodes/2024-5-8-clash-v2ray-ss-ssr.htm" title="5月8日|最高速度22.5M/S，2024最新Shadowrocket/Clash/SSR/V2ray免费节点高速订阅链接">5月8日|最高速度22.5M/S，2024最新Shadowrocket/Clash/SSR/V2ray免费节点高速订阅链接</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+                <!-- Start of Footer Area -->
+        <footer id="footer" class="footer-area footer-bg">
+            <div class="footer-bottom-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="copy-right-text">
+                                                    <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                                NodeClashV2ray节点订阅站 版权所有 Powered by WordPress
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--End of Footer Area -->
+    </div>
+    <!-- Body main wrapper end -->
+    <!-- Placed js at the end of the document so the pages load faster -->
+    <!-- jquery latest version -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/vendor/jquery-1.12.0.min.js"></script>
+    <!-- Bootstrap framework js -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/bootstrap.min.js"></script>
+    <!-- Owl Carousel framework js -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/owl.carousel.min.js"></script>
+    <!-- All js plugins included in this file. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/plugins.js"></script>
+    <!-- Slick min.js. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/slick.min.js"></script>
+    <!-- Waypoints.min.js. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/waypoints.min.js"></script>
+    <!-- Main js file that contents all jQuery plugins activation. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
