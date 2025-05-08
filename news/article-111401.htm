@@ -1,0 +1,220 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodeclashv2ray.github.io/news/article-111401.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>JRebel热部署的使用</title>
+        <meta name="description" content="JreBel：实现了不需要重启服务器达到热部署项目效果，它会对你当前所编辑过的页面进行编译，大幅度减少了重启服务器所带来的等待时间。 注意事项： c盘下的用户名一定不能为中文名称，否则会一直提示路径错" />
+        <link rel="icon" href="/assets/website/img/nodeclashv2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NodeClashV2ray节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodeclashv2ray.github.io/news/article-111401.htm" />
+    <meta property="og:site_name" content="NodeClashV2ray节点订阅站" />
+    <meta property="og:title" content="JRebel热部署的使用" />
+    <meta property="og:image" content="https://nodeclashv2ray.github.io/uploads/20240509/74d518a2a95d9329bad364ccca0d9e62.webp" />
+        <meta property="og:release_date" content="2025-05-04T09:28:13" />
+    <meta property="og:updated_time" content="2025-05-04T09:28:13" />
+        <meta property="og:description" content="JreBel：实现了不需要重启服务器达到热部署项目效果，它会对你当前所编辑过的页面进行编译，大幅度减少了重启服务器所带来的等待时间。 注意事项： c盘下的用户名一定不能为中文名称，否则会一直提示路径错" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- Place favicon.ico in the root directory -->
+    <!-- All css files are included here. -->
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="JRebel热部署的使用">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Bootstrap fremwork main css -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/bootstrap.min.css">
+    <!-- This core.css file contents all plugings css file. -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/core.css">
+    <!-- Theme shortcodes/elements style -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/shortcode/shortcodes.css">
+    <!-- Theme main style -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/style.css">
+    <!-- Responsive css -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/responsive.css">
+    <!-- Style customizer (Remove these two lines please) -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/style-customizer.css">
+    <!-- User style -->
+    <link rel="stylesheet" href="/assets/website/css/nodeclashv2ray/custom.css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Modernizr JS -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/vendor/modernizr-2.8.3.min.js"></script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BKWDB6T1Z4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BKWDB6T1Z4');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Body main wrapper start -->
+    <div class="wrapper">
+        <!-- Start of Header Top Area -->
+        <header id="header-content">
+            <!-- Start of mainmenu area -->
+            <div id="sticky-header-with-topbar" class="header-bottom-area bg-white height-100  transparent-header hidden-xs">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-sm-12">
+                            <div class="logo f-left sm-center">
+                                <a href="/">
+                                                                <span>Node Clash V2ray</span>
+                                                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-7 col-sm-12">
+                            <div class="mainmenu-container">
+                                <ul class="main-menu">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                    </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile-menu-area start -->
+            <div class="mobile-menu-area hidden-md hidden-lg hidden-sm">
+                <div class="fluid-container mobile-menu-container">
+                    <div class="mobile-logo">
+                                                <a href="/">Node Clash V2ray</a>
+                                            </div>
+                    <div class="mobile-menu clearfix">
+                        <nav id="mobile_dropdown">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li><a href="/client.htm">客户端</a></li>
+                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile-menu-area end -->
+        </header>
+<!-- End of Header Top Area -->
+        <!-- Start Bradcaump area -->
+        <div class="tf-bradcaump-area sbg-3" data-black-overlay="8">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="bradcaump-wrap text-center">
+                            <h1 class="bradcaump-title">JRebel热部署的使用</h1>
+                            <nav class="bradcaump-inner">
+                                <a class="breadcrumb-item" href="/">首页</a>
+                                <span class="brd-separetor">/</span>
+                                <a class="breadcrumb-item" href="/news/">新闻资讯</a>
+                                <span class="brd-separetor">/</span>
+                                <span class="breadcrumb-item active">正文</span>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Bradcaump area -->
+        <section id="tf-about-container" class="tf-about-area ptb-100 bg-gray xtb-60">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                <div class="xcblog-blog-detail xcblog-blog-detail-defined">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> </h1> <p>JreBel：实现了不需要重启服务器达到热部署项目效果，它会对你当前所编辑过的页面进行编译，大幅度减少了重启服务器所带来的等待时间。</p> <p><strong>注意事项：</strong><br /> c盘下的用户名一定不能为中文名称，否则会一直提示路径错误，<strong>目前测试全部失败，以后的同学们安装可以试一试，如果成功了就留个言</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220723/95598d9ccf7d8d965d728d5a54481845.jpg" alt="JRebel热部署的使用"></p> <h3>1.0安装jrebel插件</h3> <p>File–》Settings—》plugins----》marketplace----》搜索jrebel<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220723/46e4f082adb953eb6b5bc8d285c01031.jpg" alt="JRebel热部署的使用"></p> <h3>1.1安装成功后会重启idea，出现下面的图片</h3> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220723/ae2264a4c6662285b3cf4839b9e7de88.jpg" alt="JRebel热部署的使用"></p> <h3>1.2配置jrebel插件</h3> <hr/> <h2>2.激活jrebel</h2> <h3>2.1：先获取GUID</h3> <p>在线生成GUID地址 （<strong>https://www.guidgen.com/</strong>）， PS：如果失效刷新GUID替换就可以！</p> <pre class="prettyprint"><code class="prism language-html has-numbering">输入url：https://jrebel.qekang.com/GUID(其中的GUID是2.1生成的，邮箱自己随意填写)</code><div class="hljs-button {2}"></div></pre> <ul class="pre-numbering"> <li>1</li> </ul> <hr/> <p>之前点击蓝色字体会出现这个窗口，将上面获取到的GUID根据图片提示输入进去<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220723/6c115f3de49dfae1fee416c750bee667.jpg" alt="JRebel热部署的使用"></p> <p>如果没有出现下面提示，请确定自己的网络通畅，然后再次点击激活，如果还不行，更改guid<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220723/8a100f4d27981b62e2dd17c91fb89667.jpg" alt="JRebel热部署的使用"></p> <ul> <li>继续点击我同意【I agree】</li> </ul> <h2>3、JRebel 配置</h2> <h3>3、1 将工作模式改成离线工作，！！！！</h3> <p>不修改成离线工作，你的jrebel会一直报错，当然某些小伙伴的是没有问题<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220723/96197e33657d80ca6299ed2ab312cb5a.jpg" alt="JRebel热部署的使用"></p> <ul> <li>你的右上角会有两个绿色的小图标，这个就是jrebel启动</li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220723/1e0b3f1efde2b1ba36e0e6823ce8edc4.jpg" alt="JRebel热部署的使用"></p> <hr/> </h1> <h3>4、1 进行项目热部署</h3> <ul> <li>左下角有一个JreBel，点击在打开的窗口，选择你所需要进行热部署的项目。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220723/764496ce0b03eb68f12b4b7aaac8e3ff.jpg" alt="JRebel热部署的使用"><br /> 勾选后会生成一个rebel.xml文件，此文件可以忽略</li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220723/078b65cd58992243be63c1039a59d24f.jpg" alt="JRebel热部署的使用"></p> <h3>4、3 更改后使用ctrl+f9实现不重启服务器部署项目</h3> <ul> <li>或者点击小锤子也是<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220723/bdea0b905bdeaf067e375426b68a4615.jpg" alt="JRebel热部署的使用"></li> </ul> <h3>4、4 录制快捷键</h3> <ul> <li> <p>原有的保存操作不方便一只手操作，设置新的快捷键方便操作<br /> -edit—&gt;macros—&gt;start macro recording<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220723/167b6552da8e9f5585c1ba82d4baa890.jpg" alt="JRebel热部署的使用"></p> </li> <li> <p>右下角会出现一个提示<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220723/eddba3ac1a0acfebcbde782ee481a12b.jpg" alt="JRebel热部署的使用"></p> </li> <li> <p>然后点击ctrl+F9，此时右下角会有提示，点击红色停止<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220723/4d9a5a06afcb0ef0580fe66de60c278b.jpg" alt="JRebel热部署的使用"></p> </li> <li> <p>会弹出一个窗口，在窗口中输入build</p> </li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220723/fcf91f1e349ea80140141faa05d5b73e.jpg" alt="JRebel热部署的使用"></p> <ul> <li>打开设置，找到kaymap</li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220723/82aa5b5a9ff46c7b52460a04a3fd63e8.jpg" alt="JRebel热部署的使用"></p> <ul> <li>右击选择第一个，在弹出的窗口输入你想使用的快捷键，<code>ctrl+s</code> 已经被使用，建议使用<code>alt+z</code>或者<code>alt+s</code></li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220723/174e9d54778cf3fbc2a62ed79460a001.jpg" alt="JRebel热部署的使用"></p> <h2>警告！！！</h2> <p><font color="red">JreBel不适用于resources包下面的文件，修改此包下面的必须重启，否则不生效。</font></p> </div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-111400.htm">设计模式之观察者模式(Java实现)</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">热门文章</h3>
+                            </div>
+                            <div class="panel-body">
+                                <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                                    <li class="py-2"><a href="/free-nodes/2024-5-8-clash-v2ray-ss-ssr.htm" title="5月8日|最高速度22.5M/S，2024最新Shadowrocket/Clash/SSR/V2ray免费节点高速订阅链接">5月8日|最高速度22.5M/S，2024最新Shadowrocket/Clash/SSR/V2ray免费节点高速订阅链接</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+                <!-- Start of Footer Area -->
+        <footer id="footer" class="footer-area footer-bg">
+            <div class="footer-bottom-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="copy-right-text">
+                                                    <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                                NodeClashV2ray节点订阅站 版权所有 Powered by WordPress
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--End of Footer Area -->
+    </div>
+    <!-- Body main wrapper end -->
+    <!-- Placed js at the end of the document so the pages load faster -->
+    <!-- jquery latest version -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/vendor/jquery-1.12.0.min.js"></script>
+    <!-- Bootstrap framework js -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/bootstrap.min.js"></script>
+    <!-- Owl Carousel framework js -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/owl.carousel.min.js"></script>
+    <!-- All js plugins included in this file. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/plugins.js"></script>
+    <!-- Slick min.js. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/slick.min.js"></script>
+    <!-- Waypoints.min.js. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/waypoints.min.js"></script>
+    <!-- Main js file that contents all jQuery plugins activation. -->
+    <script src="/assets/website/js/frontend/nodeclashv2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
