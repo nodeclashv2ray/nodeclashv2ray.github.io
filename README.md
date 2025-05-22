@@ -1,4 +1,4 @@
-# 5月18日|最高速度18.4M/S，2025最新Clash/SSR/V2ray/Shadowrocket免费节点高速订阅机场  更新时间 2025-05-18 10:32:00
+# 5月22日|最高速度18.8M/S，2025最新Shadowrocket/Clash/V2ray/SSR免费节点高速订阅机场  更新时间 2025-05-22 09:13:59
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://nodeclashv2ray.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,23 +9,23 @@
 
 ### Clash订阅链接
 
-- https://nodeclashv2ray.github.io/uploads/2025/05/0-20250518.yaml
-- https://nodeclashv2ray.github.io/uploads/2025/05/1-20250518.yaml
-- https://nodeclashv2ray.github.io/uploads/2025/05/2-20250518.yaml
-- https://nodeclashv2ray.github.io/uploads/2025/05/3-20250518.yaml
-- https://nodeclashv2ray.github.io/uploads/2025/05/4-20250518.yaml
+- https://nodeclashv2ray.github.io/uploads/2025/05/0-20250522.yaml
+- https://nodeclashv2ray.github.io/uploads/2025/05/1-20250522.yaml
+- https://nodeclashv2ray.github.io/uploads/2025/05/2-20250522.yaml
+- https://nodeclashv2ray.github.io/uploads/2025/05/3-20250522.yaml
+- https://nodeclashv2ray.github.io/uploads/2025/05/4-20250522.yaml
 
 ### V2ray订阅链接
 
-- https://nodeclashv2ray.github.io/uploads/2025/05/0-20250518.txt
-- https://nodeclashv2ray.github.io/uploads/2025/05/1-20250518.txt
-- https://nodeclashv2ray.github.io/uploads/2025/05/2-20250518.txt
-- https://nodeclashv2ray.github.io/uploads/2025/05/3-20250518.txt
-- https://nodeclashv2ray.github.io/uploads/2025/05/4-20250518.txt
+- https://nodeclashv2ray.github.io/uploads/2025/05/0-20250522.txt
+- https://nodeclashv2ray.github.io/uploads/2025/05/1-20250522.txt
+- https://nodeclashv2ray.github.io/uploads/2025/05/2-20250522.txt
+- https://nodeclashv2ray.github.io/uploads/2025/05/3-20250522.txt
+- https://nodeclashv2ray.github.io/uploads/2025/05/4-20250522.txt
 
 ### Sing-box订阅链接
 
-- https://nodeclashv2ray.github.io/uploads/2025/05/20250518.json
+- https://nodeclashv2ray.github.io/uploads/2025/05/20250522.json
 
 ## 更多clash节点订阅 ：
 
