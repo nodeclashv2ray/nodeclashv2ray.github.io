@@ -290,34 +290,13 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
 <p data-start="2537" data-end="2627" class="">使用SSH科学上网不仅能保护您的网络隐私，还能帮助您访问受限的网站，享受更加自由的互联网体验。希望您能够按照本文的指南，顺利搭建属于自己的SSH科学上网环境，畅享无障碍的网络世界。</p></div>
 <div class="clearfix"></div>
 <div class="col-md-12 mt-5">
-        <p>上一个：<a href="/free-nodes/2025-11-4-shadowrocket-node.htm">11月4日|最高速度18.5M/S，2025最新Clash节点/Singbox节点/V2ray节点/SSR节点/Shadowrocket节点免费节点高速订阅机场</a></p>
         <p>下一个：<a href="/free-nodes/2025-11-6-free-clash-subscribe.htm">11月6日|最高速度22.2M/S，2025最新SSR节点/Clash节点/V2ray节点/Shadowrocket节点/Singbox节点免费节点高速订阅机场</a></p>
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>WinXray 的 PAC 模式适合哪些使用场景？</h5></div>
+    <div class="panel-heading"><h5>Surfboard 如何实现按应用分流？</h5></div>
     <div class="panel-body">
-        PAC 模式可根据规则文件动态判断流量是否走代理。适合访问国内外混合网站环境，无需手动切换节点，程序自动分流，提高网络访问效率和稳定性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>VMess AEAD 加密在高封锁网络的作用？</h5></div>
-    <div class="panel-body">
-        AEAD 加密可防止数据篡改和流量特征泄露，降低被封锁和 DPI 检测风险。保证节点长期可用，提高数据传输安全性和访问可靠性，优化用户科学上网体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Nekobox 能否同时管理多个客户端节点？</h5></div>
-    <div class="panel-body">
-        支持。Nekobox 与 Shadowsocks、Clash 等客户端独立运行，互不干扰。用户可通过策略组灵活管理节点，实现多客户端分流和网络优化，提高使用便利性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Surfboard 是否支持应用分流？</h5></div>
-    <div class="panel-body">
-        支持。Surfboard 可通过策略组和规则文件将不同应用流量分配到指定节点，保证游戏、视频和浏览器流量走最优节点，提高访问速度和网络稳定性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Mellow 如何配置透明代理？</h5></div>
-    <div class="panel-body">
-        Mellow 通过 tun2socks 技术实现透明代理。只需在配置文件中启用该功能，系统所有网络流量都会自动转发到代理内核，用户无需手动设置系统代理参数。<hr />    </div>
+        Surfboard 支持通过策略组和规则文件按应用分流，将不同应用的流量分配到不同节点。这样可保证游戏或视频走低延迟节点，提高访问速度并优化网络体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Sing-box 精确端口分流如何提升游戏连接？</h5></div>
@@ -325,9 +304,19 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         Sing-box 可按端口设置流量分流规则，将游戏流量分配到低延迟节点。结合策略组使用，可保证游戏连接稳定，减少延迟和掉线，提高流畅度和网络体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>Sing-box 如何实现流量精细分流？</h5></div>
+    <div class="panel-body">
+        通过定义 routing 规则和策略组，Sing-box 可以根据域名、IP、端口或协议类型精细分流流量。例如视频走高速节点，网页走备用节点，实现流量优化和网络加速。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>V2Ray 与 Clash 有什么区别？</h5></div>
     <div class="panel-body">
         V2Ray 是一款代理核心工具，提供底层网络传输和加密支持；而 Clash 是一个多协议客户端，可以整合 V2Ray、Trojan、Shadowsocks 等多种协议。简而言之，V2Ray 负责“传输”，Clash 负责“管理与分流”。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>WinXray 的 PAC 模式适合哪些使用场景？</h5></div>
+    <div class="panel-body">
+        PAC 模式可根据规则文件动态判断流量是否走代理。适合访问国内外混合网站环境，无需手动切换节点，程序自动分流，提高网络访问效率和稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Clash 的规则模式有哪些？</h5></div>
@@ -335,14 +324,24 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         Clash 提供三种主要模式：Global（全局代理）、Rule（规则代理）和Direct（直连）。全局模式会让所有流量通过代理；规则模式根据规则文件自动分流；直连模式则完全不经过代理。用户可根据需求灵活切换。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Sing-box 如何实现流量精细分流？</h5></div>
+    <div class="panel-heading"><h5>VMess AEAD 加密在高封锁网络的作用？</h5></div>
     <div class="panel-body">
-        通过定义 routing 规则和策略组，Sing-box 可以根据域名、IP、端口或协议类型精细分流流量。例如视频走高速节点，网页走备用节点，实现流量优化和网络加速。<hr />    </div>
+        AEAD 加密可防止数据篡改和流量特征泄露，降低被封锁和 DPI 检测风险。保证节点长期可用，提高数据传输安全性和访问可靠性，优化用户科学上网体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Surfboard 如何实现按应用分流？</h5></div>
+    <div class="panel-heading"><h5>Mellow 如何配置透明代理？</h5></div>
     <div class="panel-body">
-        Surfboard 支持通过策略组和规则文件按应用分流，将不同应用的流量分配到不同节点。这样可保证游戏或视频走低延迟节点，提高访问速度并优化网络体验。    </div>
+        Mellow 通过 tun2socks 技术实现透明代理。只需在配置文件中启用该功能，系统所有网络流量都会自动转发到代理内核，用户无需手动设置系统代理参数。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Surfboard 是否支持应用分流？</h5></div>
+    <div class="panel-body">
+        支持。Surfboard 可通过策略组和规则文件将不同应用流量分配到指定节点，保证游戏、视频和浏览器流量走最优节点，提高访问速度和网络稳定性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Nekobox 能否同时管理多个客户端节点？</h5></div>
+    <div class="panel-body">
+        支持。Nekobox 与 Shadowsocks、Clash 等客户端独立运行，互不干扰。用户可通过策略组灵活管理节点，实现多客户端分流和网络优化，提高使用便利性。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
