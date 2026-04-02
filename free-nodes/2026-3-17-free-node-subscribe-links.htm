@@ -305,19 +305,19 @@ Kitsunebi是一款轻量级的V2Ray客户端，注重网络优化和用户隐私
         证书错误通常由域名与证书不匹配或证书链不完整引起。请检查服务器证书是否为有效域名签发并包含完整链，如果使用 Let's Encrypt，请确保证书未过期并已正确安装到反向代理或服务端。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Potatso Lite 在新版 iOS 上无法连接怎么办？</h5></div>
-    <div class="panel-body">
-        苹果系统更新后，Potatso Lite 可能需要重新授权 VPN 权限。请删除旧的 VPN 配置，重新安装并导入节点。若仍无法使用，可尝试更换网络模式或等待开发者更新兼容版本。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>QuantumultX 如何实现按协议类型分流？</h5></div>
-    <div class="panel-body">
-        QuantumultX 可根据 TCP、UDP 或特定应用协议分流流量，结合策略组选择节点。这样可以为游戏、视频或广告屏蔽等应用提供最佳网络体验，提高访问速度和稳定性。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>Potatso Lite 是否支持节点手动排序？</h5></div>
     <div class="panel-body">
         支持。用户可以根据延迟或使用需求手动排序节点顺序，结合策略组和规则文件实现基本分流管理。虽然不支持自动订阅更新，但满足轻量用户的节点管理需求。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Trojan-Go 的 MUX 功能能降低延迟吗？</h5></div>
+    <div class="panel-body">
+        启用 MUX 后，多条 TCP/QUIC 连接可以共享单个隧道，减少握手次数和连接延迟。对于频繁短连接应用如游戏或社交软件，可以明显提升响应速度。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Clash 的 Rule Provider 功能是干什么的？</h5></div>
+    <div class="panel-body">
+        Rule Provider 是 Clash 的规则订阅机制，它可以通过远程 URL 自动更新分流规则文件。这样用户无需手动修改本地配置，就能保持规则同步更新，例如广告过滤或流媒体分流。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>VMess AEAD 加密在高封锁地区的优势？</h5></div>
@@ -330,24 +330,24 @@ Kitsunebi是一款轻量级的V2Ray客户端，注重网络优化和用户隐私
         是的。Clash 的配置文件采用 YAML 格式，结构清晰易读。用户可以通过编辑 proxies、proxy-groups 和 rules 部分来自定义节点列表、分组策略和分流规则，非常灵活。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>Potatso Lite 在新版 iOS 上无法连接怎么办？</h5></div>
+    <div class="panel-body">
+        苹果系统更新后，Potatso Lite 可能需要重新授权 VPN 权限。请删除旧的 VPN 配置，重新安装并导入节点。若仍无法使用，可尝试更换网络模式或等待开发者更新兼容版本。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>Sing-box 如何按 IP 段实现智能分流？</h5></div>
     <div class="panel-body">
         Sing-box 支持根据 IP 段匹配流量，将国内流量直连、国外流量走代理。结合策略组和规则文件，实现精细化流量管理，保证访问速度和稳定性，同时提高节点使用效率。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Clash 的 Rule Provider 功能是干什么的？</h5></div>
-    <div class="panel-body">
-        Rule Provider 是 Clash 的规则订阅机制，它可以通过远程 URL 自动更新分流规则文件。这样用户无需手动修改本地配置，就能保持规则同步更新，例如广告过滤或流媒体分流。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Trojan-Go 的 MUX 功能能降低延迟吗？</h5></div>
-    <div class="panel-body">
-        启用 MUX 后，多条 TCP/QUIC 连接可以共享单个隧道，减少握手次数和连接延迟。对于频繁短连接应用如游戏或社交软件，可以明显提升响应速度。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>如何配置 Clash 的 GEOIP 分流？</h5></div>
     <div class="panel-body">
-        Clash 支持使用 GEOIP 数据库进行区域分流。用户在规则文件中添加 `GEOIP,CN,DIRECT` 可使国内流量直连，而国外流量走代理，从而提升整体网络性能。    </div>
+        Clash 支持使用 GEOIP 数据库进行区域分流。用户在规则文件中添加 `GEOIP,CN,DIRECT` 可使国内流量直连，而国外流量走代理，从而提升整体网络性能。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>QuantumultX 如何实现按协议类型分流？</h5></div>
+    <div class="panel-body">
+        QuantumultX 可根据 TCP、UDP 或特定应用协议分流流量，结合策略组选择节点。这样可以为游戏、视频或广告屏蔽等应用提供最佳网络体验，提高访问速度和稳定性。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
