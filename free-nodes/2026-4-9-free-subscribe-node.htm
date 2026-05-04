@@ -380,14 +380,18 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
 <p data-start="3044" data-end="3220" class="">这篇文章不仅结构严谨，逻辑清晰，而且语言平实易懂，兼顾技术深度与读者体验。作者通过“用户视角”的写作方式，娓娓道来注册、配置与使用过程，贴近实际操作场景，对技术小白极为友好。而FAQ部分的加入，更增强了文章的实用性与指导性。总体而言，这是一篇既有技术含量又不失可读性的科普型教程佳作，对于希望入门V2Ray工具的用户而言，无疑是不可多得的上网启蒙指南。</p></div>
 <div class="clearfix"></div>
 <div class="col-md-12 mt-5">
-        <p>上一个：<a href="/free-nodes/2026-4-2-free-node-subscribe.htm">4月2日|最高速度19.1M/S，2025最新Trojan节点/Singbox节点/Shadowrocket节点/SSR节点/V2ray节点/Clash节点免费节点高速订阅机场</a></p>
         <p>下一个：<a href="/free-nodes/2026-4-10-node-share-links.htm">4月10日|最高速度21.4M/S，2025最新SSR节点/V2ray节点/Singbox节点/Clash节点/Shadowrocket节点/Trojan节点免费节点高速订阅机场</a></p>
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>QuantumultX 与 Shadowrocket 相比的最大区别是什么？</h5></div>
+    <div class="panel-heading"><h5>SSR 的端口转发功能如何开启？</h5></div>
     <div class="panel-body">
-        QuantumultX 在规则系统和自动化脚本上更灵活，支持丰富的 rewrite 与 filter 功能，而 Shadowrocket 则更轻便易用，适合普通用户快速切换节点。二者可根据使用习惯与功能需求选择。<hr />    </div>
+        在服务器端配置文件中启用 port_forwarding 参数并指定目标端口与地址。确保防火墙开放转发端口，客户端使用对应端口连接即可实现流量中继。此功能常用于内网穿透或端口复用。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>WinXray 节点延迟检测如何优化访问速度？</h5></div>
+    <div class="panel-body">
+        WinXray 会定期测速节点延迟和丢包率，结合策略组自动切换到最佳节点。保证网页、视频和游戏流量走低延迟节点，提升访问速度和连接稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>VMess AEAD 加密在安全性方面有何优势？</h5></div>
@@ -395,24 +399,14 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         AEAD 加密可防止数据篡改、重放攻击和流量特征泄露。在高封锁环境下保证节点可用，提升数据安全和连接稳定性，同时降低被检测风险，确保长期安全访问。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>WinXray 的内核能否替换？</h5></div>
+    <div class="panel-heading"><h5>Netch 支持游戏加速吗？</h5></div>
     <div class="panel-body">
-        可以。WinXray 的内核文件独立存在于程序目录中，用户可替换为最新的 v2ray-core 或 xray-core 文件以获取更好的性能与协议支持，但需保持版本兼容。<hr />    </div>
+        Netch 专为游戏加速设计，支持 UDP 转发和 TAP 驱动，可有效降低延迟。用户可以为特定游戏添加路由规则，实现分流加速，从而提升国际游戏体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>SSR 的混淆插件如何提高抗封锁能力？</h5></div>
     <div class="panel-body">
         通过混淆插件可以模拟正常 HTTPS 或 HTTP 流量，隐藏真实通信特征。合理选择混淆方式，可有效避免 DPI 检测，提高节点可用性和连接稳定性，保证长期科学上网。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>SSR 的端口转发功能如何开启？</h5></div>
-    <div class="panel-body">
-        在服务器端配置文件中启用 port_forwarding 参数并指定目标端口与地址。确保防火墙开放转发端口，客户端使用对应端口连接即可实现流量中继。此功能常用于内网穿透或端口复用。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>WinXray 的节点导入方式有哪些？</h5></div>
-    <div class="panel-body">
-        WinXray 支持手动添加节点、从 URL 订阅导入节点，以及批量导入 JSON 配置文件。用户可以直接复制订阅地址或粘贴节点链接，程序会自动解析并添加到节点列表中，操作十分便捷。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>QuantumultX 如何实现按端口和协议分流？</h5></div>
@@ -425,14 +419,19 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         Clash 可通过策略组和规则文件按应用分流，将特定应用的流量转发到指定节点。例如游戏走低延迟节点，网页浏览走普通节点，实现高效分流和优化网络速度。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Netch 支持游戏加速吗？</h5></div>
+    <div class="panel-heading"><h5>WinXray 的内核能否替换？</h5></div>
     <div class="panel-body">
-        Netch 专为游戏加速设计，支持 UDP 转发和 TAP 驱动，可有效降低延迟。用户可以为特定游戏添加路由规则，实现分流加速，从而提升国际游戏体验。<hr />    </div>
+        可以。WinXray 的内核文件独立存在于程序目录中，用户可替换为最新的 v2ray-core 或 xray-core 文件以获取更好的性能与协议支持，但需保持版本兼容。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>WinXray 节点延迟检测如何优化访问速度？</h5></div>
+    <div class="panel-heading"><h5>WinXray 的节点导入方式有哪些？</h5></div>
     <div class="panel-body">
-        WinXray 会定期测速节点延迟和丢包率，结合策略组自动切换到最佳节点。保证网页、视频和游戏流量走低延迟节点，提升访问速度和连接稳定性。    </div>
+        WinXray 支持手动添加节点、从 URL 订阅导入节点，以及批量导入 JSON 配置文件。用户可以直接复制订阅地址或粘贴节点链接，程序会自动解析并添加到节点列表中，操作十分便捷。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>QuantumultX 与 Shadowrocket 相比的最大区别是什么？</h5></div>
+    <div class="panel-body">
+        QuantumultX 在规则系统和自动化脚本上更灵活，支持丰富的 rewrite 与 filter 功能，而 Shadowrocket 则更轻便易用，适合普通用户快速切换节点。二者可根据使用习惯与功能需求选择。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
