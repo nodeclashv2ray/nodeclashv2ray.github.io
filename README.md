@@ -1,4 +1,4 @@
-# 6月1日|最高速度18.8M/S，2025最新SSR节点/V2ray节点/Singbox节点/Clash节点/Shadowrocket节点免费节点高速订阅机场  更新时间 2026-06-01 09:37:28
+# 6月6日|最高速度21.2M/S，2025最新Singbox节点/SSR节点/Clash节点/Shadowrocket节点/V2ray节点免费节点高速订阅机场  更新时间 2026-06-06 09:13:22
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://nodeclashv2ray.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,23 +9,23 @@
 
 ### 免费Clash节点订阅链接
 
-- https://nodeclashv2ray.github.io/uploads/2026/06/0-20260601.yaml
-- https://nodeclashv2ray.github.io/uploads/2026/06/1-20260601.yaml
-- https://nodeclashv2ray.github.io/uploads/2026/06/2-20260601.yaml
-- https://nodeclashv2ray.github.io/uploads/2026/06/3-20260601.yaml
-- https://nodeclashv2ray.github.io/uploads/2026/06/4-20260601.yaml
+- https://nodeclashv2ray.github.io/uploads/2026/06/0-20260606.yaml
+- https://nodeclashv2ray.github.io/uploads/2026/06/1-20260606.yaml
+- https://nodeclashv2ray.github.io/uploads/2026/06/2-20260606.yaml
+- https://nodeclashv2ray.github.io/uploads/2026/06/3-20260606.yaml
+- https://nodeclashv2ray.github.io/uploads/2026/06/4-20260606.yaml
 
 ### 免费V2ray节点订阅链接
 
-- https://nodeclashv2ray.github.io/uploads/2026/06/0-20260601.txt
-- https://nodeclashv2ray.github.io/uploads/2026/06/1-20260601.txt
-- https://nodeclashv2ray.github.io/uploads/2026/06/2-20260601.txt
-- https://nodeclashv2ray.github.io/uploads/2026/06/3-20260601.txt
-- https://nodeclashv2ray.github.io/uploads/2026/06/4-20260601.txt
+- https://nodeclashv2ray.github.io/uploads/2026/06/0-20260606.txt
+- https://nodeclashv2ray.github.io/uploads/2026/06/1-20260606.txt
+- https://nodeclashv2ray.github.io/uploads/2026/06/2-20260606.txt
+- https://nodeclashv2ray.github.io/uploads/2026/06/3-20260606.txt
+- https://nodeclashv2ray.github.io/uploads/2026/06/4-20260606.txt
 
 ### 免费Sing-box节点订阅链接
 
-- https://nodeclashv2ray.github.io/uploads/2026/06/20260601.json
+- https://nodeclashv2ray.github.io/uploads/2026/06/20260606.json
 
 ## 更多Clash节点订阅 ：
 
