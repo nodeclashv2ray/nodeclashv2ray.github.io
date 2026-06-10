@@ -190,19 +190,14 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>如何检查 Clash 连接失败的日志以定位问题？</h5></div>
+    <div class="panel-body">
+        打开 Clash 的日志面板或查看配置目录下的 log 文件，观察报错信息如 DNS 解析失败、节点拒绝连接或 TLS 握手错误。根据关键字（例如 timeout、refused、certificate）逐项排查并比对服务器配置。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>V2Ray 的流量分流规则支持哪些条件？</h5></div>
     <div class="panel-body">
         V2Ray 支持按域名、IP、端口、协议或用户标签进行分流。用户可灵活设置国内直连、国外代理或特定节点，实现精准控制和网络优化。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Surfboard 如何结合策略组实现智能分流？</h5></div>
-    <div class="panel-body">
-        Surfboard 可根据策略组和规则文件自动选择最优节点处理流量。不同应用或网站可分配不同节点，保证低延迟和高速访问，同时减少手动切换节点的操作。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>如何合理设置 Clash 的 proxy-group 实现自动切换？</h5></div>
-    <div class="panel-body">
-        创建包含多个节点的策略组（如 `url-test` 或 `fallback`），设置合适的检测 URL 与检测频率，启用延迟优先或可用性优先策略。这样客户端会自动选择延迟最低或可用节点，提升稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>VLESS 的 Reality 模式需要额外配置吗？</h5></div>
@@ -210,19 +205,14 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         Reality 模式需要配置伪装域名、公钥和服务器指纹等参数。正确配置后，可有效隐藏流量特征，提高在高封锁环境下的可用性和安全性。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>如何检查 Clash 连接失败的日志以定位问题？</h5></div>
+    <div class="panel-heading"><h5>Hiddify Next 如何实现用户流量分配？</h5></div>
     <div class="panel-body">
-        打开 Clash 的日志面板或查看配置目录下的 log 文件，观察报错信息如 DNS 解析失败、节点拒绝连接或 TLS 握手错误。根据关键字（例如 timeout、refused、certificate）逐项排查并比对服务器配置。<hr />    </div>
+        管理员可为每个用户设置带宽和流量配额。超出限制时可自动降速或阻止访问，确保服务器资源合理分配，避免单用户占用过多带宽，提高整体网络公平性和效率。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 的流量分流如何与防火墙配合使用？</h5></div>
+    <div class="panel-heading"><h5>如何合理设置 Clash 的 proxy-group 实现自动切换？</h5></div>
     <div class="panel-body">
-        通过 V2Ray 的路由规则，可将指定流量通过代理出口，而防火墙限制其他流量直连。结合防火墙规则可以实现对内部网络访问和外部代理流量的精准控制。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>如何用 iptables 限制 V2Ray 服务的访问来源？</h5></div>
-    <div class="panel-body">
-        使用 iptables 规则仅允许可信 IP 或 CDN 的中转 IP 访问服务端口，例如 `iptables -A INPUT -p tcp -s <trusted_ip> --dport 443 -j ACCEPT`，并在默认策略下拒绝其他来源，从而降低被扫描与滥用风险。<hr />    </div>
+        创建包含多个节点的策略组（如 `url-test` 或 `fallback`），设置合适的检测 URL 与检测频率，启用延迟优先或可用性优先策略。这样客户端会自动选择延迟最低或可用节点，提升稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>VLESS + Reality 与 Trojan 在性能上差异大吗？</h5></div>
@@ -230,14 +220,24 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         两者性能相近。VLESS + Reality 伪装更自然，适合强封锁地区；Trojan 则依托标准 TLS 实现高速连接。选择取决于服务器支持与环境稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Hiddify Next 如何实现用户流量分配？</h5></div>
+    <div class="panel-heading"><h5>V2Ray 的流量分流如何与防火墙配合使用？</h5></div>
     <div class="panel-body">
-        管理员可为每个用户设置带宽和流量配额。超出限制时可自动降速或阻止访问，确保服务器资源合理分配，避免单用户占用过多带宽，提高整体网络公平性和效率。<hr />    </div>
+        通过 V2Ray 的路由规则，可将指定流量通过代理出口，而防火墙限制其他流量直连。结合防火墙规则可以实现对内部网络访问和外部代理流量的精准控制。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Surfboard 如何结合策略组实现智能分流？</h5></div>
+    <div class="panel-body">
+        Surfboard 可根据策略组和规则文件自动选择最优节点处理流量。不同应用或网站可分配不同节点，保证低延迟和高速访问，同时减少手动切换节点的操作。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Shadowrocket 能否自动更新订阅？</h5></div>
     <div class="panel-body">
-        支持。Shadowrocket 可以设置定时更新周期，例如每隔 12 小时或每天自动刷新订阅链接，确保节点列表保持最新状态。这样无需手动更新即可长期稳定使用。    </div>
+        支持。Shadowrocket 可以设置定时更新周期，例如每隔 12 小时或每天自动刷新订阅链接，确保节点列表保持最新状态。这样无需手动更新即可长期稳定使用。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>如何用 iptables 限制 V2Ray 服务的访问来源？</h5></div>
+    <div class="panel-body">
+        使用 iptables 规则仅允许可信 IP 或 CDN 的中转 IP 访问服务端口，例如 `iptables -A INPUT -p tcp -s <trusted_ip> --dport 443 -j ACCEPT`，并在默认策略下拒绝其他来源，从而降低被扫描与滥用风险。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
