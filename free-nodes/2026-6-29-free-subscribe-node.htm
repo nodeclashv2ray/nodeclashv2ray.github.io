@@ -327,9 +327,19 @@ V2Ray能够实时识别当前网络状态，并自动调整流量控制策略。
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>WinXray 的系统代理模式有哪些？</h5></div>
+    <div class="panel-heading"><h5>Matsuri 节点延迟排序如何结合策略组使用？</h5></div>
     <div class="panel-body">
-        WinXray 支持三种系统代理模式：全局、直连和 PAC 模式。全局模式代理所有流量；直连模式跳过代理；PAC 模式根据规则文件智能判断是否走代理。<hr />    </div>
+        Matsuri 会定期测速节点延迟，通过策略组自动选择低延迟、高稳定性的节点处理不同流量。无需手动切换，确保网页浏览、视频播放和游戏访问顺畅。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Clash 策略组如何实现节点优先级切换？</h5></div>
+    <div class="panel-body">
+        用户可以在 Clash 策略组中设置节点优先级，结合规则文件，自动选择延迟低、稳定性高的节点处理流量。优化网页浏览、视频播放和游戏访问速度，提高整体网络效率。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>V2Ray 的 WebSocket + TLS 配置有哪些优势？</h5></div>
+    <div class="panel-body">
+        WebSocket + TLS 可以伪装成普通 HTTPS 流量，增强抗封锁能力。适合高封锁环境，结合域名伪装和策略组，可实现高安全性和稳定的网络访问体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Potatso Lite 支持节点手动导入和修改吗？</h5></div>
@@ -337,14 +347,14 @@ V2Ray能够实时识别当前网络状态，并自动调整流量控制策略。
         支持。用户可以手动输入节点信息或通过扫描二维码导入节点，并进行修改或删除。虽然不支持自动订阅更新，但足以满足轻量级用户对节点管理和分流的需求。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>WinXray 延迟检测功能如何提高网络体验？</h5></div>
+    <div class="panel-body">
+        WinXray 会定期检测节点延迟，结合策略组自动切换到低延迟节点。保证网页、视频和游戏流量通过最佳节点，提高访问速度和连接稳定性，减少掉线和卡顿。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>V2Ray QUIC 模式在高丢包网络中的优势？</h5></div>
     <div class="panel-body">
         QUIC 基于 UDP 协议，支持多路复用和零握手，可减少延迟和丢包。适合视频、游戏和即时通讯等高丢包环境，保证访问稳定性和速度，提高整体体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 的 WebSocket + TLS 配置有哪些优势？</h5></div>
-    <div class="panel-body">
-        WebSocket + TLS 可以伪装成普通 HTTPS 流量，增强抗封锁能力。适合高封锁环境，结合域名伪装和策略组，可实现高安全性和稳定的网络访问体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>VLess 使用 XTLS 时证书怎么配置更安全？</h5></div>
@@ -362,19 +372,9 @@ V2Ray能够实时识别当前网络状态，并自动调整流量控制策略。
         协议插件可隐藏真实流量特征并模拟正常协议，防止被封锁或 DPI 检测。结合加密方式和混淆方法，可以提升节点的稳定性和长期可用性，保证数据传输安全。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Clash 策略组如何实现节点优先级切换？</h5></div>
+    <div class="panel-heading"><h5>WinXray 的系统代理模式有哪些？</h5></div>
     <div class="panel-body">
-        用户可以在 Clash 策略组中设置节点优先级，结合规则文件，自动选择延迟低、稳定性高的节点处理流量。优化网页浏览、视频播放和游戏访问速度，提高整体网络效率。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Matsuri 节点延迟排序如何结合策略组使用？</h5></div>
-    <div class="panel-body">
-        Matsuri 会定期测速节点延迟，通过策略组自动选择低延迟、高稳定性的节点处理不同流量。无需手动切换，确保网页浏览、视频播放和游戏访问顺畅。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>WinXray 延迟检测功能如何提高网络体验？</h5></div>
-    <div class="panel-body">
-        WinXray 会定期检测节点延迟，结合策略组自动切换到低延迟节点。保证网页、视频和游戏流量通过最佳节点，提高访问速度和连接稳定性，减少掉线和卡顿。    </div>
+        WinXray 支持三种系统代理模式：全局、直连和 PAC 模式。全局模式代理所有流量；直连模式跳过代理；PAC 模式根据规则文件智能判断是否走代理。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -430,9 +430,7 @@ V2Ray能够实时识别当前网络状态，并自动调整流量控制策略。
                         <a href="/privacy.htm">隐私申明</a> |
                         <a href="/sitemap.xml">网站地图</a>
                     </p>
-                                        <div>特别推荐：<b><a href="javascript:;" class="js_to" data-url="https://www.futizi.net/?code=" data-type="Luniuyun" data-code="svvkQf3y" target="_blank">绿牛云</a></b> <p>高速稳定的网络加速</p>
-                        <p>畅享全球内容，访问 ChatGPT、TikTok、Google 等热门网站。
-全平台支持 · 7×24 专业客服 · 采用军工级安全加密传输技术。</p></div>
+                                        <div>特别推荐：<b><a href="javascript:;" class="js_to" data-url="https://c.kilxs.cn/?path=register&code=" data-type="Xingchen" data-code="tlc6gYYx" target="_blank">星辰机场</a></b> <p>【包年送2个月】</p><p>1、购买入门版年付套餐额外送2个月，共14个月，只要99元！！！</p><p>2、购买“至尊天皇”年付套餐，额外送2个月，只要299元！！！</p><p>3、购买其他包月类套餐中的年付，同样送2个月！！！</p><p>错过要再等一年！！</p></div>
                                                     NodeClashV2ray节点订阅站 版权所有 Powered by WordPress
                             </div>
                         </div>
