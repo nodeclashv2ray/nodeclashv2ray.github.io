@@ -424,9 +424,34 @@ A4：检查服务器状态，端口是否开放，重启服务，尝试切换节
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>SSR 的混淆插件有什么作用？</h5></div>
+    <div class="panel-heading"><h5>VLESS + XTLS 如何在高延迟网络中优化连接？</h5></div>
     <div class="panel-body">
-        混淆插件用于伪装流量，使其看起来像普通的 HTTP 或 TLS 请求。常见类型有 plain、tls1.2_ticket_auth 等。合理设置混淆能有效降低被识别的风险，提升连接成功率。<hr />    </div>
+        XTLS 模式通过减少握手和加密开销降低延迟。结合策略组和多节点切换，可在高延迟或不稳定网络环境下保证网页浏览、视频播放和游戏连接稳定，提高整体体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>QuantumultX 可以按协议类型分流吗？</h5></div>
+    <div class="panel-body">
+        支持。用户可按 TCP、UDP 或特定应用协议分流流量，结合策略组，实现游戏加速、视频优化或广告屏蔽等定制化网络策略，提高访问速度和稳定性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Nekoray 的订阅更新支持自动导入节点吗？</h5></div>
+    <div class="panel-body">
+        支持。Nekoray 可以通过订阅 URL 自动下载节点，并根据用户配置更新本地节点列表。定期更新确保节点始终可用，减少手动维护的麻烦，提高使用便利性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Mihomo 节点分组管理有哪些优势？</h5></div>
+    <div class="panel-body">
+        节点可按地区、延迟或用途分类，结合策略组实现自动分流。便于管理大量节点，快速选择最优节点，提高访问速度和连接稳定性，同时优化维护效率和网络体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Mihomo 节点分组功能有什么优势？</h5></div>
+    <div class="panel-body">
+        分组管理可按延迟、地区或用途分类节点，并结合策略组实现自动分流。用户可快速选择最优节点，提高访问速度和稳定性，方便管理大量节点并优化维护效率。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Nekobox 是否能与其他客户端共存？</h5></div>
+    <div class="panel-body">
+        可以。Nekobox 配置独立，不影响其他客户端的运行。用户可同时安装 Clash、Mellow 或 Shadowrocket，按需切换使用，互不干扰。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Sing-box 精确端口分流如何提升游戏连接？</h5></div>
@@ -439,34 +464,9 @@ A4：检查服务器状态，端口是否开放，重启服务，尝试切换节
         避免使用常见端口（如 80、443）直接暴露 V2Ray 服务；若必须使用 443，建议通过 Web 服务器反代或使用 CDN；同时启用 fail2ban 与 iptables 限制异常连接频率，减少被扫描发现的风险。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Mihomo 节点分组功能有什么优势？</h5></div>
+    <div class="panel-heading"><h5>SSR 的混淆插件有什么作用？</h5></div>
     <div class="panel-body">
-        分组管理可按延迟、地区或用途分类节点，并结合策略组实现自动分流。用户可快速选择最优节点，提高访问速度和稳定性，方便管理大量节点并优化维护效率。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>VLESS + XTLS 如何在高延迟网络中优化连接？</h5></div>
-    <div class="panel-body">
-        XTLS 模式通过减少握手和加密开销降低延迟。结合策略组和多节点切换，可在高延迟或不稳定网络环境下保证网页浏览、视频播放和游戏连接稳定，提高整体体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Mihomo 节点分组管理有哪些优势？</h5></div>
-    <div class="panel-body">
-        节点可按地区、延迟或用途分类，结合策略组实现自动分流。便于管理大量节点，快速选择最优节点，提高访问速度和连接稳定性，同时优化维护效率和网络体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>QuantumultX 可以按协议类型分流吗？</h5></div>
-    <div class="panel-body">
-        支持。用户可按 TCP、UDP 或特定应用协议分流流量，结合策略组，实现游戏加速、视频优化或广告屏蔽等定制化网络策略，提高访问速度和稳定性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Nekobox 是否能与其他客户端共存？</h5></div>
-    <div class="panel-body">
-        可以。Nekobox 配置独立，不影响其他客户端的运行。用户可同时安装 Clash、Mellow 或 Shadowrocket，按需切换使用，互不干扰。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Nekoray 的订阅更新支持自动导入节点吗？</h5></div>
-    <div class="panel-body">
-        支持。Nekoray 可以通过订阅 URL 自动下载节点，并根据用户配置更新本地节点列表。定期更新确保节点始终可用，减少手动维护的麻烦，提高使用便利性。<hr />    </div>
+        混淆插件用于伪装流量，使其看起来像普通的 HTTP 或 TLS 请求。常见类型有 plain、tls1.2_ticket_auth 等。合理设置混淆能有效降低被识别的风险，提升连接成功率。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Mellow TUN 模式与 SOCKS5 代理有什么区别？</h5></div>
