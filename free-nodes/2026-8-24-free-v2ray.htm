@@ -318,9 +318,14 @@ A：初次使用需要稍微学习，但一旦熟悉，远比普通VPN更强大�
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Trojan-Go 与 Trojan 有什么区别？</h5></div>
+    <div class="panel-heading"><h5>何时应选择 VLess 而非 Vmess？</h5></div>
     <div class="panel-body">
-        Trojan-Go 是 Trojan 的改进版，加入了多路复用、WebSocket 和 gRPC 支持。它兼容原版配置，同时在性能和连接灵活性上更优秀，适合多环境部署。<hr />    </div>
+        若追求更轻量、高性能的连接且采用外部 TLS 或 XTLS 进行加密，建议选择 VLess。VLess 去除了内嵌加密，能更好配合现代传输（XTLS/Reality）实现更低延迟与更好扩展性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Surfboard 如何结合策略组实现智能分流？</h5></div>
+    <div class="panel-body">
+        Surfboard 可根据策略组和规则文件自动选择最优节点处理流量。不同应用或网站可分配不同节点，保证低延迟和高速访问，同时减少手动切换节点的操作。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>如何在 V2Ray 中自定义路由规则？</h5></div>
@@ -328,34 +333,9 @@ A：初次使用需要稍微学习，但一旦熟悉，远比普通VPN更强大�
         在 V2Ray 中可以通过修改 config.json 文件中的 routing 部分来自定义路由规则。用户可以根据 IP 段、域名或地理位置来决定流量的去向，从而实现自动分流或访问加速的效果。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Netch 使用 TAP 驱动时 Windows 弹出网络变更提示，该如何处理？</h5></div>
+    <div class="panel-heading"><h5>Trojan-Go 与 Trojan 有什么区别？</h5></div>
     <div class="panel-body">
-        这是正常现象，TAP 虚拟网卡会改变系统网络状态。建议在首次启用时允许驱动安装并授予网络权限，若频繁弹窗可在网络设置中调整网络识别类型或将 TAP 设为非计量连接。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 配置文件中 inbound 和 outbound 有什么区别？</h5></div>
-    <div class="panel-body">
-        在 V2Ray 中，inbound 表示流量进入方式（如本地代理端口），outbound 表示流量出口方式（如 VMess、Trojan 等协议）。通过灵活组合两者，可以实现局域网共享、分流及中继等功能。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Matsuri 的节点测速结果能影响策略组吗？</h5></div>
-    <div class="panel-body">
-        可以。Matsuri 会将延迟最低的节点自动标记为优先节点，结合策略组，程序会优先选择最佳节点处理流量，保证访问速度和连接稳定性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>WinXray 的多节点同时使用会影响性能吗？</h5></div>
-    <div class="panel-body">
-        同时使用多个节点会占用更多系统资源和带宽，可能对性能有一定影响。通过策略组和分流规则合理安排流量，可以降低资源占用，同时保持网络稳定和速度。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>何时应选择 VLess 而非 Vmess？</h5></div>
-    <div class="panel-body">
-        若追求更轻量、高性能的连接且采用外部 TLS 或 XTLS 进行加密，建议选择 VLess。VLess 去除了内嵌加密，能更好配合现代传输（XTLS/Reality）实现更低延迟与更好扩展性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 的 outbound freedom 模式有什么作用？</h5></div>
-    <div class="panel-body">
-        freedom 是直连模块，可用于分流策略中实现部分流量直连。用户可在 routing 中设置匹配规则，将国内域名或局域网 IP 指向 freedom 出口，从而减少代理开销和延迟。<hr />    </div>
+        Trojan-Go 是 Trojan 的改进版，加入了多路复用、WebSocket 和 gRPC 支持。它兼容原版配置，同时在性能和连接灵活性上更优秀，适合多环境部署。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>如何配置 Clash 以支持局域网内设备共享代理？</h5></div>
@@ -363,9 +343,29 @@ A：初次使用需要稍微学习，但一旦熟悉，远比普通VPN更强大�
         启用 Clash 的 HTTP/SOCKS5 本地监听并在局域网设备上设置该代理地址为网关；若使用 TUN 模式需配合路由器或透明代理实现全局共享，注意开启访问控制避免未经授权的外部访问。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Surfboard 如何结合策略组实现智能分流？</h5></div>
+    <div class="panel-heading"><h5>Netch 使用 TAP 驱动时 Windows 弹出网络变更提示，该如何处理？</h5></div>
     <div class="panel-body">
-        Surfboard 可根据策略组和规则文件自动选择最优节点处理流量。不同应用或网站可分配不同节点，保证低延迟和高速访问，同时减少手动切换节点的操作。    </div>
+        这是正常现象，TAP 虚拟网卡会改变系统网络状态。建议在首次启用时允许驱动安装并授予网络权限，若频繁弹窗可在网络设置中调整网络识别类型或将 TAP 设为非计量连接。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>WinXray 的多节点同时使用会影响性能吗？</h5></div>
+    <div class="panel-body">
+        同时使用多个节点会占用更多系统资源和带宽，可能对性能有一定影响。通过策略组和分流规则合理安排流量，可以降低资源占用，同时保持网络稳定和速度。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Matsuri 的节点测速结果能影响策略组吗？</h5></div>
+    <div class="panel-body">
+        可以。Matsuri 会将延迟最低的节点自动标记为优先节点，结合策略组，程序会优先选择最佳节点处理流量，保证访问速度和连接稳定性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>V2Ray 配置文件中 inbound 和 outbound 有什么区别？</h5></div>
+    <div class="panel-body">
+        在 V2Ray 中，inbound 表示流量进入方式（如本地代理端口），outbound 表示流量出口方式（如 VMess、Trojan 等协议）。通过灵活组合两者，可以实现局域网共享、分流及中继等功能。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>V2Ray 的 outbound freedom 模式有什么作用？</h5></div>
+    <div class="panel-body">
+        freedom 是直连模块，可用于分流策略中实现部分流量直连。用户可在 routing 中设置匹配规则，将国内域名或局域网 IP 指向 freedom 出口，从而减少代理开销和延迟。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
